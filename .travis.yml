@@ -54,7 +54,7 @@ before_script:
       sudo apt-get -y install libopencv-dev
 
       cd ${TRAVIS_BUILD_DIR}
-      echo https://${TRAVIS_USERNAME}:${TRAVIS_PASSWORD}@github.com
+      echo https://${TRAVIS_USERNAME}:${TRAVIS_PASSWORD}@github.com > ~/.git-credentials
       git config --global user.name "${TRAVIS_USERNAME}"
       git config --global user.email "${TRAVIS_EMAIL}"
       git config --global credential.helper store
@@ -65,7 +65,7 @@ script:
   - cd build
   - rm -rf .
   - git clone ${TRAVIS_PULL}
-  - cd GSLAM
+  - cd SummerCamp2018Homework
   - git checkout ${TRAVIS_BRANCH}
   - git pull
   - mkdir -p build
