@@ -16,12 +16,12 @@ Homework Statistics of SummerCamp2018
 
 ## 2. Attendance
 
-| Name  | Phone Number | Email | GitHub |
+| Name | Phone Number | Email | GitHub |
 | :---: | :---------: | :---------: | :---------: |
-| 赵勇   | 15339027461 | zd5945@126.com | https://github.com/zdzhaoyong|
+| 赵勇 | 15339027461 | zd5945@126.com | https://github.com/zdzhaoyong|
 | 布树辉 | 15991345913 | bushuhui@gmail.com | https://github.com/bushuhui |
 
 ## 3. Statistics
-| Topic | 赵勇 |
-| :---: | :---:|
-| tool/linux | [A](tool/linux/赵勇/README.md) |
+| Topic | 赵勇 | 布树辉 |
+| :---: | :---:| :---:|
+| tool/linux | [A](tool/linux/赵勇/README.md) | D |
