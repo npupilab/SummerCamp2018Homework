@@ -17,14 +17,19 @@ else
 	Function_Name=${File_Name%.*};
 fi
 
+topicFolder=$Here_Path/..
+topic=$1
+name=$2
+scoreFile=$3
+
 if [ ! -f "$topicFolder/$name/README.md" ];then
-    SCORE="D"
-    return
+    echo "D"> "$scoreFile"
+    exit 0
 fi
 
 if [ ! -f "$topicFolder/$name/Statistics.sh" ];then
-    SCORE="D"
-    return
+    echo "D">"$scoreFile"
+    exit 0
 fi
 
 testFolder=$Call_Path/tool/linux/$name
@@ -35,15 +40,15 @@ output="$(bash $testFolder/Statistics.sh -e $topicFolder)"
 
 if [ ! -f "$testFolder/README.md" ];then # Failed to output README.md
   echo "Failed to output $testFolder/README.md"
-  SCORE="C"
-  return
+  echo "C">"$scoreFile"
+  exit 0
 fi
 
 
 difference="$(diff -q $testFolder/README.md $topicFolder/$name/README.md)"
 if [ -n "$difference" ]; then
   echo "File $topicFolder/$name/README.md are not created by $testFolder/Statistics.sh, diff: \"$difference\""
-  SCORE="C";return
+echo "C">"$scoreFile"
 fi
 
 # Check output correct or not
@@ -95,7 +100,7 @@ for topic in $Topics;do maxLineSize=$(expr $maxLineSize + 1);done
 while read line ; do
   if [ $lineID -ge $maxLineSize ]; then
     echo "lineID $lineID ($line) should not greater than $maxLineSize"
-  #  SCORE="B";return
+    echo "B">"$scoreFile"
   fi
   reg=""
   case "$lineID" in
@@ -106,8 +111,8 @@ while read line ; do
   lineID=$(expr $lineID + 1)
   if [[ ! $line =~ $reg ]];then
     echo "$line not match $reg"
-    SCORE="B";return
+    echo "B">"$scoreFile"
   fi
 done < $testFolder/README.md
 
-SCORE="[S]($topic/$name/README.md)"
+echo "[S]($topic/$name/README.md)" > "$scoreFile"
