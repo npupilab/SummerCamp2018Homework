@@ -68,7 +68,7 @@ evaluate() ## do evaluation
     return
 	fi
 
-  echo "Evaluate folder $1"
+  echo "Evaluate folder $1 to $Call_Path"
   INPUTFILE=$1/README.md
   OUTPUTFILE=$Call_Path/README.md
 
@@ -120,10 +120,11 @@ evaluate() ## do evaluation
     done
 
     echo $LINE >>$OUTPUTFILE
-  done  
+  done
 
   # Compare two files
-  differece=$(diff $INPUTFILE $OUTPUTFILE |grep "|")
+  difference="$(diff -q $INPUTFILE $OUTPUTFILE)"
+  echo "Difference of $INPUTFILE $OUTPUTFILE: $difference"
   if [ -n "$difference" ]; then
     cp $OUTPUTFILE $INPUTFILE
     git commit -am "auto updated statistics"
