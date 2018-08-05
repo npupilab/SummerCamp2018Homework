@@ -55,8 +55,14 @@ score()
   evaluateScript=$Function_Path/evaluate.sh
 
   SCORE="D"
+  SCOREFILE=$topic/$name/Score.txt
+  mkdir -p $topic/$name
   if [ -f "$evaluateScript" ];then
-    bash $evaluateScript $topicFolder $topic $name
+    bash $evaluateScript $topic $name $SCOREFILE
+  fi
+  
+  if [ -f "$SCOREFILE" ];then
+    SCORE="$(cat $SCOREFILE)"
   fi
 }
 
