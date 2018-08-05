@@ -74,17 +74,17 @@ fi
   done < $INPUTFILE
   
   TOPLINE="\| *Topic *|"
-  for name in $Names;do
-    TOPLINE="$TOPLINE *$name *\|"
+  for nameIt in $Names;do
+    TOPLINE="$TOPLINE *$nameIt *\|"
   done
 
 checkline()
 {
   topic="${Topics[$1 - 2]}"
   LINE="\| *$topic *|"
-  for name in $Names;do
-    if [ -f "$1/$topic/$name/README.md" ];then
-        CONTENT=$(cat $1/$topic/$name/README.md)
+  for nameIt in $Names;do
+    if [ -f "$1/$topic/$nameIt/README.md" ];then
+        CONTENT=$(cat $1/$topic/$nameIt/README.md)
         LINE="$LINE *$CONTENT *| *"
       else
         LINE="$LINE *D *| *"
