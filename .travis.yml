@@ -63,11 +63,13 @@ before_script:
 script:
   - cmake --version
   - cd build
-  - rm -rf .
-  - git clone ${TRAVIS_PULL}
+  - rm -rf *
+  - |
+    if [[ -z "$(ls -A GSLAM)" ]]; then
+      git clone ${TRAVIS_PULL}
+    fi
   - cd SummerCamp2018Homework
   - git checkout ${TRAVIS_BRANCH}
-  - git pull
   - mkdir -p build
   - cd build
   - pwd
