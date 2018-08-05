@@ -55,18 +55,16 @@ before_script:
 
       cd ${TRAVIS_BUILD_DIR}
       echo https://${TRAVIS_USERNAME}:${TRAVIS_PASSWORD}@github.com
-      git config --global user.name "npupilab travis"
-      git config --global user.email rtmapper@qq.com
+      git config --global user.name "${TRAVIS_USERNAME}"
+      git config --global user.email "${TRAVIS_EMAIL}"
       git config --global credential.helper store
     fi
 
 script:
   - cmake --version
   - cd build
-  - |
-    if [[ -z "$(ls -A SummerCamp2018Homework)" ]]; then
-      git clone https://github.com/npupilab/SummerCamp2018Homework.git
-    fi
+  - rm -rf .
+  - git clone ${TRAVIS_PULL}
   - cd GSLAM
   - git checkout ${TRAVIS_BRANCH}
   - git pull
