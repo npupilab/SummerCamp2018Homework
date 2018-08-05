@@ -20,8 +20,6 @@ matrix:
             - libgoogle-glog-dev
             - libgflags-dev
             - libglew-dev
-    - os: osx
-      env: CMAKE_OPTIONS="-DCMAKE_RUNTIME_OUTPUT_DIRECTORY=bin -DIPO_ENABLED=OFF -DQt5_DIR=/usr/local/opt/qt5/lib/cmake/Qt5 -DQt5Core_DIR=/usr/local/opt/qt5/lib/cmake/Qt5Core -DQt5OpenGL_DIR=/usr/local/opt/qt5/lib/cmake/Qt5OpenGL"
 
 cache:
   directories:
