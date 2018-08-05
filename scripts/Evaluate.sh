@@ -54,10 +54,9 @@ score()
   Function_Name=evaluate
   evaluateScript=$Function_Path/evaluate.sh
 
+  SCORE="D"
   if [ -f "$evaluateScript" ];then
-    . $evaluateScript $name
-  else
-    SCORE="D"
+    bash $evaluateScript $topicFolder $topic $name
   fi
 }
 
