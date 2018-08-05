@@ -136,7 +136,8 @@ evaluate() ## do evaluation
   echo "Difference of $INPUTFILE $OUTPUTFILE: $difference"
   if [ -n "$difference" ]; then
     cp $OUTPUTFILE $INPUTFILE
-    git commit -am "auto updated statistics"
+    git add $Here_Path/../README.md
+    git commit -m "auto updated statistics"
     git push origin master
   fi
 }

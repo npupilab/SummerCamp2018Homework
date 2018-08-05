@@ -62,8 +62,8 @@ fi
     do  
     if [[ $line =~ $TopicReg ]];then
         EXISTED=
-        for topic in $Topics;do
-          if [ "${BASH_REMATCH[1]}" = "$topic" ];then EXISTED=YES;fi
+        for it in $Topics;do
+          if [ "${BASH_REMATCH[1]}" = "$it" ];then EXISTED=YES;fi
         done
         if [ -z "$EXISTED" ];then
           Topics="$Topics ${BASH_REMATCH[1]}"
@@ -80,11 +80,11 @@ fi
 
 checkline()
 {
-  topic="${Topics[$1 - 2]}"
-  LINE="\| *$topic *|"
+  it="${Topics[$1 - 2]}"
+  LINE="\| *$it *|"
   for nameIt in $Names;do
-    if [ -f "$1/$topic/$nameIt/README.md" ];then
-        CONTENT=$(cat $1/$topic/$nameIt/README.md)
+    if [ -f "$1/$it/$nameIt/README.md" ];then
+        CONTENT=$(cat $1/$it/$nameIt/README.md)
         LINE="$LINE *$CONTENT *| *"
       else
         LINE="$LINE *D *| *"
@@ -95,7 +95,7 @@ checkline()
 
 lineID=0;
 maxLineSize=2
-for topic in $Topics;do maxLineSize=$(expr $maxLineSize + 1);done
+for it in $Topics;do maxLineSize=$(expr $maxLineSize + 1);done
 
 while read line ; do
   if [ $lineID -ge $maxLineSize ]; then
