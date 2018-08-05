@@ -24,4 +24,4 @@ Homework Statistics of SummerCamp2018
 ## 3. Statistics
 | Topic | 赵勇 | 布树辉 |
 | :---: | :---:| :---:|
-| tool/linux | [A](tool/linux/赵勇/README.md) | D |
+| tool/linux | C | D |
