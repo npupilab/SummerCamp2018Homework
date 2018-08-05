@@ -1,5 +1,8 @@
 
 # SummerCamp2018Homework
+
+[![Build Status](https://travis-ci.org/npupilab/SummerCamp2018Homework.svg?branch=master)](https://travis-ci.org/npupilab/SummerCamp2018Homework)
+
 Homework Statistics of SummerCamp2018
 
 
