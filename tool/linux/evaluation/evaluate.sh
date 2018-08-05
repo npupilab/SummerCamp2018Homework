@@ -1,6 +1,4 @@
 #!/bin/bash
-##BEGIN_INTRODUCTION##	This function is used to stastic homework quality.
-##END_INTRODUCTION##
 
 #####################  Build in Things   ######################
 #. $Function_Top/Include/Enviroment_Config.inc
@@ -19,37 +17,11 @@ else
 	Function_Name=${File_Name%.*};
 fi
 
-echo_introduction() #Introduce myself
-{
-	if [ -n "$1" ];then
-	FILE_Content=$(cat < $1)
-	else
-	FILE_Content=$(cat < $Here_Path/$File_Name)
-	fi
-	INTRO=${FILE_Content#*##BEGIN_INTRODUCTION##};
-	INTRO=${INTRO%%##END_INTRODUCTION##*};
-	echo "$INTRO"
-}
-
-echo_help() #Echo my help or others'
-{
-	if [ -n "$1" ];then
-		FILE_Content=$(cat < $1)
-	else
-		FILE_Content=$(cat < $Here_Path/$File_Name)
-	fi
-	HELP=${FILE_Content##*##BEGIN_HELP##};
-	HELP=${HELP%##END_HELP##*};
-	echo "usage:  $Function_Name [options values]"
-	echo options:"$HELP"
-}
-
 echo evaluating topic $topic of $name
 
-if [ -f "$topicFolder/$name/README.md" ];then
-    SCORE="[A]($topic/$name/README.md)"
-  echo $SCORE
-else
+if [ ! -f "$topicFolder/$name/README.md" ];then
     SCORE="D"
+    return
 fi
 
+SCORE="[A]($topic/$name/README.md)"

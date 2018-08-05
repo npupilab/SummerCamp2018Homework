@@ -123,6 +123,8 @@ evaluate() ## do evaluation
   done
 
   # Compare two files
+  if [ -n "$AbortUpdate" ];then return;fi
+
   difference="$(diff -q $INPUTFILE $OUTPUTFILE)"
   echo "Difference of $INPUTFILE $OUTPUTFILE: $difference"
   if [ -n "$difference" ]; then
