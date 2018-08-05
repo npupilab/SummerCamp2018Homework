@@ -11,8 +11,10 @@ Homework Statistics of SummerCamp2018
 | Topic | Description |
 | :---: | :---------: |
 | [tool/linux]| 了解常用命令，练习Bash编程 |
+| [tool/git]| 了解github常用操作，并练习协作编辑仓库 |
 
 [tool/linux]: ./tool/linux/README.md
+[tool/git]: ./tool/git/README.md
 
 ## 2. Attendance
 
@@ -21,11 +23,10 @@ Homework Statistics of SummerCamp2018
 | 赵勇 | 15339027461 | zd5945@126.com | https://github.com/zdzhaoyong|
 | 布树辉 | 15991345913 | bushuhui@gmail.com | https://github.com/bushuhui |
 
+*注意：每一项都需要填写，姓名部分名字中间不要带空格*
+
 ## 3. Statistics
 | Topic | 赵勇 | 布树辉 |
 | :---: | :---:| :---:|
-<<<<<<< HEAD
 | tool/linux | [S](tool/linux/赵勇/README.md) | D |
-=======
-| tool/linux | [S](cpp/helloc/赵勇/README.md) | D |
->>>>>>> cc446c998d6529d65326ac87687b8c20665e6cb0
+| tool/git | [S](tool/git/赵勇/README.md) | D |
