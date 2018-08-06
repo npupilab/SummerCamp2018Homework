@@ -1,4 +1,3 @@
-1
 # SummerCamp2018Homework
 
 [![Build Status](https://api.travis-ci.com/npupilab/SummerCamp2018Homework.svg?branch=master)](https://travis-ci.com/npupilab/SummerCamp2018Homework/)
