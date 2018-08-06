@@ -33,7 +33,7 @@ Homework Statistics of SummerCamp2018
 *注意：每一项都需要填写，姓名部分名字中间不要带空格*
 
 ## 3. Statistics
-| Topic | 赵勇 | 布树辉 | hanpengcheng | 刘国晨 | 童品模 | heyu | 徐磊 | huboni | 王伟 | 程宇琪 |
-| :---: | :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:|
-| tool/linux | [S](tool/linux/赵勇/README.md) | D | D | D | D | D | D | D | D | D |
-| tool/git | D | D | D | D | D | D | D | D | D | D |
+| Topic | 赵勇 | 布树辉 | 李清 | hanpengcheng | 刘国晨 | 童品模 | heyu | 徐磊 | huboni | 王伟 | 程宇琪 |
+| :---: | :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:|
+| tool/linux | [S](tool/linux/赵勇/README.md) | D | D | D | D | D | D | D | D | D | D |
+| tool/git | [S](tool/git/赵勇/README.md) | D | D | D | D | D | D | D | D | D | D |
