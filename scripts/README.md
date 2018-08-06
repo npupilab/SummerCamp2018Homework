@@ -15,7 +15,7 @@ Homework Statistics of SummerCamp2018
 
 | Name | Phone Number | Email | GitHub |
 | :---: | :---------: | :---------: | :---------: |
-| 赵勇 | 15339027461 | zd5945@126.com | https://github.com/zdzhaoyong|
+| 程宇琪 | 15929723457 | 420985011@qq.com | https://github.com/crischeng |
 
 ## 3. Statistics
 | Topic | 赵勇 |
