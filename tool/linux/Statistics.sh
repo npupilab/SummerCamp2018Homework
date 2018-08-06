@@ -19,12 +19,6 @@ else
 	Function_Name=${File_Name%.*};
 fi
 
-echo $Function_Path
-echo $Here_Path
-echo $Function_Name
-echo $File_Name
-echo $Call_Path
-
 echo_introduction() #Introduce myself
 {
 	if [ -n "$1" ];then
