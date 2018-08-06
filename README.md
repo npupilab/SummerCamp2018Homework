@@ -22,7 +22,7 @@ Homework Statistics of SummerCamp2018
 | :---: | :---------: | :---------: | :---------: |
 | 赵勇 | 15339027461 | zd5945@126.com | https://github.com/zdzhaoyong|
 | 布树辉 | 15991345913 | bushuhui@gmail.com | https://github.com/bushuhui |
-| 王伟｜15584797688 | shaxikai@outlook.com | https://github.com/shaxikai |
+| 王伟 | 15584797688 | shaxikai@outlook.com | https://github.com/shaxikai |
 
 *注意：每一项都需要填写，姓名部分名字中间不要带空格*
 
