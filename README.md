@@ -21,14 +21,15 @@ Homework Statistics of SummerCamp2018
 | :---: | :---------: | :---------: | :---------: |
 | 赵勇 | 15339027461 | zd5945@126.com | https://github.com/zdzhaoyong|
 | 布树辉 | 15991345913 | bushuhui@gmail.com | https://github.com/bushuhui |
+| hanpc | 18709221546 | hanpc839874404@163.com | https://github.com/lonl |
 | 童品模 | 18092467805 | 1529901761@qq.com | https://github.com/tongpinmo |
-
 | heyu | 18829236547 | hytopgun@foxmail.com | https://github.com/TopGun666 |
+| 徐磊 | 15934848660 | 1224830613@qq.com | https://github.com/JiaoYanMoGu |
 
 *注意：每一项都需要填写，姓名部分名字中间不要带空格*
 
 ## 3. Statistics
-| Topic | 赵勇 | 布树辉 | 童品模 | heyu |
-| :---: | :---:| :---:| :---:| :---:|
-| tool/linux | [S](tool/linux/赵勇/README.md) | D | D | D |
-| tool/git | [S](tool/git/赵勇/README.md) | D | D | D |
+| Topic | 赵勇 | 布树辉 | hanpc | 童品模 | heyu | 徐磊 |
+| :---: | :---:| :---:| :---:| :---:| :---:| :---:|
+| tool/linux | [S](tool/linux/赵勇/README.md) | D | D | D | D | D |
+| tool/git | [S](tool/git/赵勇/README.md) | D | D | D | D | D |
