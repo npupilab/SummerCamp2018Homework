@@ -18,14 +18,14 @@ scoreFile=$3
 mkdir -p $BuildDir/$name
 
 if [ ! -f "$topicFolder/$name/main.c" ];then
-    echo "[D](no_main.c)"> "$scoreFile"
+    echo "[D]($topic/evaluation/no_main.md)"> "$scoreFile"
     exit 0
 fi
 
 g++ -o $BuildDir/$name/a.out $topicFolder/$name/main.c
 
 if [ ! -f "$BuildDir/$name/a.out" ];then
-    echo "[C](compile_failed)"> "$scoreFile"
+    echo "[C]($topic/evaluation/compile_failed.md)"> "$scoreFile"
     exit 0
 fi
 
@@ -39,18 +39,18 @@ for ((a=0;a<1000;a++));do
   #echo "output: $i"
 
   if [ -z "$i" ];then
-    echo "[B](app_no_output)"> "$scoreFile"
+    echo "[B]($topic/evaluation/app_no_output.md)"> "$scoreFile"
     exit 0
   fi
   #echo "${var[$i]}" -le "${var[$((i-1))]}"
   if [ "${var[$i]}" -le "${var[$((i-1))]}" ];then
-    echo "[B](wrong_output)"> "$scoreFile"
+    echo "[B]($topic/evaluation/wrong_output.md)"> "$scoreFile"
     exit 0
   fi
 
   #echo "${var[$i]}" -le "${var[$((i+1))]}"
   if [ "${var[$i]}" -le "${var[$((i+1))]}" ];then
-    echo "[B](wrong_output)"> "$scoreFile"
+    echo "[B]($topic/evaluation/wrong_output.md)"> "$scoreFile"
     exit 0
   fi
 done
