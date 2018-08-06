@@ -41,3 +41,4 @@ Homework Statistics of SummerCamp2018
 | :---: | :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:|
 | tool/linux | [S](tool/linux/赵勇/README.md) | D | D | D | D | [S](tool/linux/hanpengcheng/README.md) | D | D | D | D | D | D |
 | tool/git | [S](tool/git/赵勇/README.md) | D | D | D | D | D | D | D | D | D | D | D |
+| cpp/helloc | [D](no_main.c) | [D](no_main.c) | [D](no_main.c) | [D](no_main.c) | [D](no_main.c) | [D](no_main.c) | [D](no_main.c) | [D](no_main.c) | [D](no_main.c) | [D](no_main.c) | [D](no_main.c) | [D](no_main.c) |
