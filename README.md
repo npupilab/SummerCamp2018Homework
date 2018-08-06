@@ -32,4 +32,4 @@ Homework Statistics of SummerCamp2018
 | Topic | 赵勇 | 布树辉 | hanpc | 童品模 | heyu | 徐磊 |
 | :---: | :---:| :---:| :---:| :---:| :---:| :---:|
 | tool/linux | [S](tool/linux/赵勇/README.md) | D | D | D | D | D |
-| tool/git | D | D | D | D | D | D |
+| tool/git | [S](tool/git/赵勇/README.md) | D | D | D | D | D |
