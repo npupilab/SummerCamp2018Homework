@@ -1,4 +1,4 @@
-
+1
 # SummerCamp2018Homework
 
 [![Build Status](https://api.travis-ci.com/npupilab/SummerCamp2018Homework.svg?branch=master)](https://travis-ci.com/npupilab/SummerCamp2018Homework/)
@@ -22,12 +22,15 @@ Homework Statistics of SummerCamp2018
 | :---: | :---------: | :---------: | :---------: |
 | 赵勇 | 15339027461 | zd5945@126.com | https://github.com/zdzhaoyong|
 | 布树辉 | 15991345913 | bushuhui@gmail.com | https://github.com/bushuhui |
+| 童品模 | 18092467805 | 1529901761@qq.com | https://github.com/tongpinmo |
 | 王伟 | 15584797688 | shaxikai@outlook.com | https://github.com/shaxikai |
+| heyu | 18829236547 | hytopgun@foxmail.com | https://github.com/TopGun666 |
+>>>>>>> 9820f5fb7d5dbf90909f74d7bc99de98da19449a
 
 *注意：每一项都需要填写，姓名部分名字中间不要带空格*
 
 ## 3. Statistics
-| Topic | 赵勇 | 布树辉 |
-| :---: | :---:| :---:|
-| tool/linux | [S](tool/linux/赵勇/README.md) | D |
-| tool/git | [S](tool/git/赵勇/README.md) | D |
+| Topic | 赵勇 | 布树辉 | 童品模 | heyu |
+| :---: | :---:| :---:| :---:| :---:|
+| tool/linux | [S](tool/linux/赵勇/README.md) | D | D | D |
+| tool/git | [S](tool/git/赵勇/README.md) | D | D | D |
