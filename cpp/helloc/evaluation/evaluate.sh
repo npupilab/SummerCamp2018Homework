@@ -18,34 +18,41 @@ scoreFile=$3
 mkdir -p $BuildDir/$name
 
 if [ ! -f "$topicFolder/$name/main.c" ];then
-    echo "[D](no main.c)"> "$scoreFile"
+    echo "[D](no_main.c)"> "$scoreFile"
     exit 0
 fi
 
 g++ -o $BuildDir/$name/a.out $topicFolder/$name/main.c
 
 if [ ! -f "$BuildDir/$name/a.out" ];then
-    echo "[C](compile failed)"> "$scoreFile"
+    echo "[C](compile_failed)"> "$scoreFile"
     exit 0
 fi
 
 for ((a=0;a<1000;a++));do
-  var[0]="-1"
-  for ((i=1;i<1000;i++));do var[$i]="$(( (RANDOM % 1000) + 1 ))";done
-  i="$($BuildDir/$name/a.out ${var[@]})"
+  var[0]="0"
+  for ((i=1;i<100;i++));do var[$i]="$(( (RANDOM % 1000) + 1 ))";done
+  var[100]="0"
 
-  if [ ! -n "$i" ];then
-    echo "[B](app no output)"> "$scoreFile"
+  #echo "$BuildDir/$name/a.out ${var[@]}"
+  i="$($BuildDir/$name/a.out ${var[@]})"
+  #echo "output: $i"
+
+  if [ -z "$i" ];then
+    echo "[B](app_no_output)"> "$scoreFile"
+    exit 0
+  fi
+  #echo "${var[$i]}" -le "${var[$((i-1))]}"
+  if [ "${var[$i]}" -le "${var[$((i-1))]}" ];then
+    echo "[B](wrong_output)"> "$scoreFile"
+    exit 0
   fi
 
-  if [ "${var[$i]}" -le "${var[$((i-1))]}" ];then
-    echo "[B](wrong output)"> "$scoreFile"
-  done
-
-
+  #echo "${var[$i]}" -le "${var[$((i+1))]}"
   if [ "${var[$i]}" -le "${var[$((i+1))]}" ];then
-    echo "[B](wrong output)"> "$scoreFile"
-  done
+    echo "[B](wrong_output)"> "$scoreFile"
+    exit 0
+  fi
 done
 
 echo "[S]($topic/$name/main.c)"> "$scoreFile";
