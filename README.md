@@ -28,6 +28,7 @@ Homework Statistics of SummerCamp2018
 | 徐磊 | 15934848660 | 1224830613@qq.com | https://github.com/JiaoYanMoGu |
 | huboni | 18392360048 | 18392360048@163.com | https://github.com/boni-hu |
 | 程宇琪 | 15929723457 | 420985011@qq.com | https://github.com/crischeng |
+| 程宇琪 | 15929723457 | 420985011@qq.com | https://github.com/crischeng |
 
 *注意：每一项都需要填写，姓名部分名字中间不要带空格*
 
