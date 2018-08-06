@@ -1,4 +1,4 @@
-
+1
 # SummerCamp2018Homework
 
 [![Build Status](https://api.travis-ci.com/npupilab/SummerCamp2018Homework.svg?branch=master)](https://travis-ci.com/npupilab/SummerCamp2018Homework/)
@@ -22,6 +22,7 @@ Homework Statistics of SummerCamp2018
 | :---: | :---------: | :---------: | :---------: |
 | 赵勇 | 15339027461 | zd5945@126.com | https://github.com/zdzhaoyong|
 | 布树辉 | 15991345913 | bushuhui@gmail.com | https://github.com/bushuhui |
+| 童品模 | 18092467805 | 1529901761@qq.com | https://github.com/tongpinmo |
 
 *注意：每一项都需要填写，姓名部分名字中间不要带空格*
 
