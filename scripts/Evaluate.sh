@@ -59,6 +59,10 @@ score()
   mkdir -p $topic/$name
   if [ -f "$evaluateScript" ];then
     bash $evaluateScript $topic $name $SCOREFILE
+    #echo "$evaluateScript $topic $name $SCOREFILE"
+  elif [ -f "$Function_Path/evaluate.py" ];then
+    python $Function_Path/evaluate.py $topic $name $SCOREFILE
+    #echo "pyout: $pout"
   fi
   
   if [ -f "$SCOREFILE" ];then
@@ -136,6 +140,7 @@ evaluate() ## do evaluation
   echo "Difference of $INPUTFILE $OUTPUTFILE: $difference"
   if [ -n "$difference" ]; then
     cp $OUTPUTFILE $INPUTFILE
+    cat $INPUTFILE
     git add $Here_Path/../README.md
     git commit -m "auto updated statistics"
     git push origin master
