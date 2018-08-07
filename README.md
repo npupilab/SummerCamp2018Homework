@@ -28,7 +28,7 @@ Homework Statistics of SummerCamp2018
 | hanpc | 18709221546 | hanpc839874404@163.com | https://github.com/lonl |
 | 徐磊 | 15934848660 | 1224830613@qq.com | https://github.com/JiaoYanMoGu |
 | 李清 | 18391447596 | 287407782@qq.com | https://github.com/nihaoxiaoli |
-| hanpengcheng | 18709221546 | hanpc839874404@163.com | https://github.com/lonl |
+| hanpc | 18709221546 | hanpc839874404@163.com | https://github.com/lonl |
 | 刘国晨 | 15929913702 | 353184965@qq.com | https://github.com/trygas |
 | 童品模 | 18092467805 | 1529901761@qq.com | https://github.com/tongpinmo |
 | heyu | 18829236547 | hytopgun@foxmail.com | https://github.com/TopGun666 |
