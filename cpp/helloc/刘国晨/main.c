@@ -1,23 +1,22 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int main(int argc, char** argv)
 {
-    int first_num = (int)argv[1][0];
-    int mid_num = (int)argv[2][0];
-    int last_num = (int)argv[3][0];
+    int first_num = atoi(argv[1]);
+    int mid_num = atoi(argv[2]);
+    int last_num = atoi(argv[3]);
     int index = 2;
 
     while(index != argc - 2)
     {
         if(first_num < mid_num && mid_num > last_num)
-        {
-            return index;
-        }
+            return index-1;
 
         index++;
         first_num = mid_num;
         mid_num = last_num;
-        last_num = argv[index + 2][0];
+        last_num = atoi(argv[index + 2]);
     }
 
     return 0;
