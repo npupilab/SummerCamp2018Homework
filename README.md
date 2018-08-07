@@ -17,7 +17,7 @@ Homework Statistics of SummerCamp2018
 [tool/linux]: ./tool/linux/README.md
 [tool/git]: ./tool/git/README.md
 [cpp/helloc]: ./cpp/helloc/README.md
-[python/hellopython]: ./python/hello_python/README.md
+[python/hellopython]: ./python/hellopython/README.md
 
 ## 2. Attendance
 
