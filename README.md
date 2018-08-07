@@ -12,10 +12,12 @@ Homework Statistics of SummerCamp2018
 | [tool/linux]| 了解常用命令，练习Bash编程 |
 | [tool/git]| 了解github常用操作，并练习协作编辑仓库 |
 | [cpp/helloc]| 回顾c语言 |
+| [python/hellopython]| python入门与基础回顾 |
 
 [tool/linux]: ./tool/linux/README.md
 [tool/git]: ./tool/git/README.md
 [cpp/helloc]: ./cpp/helloc/README.md
+[python/hellopython]: ./python/hello_python/README.md
 
 ## 2. Attendance
 
