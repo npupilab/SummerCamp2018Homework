@@ -38,8 +38,9 @@ Homework Statistics of SummerCamp2018
 *注意：每一项都需要填写，姓名部分名字中间不要带空格*
 
 ## 3. Statistics
-| Topic | 赵勇 | 布树辉 | hanpc | 徐磊 | 李清 | hanpengcheng | 刘国晨 | 童品模 | heyu | huboni | 王伟 | 程宇琪 |
-| :---: | :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:|
-| tool/linux | [S](tool/linux/赵勇/README.md) | D | D | D | D | [S](tool/linux/hanpengcheng/README.md) | [S](tool/linux/刘国晨/README.md) | D | D | D | D | D |
-| tool/git | [S](tool/git/赵勇/README.md) | D | D | D | D | D | D | D | D | D | D | D |
-| cpp/helloc | [D](cpp/helloc/evaluation/no_main.md) | [D](cpp/helloc/evaluation/no_main.md) | [D](cpp/helloc/evaluation/no_main.md) | [D](cpp/helloc/evaluation/no_main.md) | [D](cpp/helloc/evaluation/no_main.md) | [D](cpp/helloc/evaluation/no_main.md) | [D](cpp/helloc/evaluation/no_main.md) | [D](cpp/helloc/evaluation/no_main.md) | [D](cpp/helloc/evaluation/no_main.md) | [D](cpp/helloc/evaluation/no_main.md) | [D](cpp/helloc/evaluation/no_main.md) | [D](cpp/helloc/evaluation/no_main.md) |
+| Topic | 赵勇 | 布树辉 | hanpc | 徐磊 | 李清 | 刘国晨 | 童品模 | heyu | huboni | 王伟 | 程宇琪 |
+| :---: | :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:|
+| tool/linux | [S](tool/linux/赵勇/README.md) | D | [S](tool/linux/hanpc/README.md) | [S](tool/linux/徐磊/README.md) | D | [S](tool/linux/刘国晨/README.md) | D | D | D | D | D |
+| tool/git | D | D | D | D | D | D | D | D | D | D | D |
+| cpp/helloc | [D](cpp/helloc/evaluation/no_main.md) | [D](cpp/helloc/evaluation/no_main.md) | [D](cpp/helloc/evaluation/no_main.md) | [D](cpp/helloc/evaluation/no_main.md) | [D](cpp/helloc/evaluation/no_main.md) | [D](cpp/helloc/evaluation/no_main.md) | [D](cpp/helloc/evaluation/no_main.md) | [D](cpp/helloc/evaluation/no_main.md) | [D](cpp/helloc/evaluation/no_main.md) | [D](cpp/helloc/evaluation/no_main.md) | [D](cpp/helloc/evaluation/no_main.md) |
+| python/hellopython | D | D | D | D | D | D | D | D | D | D | D |
