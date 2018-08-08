@@ -13,7 +13,7 @@ else
 fi
 #Who am I?
 if [ -n "$Function_Name" ];then
-	File_Name=$Function_Name.sh
+	File_Name=$Function_Name.func
 else
 	File_Name=${0##*/};
 	Function_Name=${File_Name%.*};
@@ -46,30 +46,6 @@ echo_help() #Echo my help or others'
 
 ##################### other functions below ######################
 
-score()
-{
-  topicFolder=$1
-  name=$2
-  Function_Path=$topicFolder/evaluation
-  Function_Name=evaluate
-  evaluateScript=$Function_Path/evaluate.sh
-
-  SCORE="D"
-  SCOREFILE=$topic/$name/Score.txt
-  mkdir -p $topic/$name
-  if [ -f "$evaluateScript" ];then
-    bash $evaluateScript $topic $name $SCOREFILE
-    #echo "$evaluateScript $topic $name $SCOREFILE"
-  elif [ -f "$Function_Path/evaluate.py" ];then
-    python $Function_Path/evaluate.py $topic $name $SCOREFILE
-    #echo "pyout: $pout"
-  fi
-  
-  if [ -f "$SCOREFILE" ];then
-    SCORE="$(cat $SCOREFILE)"
-  fi
-}
-
 evaluate() ## do evaluation
 {
   if [ -z "$1" ];then
@@ -77,11 +53,11 @@ evaluate() ## do evaluation
     return
 	fi
 
-  echo "Evaluate folder $1 to $Call_Path"
+  echo "Evaluate folder $1"
   INPUTFILE=$1/README.md
-  OUTPUTFILE=$Call_Path/README.md
+  OUTPUTFILE=$Here_Path/README.md
 
-  TopicReg='\| *\[([^ ]+)\] *\|'
+  TopicReg='\|[ ]*\[([^ ]+)\]'
   NameReg='\|[ ]*([^ ]+)[ ]*\|[ ]*[0-9]+'
   while read line
     do  
@@ -106,45 +82,21 @@ evaluate() ## do evaluation
   done
   
   #cat  $INPUTFILE > $Here_Path/README.md
-  rm -f $OUTPUTFILE
-  while read line
-    do  
-    if [[ $line =~ '3. Statistics' ]];then
-      echo $line >>$OUTPUTFILE
-      break
-    else 
-      echo $line >>$OUTPUTFILE
-    fi
-  done < $INPUTFILE
-
-  echo $TOPLINE
-  echo $TOPLINE >> $OUTPUTFILE
+  echo $TOPLINE > $OUTPUTFILE
   echo $SECONDLINE >>$OUTPUTFILE
 
   for topic in $Topics;do
     LINE="| $topic |"
-
     for name in $Names;do
-      score $1/$topic $name
-      LINE="$LINE $SCORE |"
+      if [ -f "$1/$topic/$name/README.md" ];then
+        SCORE=$(cat $1/$topic/$name/README.md)
+        LINE="$LINE $SCORE|"
+      else
+        LINE="$LINE D |"
+      fi
     done
-
-    echo $LINE >>$OUTPUTFILE
-    echo $LINE
-  done
-
-  # Compare two files
-  if [ -n "$AbortUpdate" ];then return;fi
-
-  difference="$(diff -q $INPUTFILE $OUTPUTFILE)"
-  echo "Difference of $INPUTFILE $OUTPUTFILE: $difference"
-  if [ -n "$difference" ]; then
-    cp $OUTPUTFILE $INPUTFILE
-    cat $INPUTFILE
-    git add $Here_Path/../README.md
-    git commit -m "auto updated statistics"
-    git push origin master
-  fi
+      echo $LINE >>$OUTPUTFILE
+  done  
 }
 
 ######################  main below  ##############################
@@ -155,8 +107,7 @@ if [ -n "$1" ];then
 		-h)     shift 1;echo_help;exit 1;;                   #Show usages 
 		-i)     shift 1;echo_introduction;exit 1;;           #Show introduction 
 		-edit)  shift 1;gedit $Here_Path/$File_Name;exit 1;; #Edit this function 
-		-e)     shift 1;evaluate $*;exit 0;; #Evaluate
-		-a)     shift 1;AbortUpdate=YES;; #Evaluate
+		-e)     shift 1;evaluate $*;exit 1;; #Evaluate
 		-*)     echo "error: no such option $1. -h for help";exit 1;; 
 		*)      $*;exit 1;;                                  #Call function here
 ##END_HELP##

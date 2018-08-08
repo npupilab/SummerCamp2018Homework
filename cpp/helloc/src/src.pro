@@ -7,4 +7,5 @@ TARGET = src
 INCLUDEPATH += .
 
 # Input
-SOURCES += main.c
+SOURCES += \
+    main.cpp
