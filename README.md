@@ -42,5 +42,5 @@ Homework Statistics of SummerCamp2018
 | :---: | :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:|
 | tool/linux | [S](tool/linux/赵勇/README.md) | D | [S](tool/linux/hanpc/README.md) | [S](tool/linux/徐磊/README.md) | [S](tool/linux/李清/README.md) | [S](tool/linux/刘国晨/README.md) | D | D | [S](tool/linux/huboni/README.md) | D | D |
 | tool/git | D | D | D | D | D | C | D | D | D | D | D |
-| cpp/helloc | [B](cpp/helloc/evaluation/app_no_output.md) | [D](cpp/helloc/evaluation/no_main.md) | [D](cpp/helloc/evaluation/no_main.md) | [S](cpp/helloc/徐磊/main.c) | [D](cpp/helloc/evaluation/no_main.md) | [B](cpp/helloc/evaluation/app_no_output.md) | [D](cpp/helloc/evaluation/no_main.md) | [D](cpp/helloc/evaluation/no_main.md) | [D](cpp/helloc/evaluation/no_main.md) | [D](cpp/helloc/evaluation/no_main.md) | [D](cpp/helloc/evaluation/no_main.md) |
+| cpp/helloc | [S](cpp/helloc/赵勇/main.c) | [D](cpp/helloc/evaluation/no_main.md) | [D](cpp/helloc/evaluation/no_main.md) | [S](cpp/helloc/徐磊/main.c) | [D](cpp/helloc/evaluation/no_main.md) | [B](cpp/helloc/evaluation/app_no_output.md) | [D](cpp/helloc/evaluation/no_main.md) | [D](cpp/helloc/evaluation/no_main.md) | [D](cpp/helloc/evaluation/no_main.md) | [D](cpp/helloc/evaluation/no_main.md) | [D](cpp/helloc/evaluation/no_main.md) |
 | python/hellopython | D | D | D | D | D | D | D | D | D | D | D |
