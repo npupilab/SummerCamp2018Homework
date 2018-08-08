@@ -54,11 +54,13 @@ evaluate() ## do evaluation
 	fi
 
   echo "Evaluate folder $1"
+
   INPUTFILE=$1/README.md
   OUTPUTFILE=$Here_Path/README.md
 
   TopicReg='\|[ ]*\[([^ ]+)\]'
   NameReg='\|[ ]*([^ ]+)[ ]*\|[ ]*[0-9]+'
+
   while read line
     do  
     if [[ $line =~ $TopicReg ]]
