@@ -12,10 +12,12 @@ Homework Statistics of SummerCamp2018
 | [tool/linux]| 了解常用命令，练习Bash编程 |
 | [tool/git]| 了解github常用操作，并练习协作编辑仓库 |
 | [cpp/helloc]| 回顾c语言 |
+| [python/hellopython]| python入门与基础回顾 |
 
 [tool/linux]: ./tool/linux/README.md
 [tool/git]: ./tool/git/README.md
 [cpp/helloc]: ./cpp/helloc/README.md
+[python/hellopython]: ./python/hellopython/README.md
 
 ## 2. Attendance
 
@@ -26,7 +28,6 @@ Homework Statistics of SummerCamp2018
 | hanpc | 18709221546 | hanpc839874404@163.com | https://github.com/lonl |
 | 徐磊 | 15934848660 | 1224830613@qq.com | https://github.com/JiaoYanMoGu |
 | 李清 | 18391447596 | 287407782@qq.com | https://github.com/nihaoxiaoli |
-| hanpengcheng | 18709221546 | hanpc839874404@163.com | https://github.com/lonl |
 | 刘国晨 | 15929913702 | 353184965@qq.com | https://github.com/trygas |
 | 童品模 | 18092467805 | 1529901761@qq.com | https://github.com/tongpinmo |
 | heyu | 18829236547 | hytopgun@foxmail.com | https://github.com/TopGun666 |
@@ -37,8 +38,9 @@ Homework Statistics of SummerCamp2018
 *注意：每一项都需要填写，姓名部分名字中间不要带空格*
 
 ## 3. Statistics
-| Topic | 赵勇 | 布树辉 | hanpc | 徐磊 | 李清 | hanpengcheng | 刘国晨 | 童品模 | heyu | huboni | 王伟 | 程宇琪 |
-| :---: | :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:|
-| tool/linux | [S](tool/linux/赵勇/README.md) | D | D | D | D | [S](tool/linux/hanpengcheng/README.md) | D | D | D | D | D | D |
-| tool/git | [S](tool/git/赵勇/README.md) | D | D | D | D | D | D | D | D | D | D | D |
-| cpp/helloc | [D](no_main.c) | [D](no_main.c) | [D](no_main.c) | [D](no_main.c) | [D](no_main.c) | [D](no_main.c) | [D](no_main.c) | [D](no_main.c) | [D](no_main.c) | [D](no_main.c) | [D](no_main.c) | [D](no_main.c) |
+| Topic | 赵勇 | 布树辉 | hanpc | 徐磊 | 李清 | 刘国晨 | 童品模 | heyu | huboni | 王伟 | 程宇琪 |
+| :---: | :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:|
+| tool/linux | [S](tool/linux/赵勇/README.md) | D | [S](tool/linux/hanpc/README.md) | [S](tool/linux/徐磊/README.md) | [S](tool/linux/李清/README.md) | [S](tool/linux/刘国晨/README.md) | D | D | [S](tool/linux/huboni/README.md) | D | D |
+| tool/git | D | D | D | D | D | C | D | D | D | D | D |
+| cpp/helloc | [D](cpp/helloc/evaluation/no_main.md) | [D](cpp/helloc/evaluation/no_main.md) | [D](cpp/helloc/evaluation/no_main.md) | [S](cpp/helloc/徐磊/main.c) | [D](cpp/helloc/evaluation/no_main.md) | [B](cpp/helloc/evaluation/app_no_output.md) | [D](cpp/helloc/evaluation/no_main.md) | [D](cpp/helloc/evaluation/no_main.md) | [D](cpp/helloc/evaluation/no_main.md) | [D](cpp/helloc/evaluation/no_main.md) | [D](cpp/helloc/evaluation/no_main.md) |
+| python/hellopython | D | D | D | D | D | D | D | D | D | D | D |

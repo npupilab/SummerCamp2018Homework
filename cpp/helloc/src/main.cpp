@@ -8,6 +8,9 @@
 #include <limits.h>
 #include <math.h>
 #include <stdarg.h>
+#include <time.h>
+#include <iostream>
+#include <eigen3/Eigen/Core>
 
 // C99 macros
 #if defined(INT_MIN)
@@ -24,18 +27,21 @@
 #endif
 
 // C99 buildin types and struct
-struct CTypes
+class CTypes// SIMD, Little,Greater, float:
 {
-    char   c;//1
-    short  s;//2
-    int    i;//4
-    float  f;//4
-    double         d;//8
-    unsigned char  uc;//1
-    unsigned short us;//2
-    unsigned int   ui;//4
-    char           str[16];//16
-    void*          p;//4?8
+public:
+    //EIGEN_ALIGN16// SSE,128bit,4float,16char AVX:256bit
+    // NEON,128bit
+    char   c;//1 p
+    unsigned char  uc;//p+1
+    short  s;//2 p+2
+    int    i;//4 p+4
+    float  f;//4 p+8
+    unsigned int   ui;//4 p+12
+    double         d;//8 p+16
+    unsigned short us;//2 p+24
+    char           str[6];// p+26
+    void*          p;//4?8 p+32
 
     union Union{
         char c;
@@ -56,7 +62,23 @@ struct CTypes
     long long      ll;//8
     long double    ld;//12?16
     unsigned long  ul;//4?8
+    char           haha[8];
+
+    void say(){printf("Hello");}
+    virtual void hello(){}
+    char           hehe[1];
 } ctypes;
+
+class TestVirtual
+{
+public:
+    TestVirtual(){
+        var=10;
+    }
+    virtual ~TestVirtual(){}
+
+    double var;
+};
 
 double average(int num,...)
 {
@@ -98,6 +120,12 @@ int main(int argc,char** argv){
     // Input is several int number, such as 1 2 3 4 2 3 1
     // Please output the index of one local maximum as soon as possible
     // Please do not iterate every number, since the number could be huge
+//    CTypes ctypes;
+    void* p=&ctypes;
+    //void* ps=&ctypes.s==++(char*)p;
+    printf("p:%p,pc:%p,ps:%p,pp:%p,sizeof:%d",
+           p,&ctypes.c,&ctypes.s,&ctypes.p,sizeof(TestVirtual));
 
+    TestVirtual virt;
     return 0;
 }
