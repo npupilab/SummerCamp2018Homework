@@ -14,6 +14,7 @@ Homework Statistics of SummerCamp2018
 | [cpp/helloc]| 回顾c语言 |
 | [python/hellopython]| python入门与基础回顾 |
 | [cpp/hellocpp]| class,继承多态练习 |
+| [python/more]| python流程处理，类对象编程 |
 
 
 [tool/linux]: ./tool/linux/README.md
@@ -21,6 +22,7 @@ Homework Statistics of SummerCamp2018
 [cpp/helloc]: ./cpp/helloc/README.md
 [python/hellopython]: ./python/hellopython/README.md
 [cpp/hellocpp]: ./cpp/hellocpp/README.md
+[python/more]: ./python/more/README.md
 
 ## 2. Attendance
 
