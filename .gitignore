@@ -1,5 +1,6 @@
 *~
 *.o
+*.pyc
 build
 build-*
 libs
@@ -21,4 +22,4 @@ ThirdParty/g2o/build
 ThirdParty/g2o/lib
 ThirdParty/PIL-1.1.0
 ThirdParty/PIL2
-
+.DS_Store

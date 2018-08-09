@@ -56,60 +56,51 @@ evaluate() ## do evaluation
   echo "Evaluate folder $1"
   INPUTFILE=$1/README.md
   OUTPUTFILE=$Here_Path/README.md
- 
-# Please add your implementation here
+  
+  reg="\|[ ]*([^ ]+)[ ]*\|[ ]([0-9]+)"
+  path="\[([a-zA-Z0-9/]+)\]:[ ]([\.a-zA-Z0-9/]+)"
 
-topicre='\|[ ]*\[([^ ]+)\]'
-namere='\|[ ]*([^ ]+)[ ]*\|[ ]*[0-9]+'
-topicnum=0
-namenum=0
-same=0
+  name_index=0
+  path_index=0
+
 while read line
-  do
-  if [[ $line =~ $topicre ]]; then
-	for((i=0;i<topicnum;i++))
-	do
-	if [ ${topiclist[i]} = ${BASH_REMATCH[1]} ]; then
-	same=1
-	fi
-	done
-    if [ $same = 1 ];then
-    same=0
-    else
-    topiclist[topicnum]=${BASH_REMATCH[1]}
-    topicnum=`expr $topicnum + 1`
-    fi
+do
+  if [[ $line =~ $path ]];then
+    Homework[$path_index]=${BASH_REMATCH[1]}
+    path_index=$path_index+1
 
-  elif [[ $line =~ $namere ]];then
-    namelist[$namenum]=${BASH_REMATCH[1]}
-    namenum=`expr $namenum + 1`
-
-fi
+  elif [[ $line =~ $reg ]];then
+    Name[$name_index]=${BASH_REMATCH[1]}
+    name_index=$name_index+1
+  fi
 done < $INPUTFILE
 
- firstline="| Topic |"
- secondline="| :---: |"
-for name in ${namelist[@]};do
-  firstline="$firstline $name |"
-  secondline="$secondline :---:|"
+top_line="| Topic |"
+second_line="| :---: |"
+
+for((i=0; i<name_index; ++i))
+do
+  top_line="$top_line ${Name[i]} |"
+  second_line="$second_line :--: |"
 done
 
-echo $firstline > $OUTPUTFILE
-echo $secondline >> $OUTPUTFILE
-
-for topic in ${topiclist[@]};do
-  out="| $topic |"
-    for name in ${namelist[@]};do
-      if [ -f "$1/$topic/$name/README.md" ];then
-        sc=$(cat $1/$topic/$name/README.md)
-        out="$out $sc |"
-      else
-        out="$out D |"
-      fi
-    done
-    echo $out >>$OUTPUTFILE
+echo $top_line > $OUTPUTFILE
+echo $second_line >> $OUTPUTFILE
+  
+for((i=0; i<path_index; ++i))
+do
+  line="| ${Homework[i]} |"
+  for ((j=0; j<name_index; ++j))
+  do
+    if [ -f "$1/${Homework[i]}/${Name[j]}/README.md" ];then
+      score=$(cat $1/${Homework[i]}/${Name[j]}/README.md)
+      line="$line $score |"
+    else
+      line="$line D |"
+    fi
+  done
+  echo $line >> $OUTPUTFILE
 done
-
 
 }
 

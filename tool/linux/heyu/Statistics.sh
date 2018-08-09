@@ -54,63 +54,63 @@ evaluate() ## do evaluation
 	fi
 
   echo "Evaluate folder $1"
+
   INPUTFILE=$1/README.md
   OUTPUTFILE=$Here_Path/README.md
- 
-# Please add your implementation here
 
-topicre='\|[ ]*\[([^ ]+)\]'
-namere='\|[ ]*([^ ]+)[ ]*\|[ ]*[0-9]+'
-topicnum=0
-namenum=0
-same=0
-while read line
-  do
-  if [[ $line =~ $topicre ]]; then
-	for((i=0;i<topicnum;i++))
-	do
-	if [ ${topiclist[i]} = ${BASH_REMATCH[1]} ]; then
-	same=1
-	fi
-	done
-    if [ $same = 1 ];then
-    same=0
-    else
-    topiclist[topicnum]=${BASH_REMATCH[1]}
-    topicnum=`expr $topicnum + 1`
+  TopicReg='\|[ ]*\[([^ ]+)\]'
+  NameReg='\|[ ]*([^ ]+)[ ]*\|[ ]*[0-9]+'
+
+  while read line
+    do  
+    if [[ $line =~ $TopicReg ]]
+		then
+        EXISTED=
+        for topic in $Topics
+				do
+          if [ "${BASH_REMATCH[1]}" = "$topic" ]
+					then EXISTED=YES
+					fi
+        done
+        if test -z "$EXISTED"
+				then
+          Topics="$Topics ${BASH_REMATCH[1]}"
+        fi
+    elif [[ $line =~ $NameReg ]];
+		then
+      Names="$Names ${BASH_REMATCH[1]}"
     fi
-
-  elif [[ $line =~ $namere ]];then
-    namelist[$namenum]=${BASH_REMATCH[1]}
-    namenum=`expr $namenum + 1`
-
-fi
-done < $INPUTFILE
-
- firstline="| Topic |"
- secondline="| :---: |"
-for name in ${namelist[@]};do
-  firstline="$firstline $name |"
-  secondline="$secondline :---:|"
-done
-
-echo $firstline > $OUTPUTFILE
-echo $secondline >> $OUTPUTFILE
-
-for topic in ${topiclist[@]};do
-  out="| $topic |"
-    for name in ${namelist[@]};do
-      if [ -f "$1/$topic/$name/README.md" ];then
-        sc=$(cat $1/$topic/$name/README.md)
-        out="$out $sc |"
+  done < $INPUTFILE
+ 
+	#define table head 
+  Table_Head="| Topic |"
+  Split_Line="| :---: |"
+  for name in $Names
+	do
+    Table_Head="$Table_Head $name |"
+    Split_Line="$Split_Line :---:|"
+  done
+  
+  #output Table head
+  echo $Table_Head > $OUTPUTFILE
+  echo $Split_Line >>$OUTPUTFILE
+	
+	#output name names/topics/score
+  for topic in $Topics
+	do
+    LINE="| $topic |"
+    for name in $Names
+		do
+      if test -f "$1/$topic/$name/README.md"
+			then
+        SCORE=$(cat $1/$topic/$name/README.md)
+        LINE="$LINE $SCORE|"
       else
-        out="$out D |"
+        LINE="$LINE D |"
       fi
     done
-    echo $out >>$OUTPUTFILE
-done
-
-
+      echo $LINE >>$OUTPUTFILE
+  done  
 }
 
 ######################  main below  ##############################
