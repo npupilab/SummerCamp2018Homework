@@ -32,7 +32,7 @@ for i in range(1000):
 if(sorted(nums)==sort.sort(nums)):
     os.system('echo "[S]({}/{}/sort.py)" > {}'.format(sys.argv[1],sys.argv[2],sys.argv[3]))
 else:
-    os.system('echo "[B]({}/evaluation/import.md)" > {}'.format(sys.argv[1],sys.argv[3]))
+    os.system('echo "[B]({}/evaluation/sort.md)" > {}'.format(sys.argv[1],sys.argv[3]))
 
 
 
