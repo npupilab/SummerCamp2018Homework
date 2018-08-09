@@ -37,6 +37,13 @@ for ((a=0;a<1000;a++));do
   #echo "$BuildDir/$name/a.out ${var[@]}"
   i="$($BuildDir/$name/a.out ${var[@]})"
   #echo "output: $i"
+  reg='([0-9]+)'
+  if [[ $i =~ $reg ]];then
+    i="${BASH_REMATCH[1]}";
+  else
+    echo "[B]($topic/evaluation/wrong_output.md)"> "$scoreFile"
+    exit 0
+  fi
 
   if [ -z "$i" ];then
     echo "No output from $BuildDir/$name/a.out ${var[@]}"
@@ -44,13 +51,13 @@ for ((a=0;a<1000;a++));do
     exit 0
   fi
   #echo "${var[$i]}" -le "${var[$((i-1))]}"
-  if [ "${var[$i]}" -le "${var[$((i-1))]}" ];then
+  if [ "${var[$i]}" -lt "${var[$((i-1))]}" ];then
     echo "[B]($topic/evaluation/wrong_output.md)"> "$scoreFile"
     exit 0
   fi
 
   #echo "${var[$i]}" -le "${var[$((i+1))]}"
-  if [ "${var[$i]}" -le "${var[$((i+1))]}" ];then
+  if [ "${var[$i]}" -lt "${var[$((i+1))]}" ];then
     echo "[B]($topic/evaluation/wrong_output.md)"> "$scoreFile"
     exit 0
   fi

@@ -81,7 +81,7 @@ fi
 checkline()
 {
   it="${Topics[$1 - 2]}"
-  LINE="\| *$it *|"
+  LINE="\| *\[?$it\]? *|"
   for nameIt in $Names;do
     if [ -f "$1/$it/$nameIt/README.md" ];then
         CONTENT=$(cat $1/$it/$nameIt/README.md)

@@ -22,7 +22,7 @@
 ### 输出：
 1. 运行脚本：
 ```
-cd zhaoyong&&./Staticstics.sh ..
+cd zhaoyong&&./Staticstics.sh -e ..
 ```
 
 2. 生成文件'README.md'到Statistics.sh所在路径
@@ -62,10 +62,10 @@ Here_Path=$(dirname $(readlink -f $0))
 
 | Topic | 张三 | 李四 | 王五 | 赵六 | Steven |
 | :---: | :--: | :--: | :--: | :--: | :--: | 
-| [tool/linux]| S | A | B | C | D | 
-| [tool/git]|  S | A | B | C |  D |  
-| [python/hellopython] | S | A | B | C |  D |
-| [cpp/helloc]     | S | A | B | C |  D |
+| tool/linux| S | A | B | C | D | 
+| tool/git|  S | A | B | C |  D |  
+| python/hellopython | S | A | B | C |  D |
+| cpp/helloc     | S | A | B | C |  D |
 
 ## 4. Your output
 
