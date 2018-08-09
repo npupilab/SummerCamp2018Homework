@@ -91,4 +91,3 @@ inline  std::stringstream& operator<<( std::stringstream &is, const Student& stu
 
 }//end of namespace
 #endif // STUDENT_H
-
