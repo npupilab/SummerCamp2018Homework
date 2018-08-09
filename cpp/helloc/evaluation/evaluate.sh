@@ -39,6 +39,7 @@ for ((a=0;a<1000;a++));do
   #echo "output: $i"
 
   if [ -z "$i" ];then
+    echo "No output from $BuildDir/$name/a.out ${var[@]}"
     echo "[B]($topic/evaluation/app_no_output.md)"> "$scoreFile"
     exit 0
   fi

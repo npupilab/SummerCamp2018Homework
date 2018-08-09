@@ -33,7 +33,7 @@ fi
 # Collect fork information
 if [ ! -f "$BuildDir/forks" ];then
 cd $BuildDir
-output='wget https://api.github.com/repos/npupilab/SummerCamp2018Homework/forks'
+output=$(wget https://api.github.com/repos/npupilab/SummerCamp2018Homework/forks)
 cd $Call_Path
 fi
 
