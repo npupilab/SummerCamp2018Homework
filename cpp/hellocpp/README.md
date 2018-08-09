@@ -1,4 +1,4 @@
-#Exercise of cpp/hellocpp
+# Exercise of cpp/hellocpp
 
 编辑[src/student.h](src/student.h)头文件，使工程src(main.cpp,inlinecheck.cpp)编译通过并返回０.
 
