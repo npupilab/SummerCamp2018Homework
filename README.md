@@ -29,10 +29,10 @@ Homework Statistics of SummerCamp2018
 | 李清 | 18391447596 | 287407782@qq.com | https://github.com/nihaoxiaoli |
 | heyu | 18829236547 | hytopgun@foxmail.com | https://github.com/TopGun666 |
 | 王伟 | 15584797688 | shaxikai@outlook.com | https://github.com/shaxikai |
-| 徐磊 | 15934848660 | 1224830613@qq.com | https://github.com/JiaoYanMoGu |
-| 刘国晨 | 15929913702 | 353184965@qq.com | https://github.com/trygas |
 | 童品模 | 18092467805 | 1529901761@qq.com | https://github.com/tongpinmo |
 | huboni | 18392360048 | 18392360048@163.com | https://github.com/boni-hu |
+| 徐磊 | 15934848660 | 1224830613@qq.com | https://github.com/JiaoYanMoGu |
+| 刘国晨 | 15929913702 | 353184965@qq.com | https://github.com/trygas |
 | 程宇琪 | 15929723457 | 420985011@qq.com | https://github.com/crischeng |
 
 *注意：每一项都需要填写，姓名部分名字中间不要带空格*
