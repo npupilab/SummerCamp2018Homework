@@ -31,11 +31,14 @@ else echo "[C]($topic/evaluation/content.md)"> "$scoreFile";exit 0
 fi
 
 # Collect fork information
-if [ ! -f "$BuildDir/forks" ];then
-cd $BuildDir
-output=$(wget https://api.github.com/repos/npupilab/SummerCamp2018Homework/forks)
-cd $Call_Path
+for((i=0;i<100;i++));do
+  if [ ! -f "$BuildDir/forks" ];then
+    cd $BuildDir
+    output=$(wget https://api.github.com/repos/npupilab/SummerCamp2018Homework/forks)
+    cd $Call_Path
+  else break;
 fi
+done
 
 if [ ! -f "$BuildDir/forks" ];then
   echo "[A]($topic/evaluation/download.md)"> "$scoreFile"
