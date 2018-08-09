@@ -18,7 +18,7 @@ scoreFile=$3
 mkdir -p $BuildDir/$name
 
 if [ ! -f "$topicFolder/$name/README.md" ];then
-    echo "D"> "$scoreFile"
+    echo "[D]($topic/evaluation/no_upload.md)"> "$scoreFile"
     exit 0
 fi
 
@@ -27,14 +27,19 @@ reg='https://github.com/([^.]+)/SummerCamp2018Homework'
 echo $rep
 if [[ $rep =~ $reg ]]; then
 username="${BASH_REMATCH[1]}"
-else echo "C"> "$scoreFile";exit 0
+else echo "[C]($topic/evaluation/content.md)"> "$scoreFile";exit 0
 fi
 
 # Collect fork information
 if [ ! -f "$BuildDir/forks" ];then
-cd $BuildDir&&wget https://api.github.com/repos/npupilab/SummerCamp2018Homework/forks&&cd $Call_Path
+cd $BuildDir
+output='wget https://api.github.com/repos/npupilab/SummerCamp2018Homework/forks'
+cd $Call_Path
 fi
 
+if [ ! -f "$BuildDir/forks" ];then
+  echo "[A]($topic/evaluation/download.md)"> "$scoreFile"
+fi
 reg="\"full_name\": \"$username/SummerCamp2018Homework\""
 while read line
   do  
@@ -43,4 +48,4 @@ while read line
   fi
 done < "$BuildDir/forks"
 echo "$reg not found"
-echo "B"> "$scoreFile"
+echo "[B]($topic/evaluation/fork.md)"> "$scoreFile"
