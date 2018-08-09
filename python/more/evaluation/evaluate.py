@@ -6,10 +6,15 @@ import os
 
 #hwpath = os.path.join(sys.argv[1], sys.argv[2])
 #print(hwpath)
+herepath=os.path.split(sys.argv[0])[0]
 
-fd = os.popen('python ../{}/homework.py'.format(sys.argv[2]))
+if not os.access('{}/../{}/homework.py'.format(herepath,sys.argv[2]),os.R_OK):
+    os.system('echo "[D]({}/evaluation/none.md)" > {}'.format(sys.argv[1],sys.argv[3]))
+    exit(0)
+
+fd = os.popen('python {}/../{}/homework.py'.format(herepath,sys.argv[2]))
 result = fd.read()
 fd.close()
 
 if result == "[1, 1, 2, 3, 5, 8, 13, 21, 34, 55][1, 1, 2, 3, 5, 8, 13, 21, 34, 55][1, 1, 2, 3, 5, 8, 13, 21, 34, 55]":
-   os.system('echo "A" > ../{}/README.md'.format(sys.argv[2]))
+   os.system('echo "[S]({}/{}/homework.py)" > {}'.format(sys.argv[1],sys.argv[2],sys.argv[3]))

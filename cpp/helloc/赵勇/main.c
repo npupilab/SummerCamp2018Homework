@@ -1,5 +1,3 @@
-#pragma once
-
 // C99 standard headers
 #include <stdio.h>
 #include <stdlib.h>
