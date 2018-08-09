@@ -84,14 +84,15 @@ evaluate() ## do evaluation
 
     couse_n=0
     students_n=0
+
+    regexp_course="\[(.*/.*)\]"
+    #regexp_student="\| *([^ ]*) * \| *[0-9]{11}.*"
+    regexp_student="\|[ ]*([^ ]*)[ ]* \|[ ]*[0-9]{11}.*"
     
     # read $INPUTFILE's contents
     while IFS= read -r var; do
-        #echo "$var"
-        
         # detect course 
-        regexp="\[(.*/.*)\]"
-        if [[ "$var" =~ $regexp ]]; then
+        if [[ "$var" =~ $regexp_course ]]; then
             s=${BASH_REMATCH[1]}
             if [[ ! "$course" =~ $s ]]; then
                 course="$course $s"
@@ -100,8 +101,8 @@ evaluate() ## do evaluation
         fi
         
         # detect person, which follows phone number
-        regexp="\| *([^ ]*) * \| *[0-9]{11}.*"
-        if [[ "$var" =~ $regexp ]]; then
+        
+        if [[ "$var" =~ $regexp_student ]]; then
             s="${BASH_REMATCH[1]}"
             if [[ ! "$students" =~ $s ]]; then
                 students="$students $s"
