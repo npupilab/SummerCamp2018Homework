@@ -39,6 +39,7 @@ fi
 
 if [ ! -f "$BuildDir/forks" ];then
   echo "[A]($topic/evaluation/download.md)"> "$scoreFile"
+  exit 0
 fi
 reg="\"full_name\": \"$username/SummerCamp2018Homework\""
 while read line
