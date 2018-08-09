@@ -41,5 +41,5 @@ def Test_Fibonacci(n):
     F_Y = Fibonacci_Yield(n)
     return F_R, F_L, F_Y
 
-if __name__ == '__name__':
-     Test_Fibonacci(10)
+a, b, c = Test_Fibonacci(10)
+sys.stdout.write(str(a)+str(b)+str(c))
