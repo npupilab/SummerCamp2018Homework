@@ -16,6 +16,8 @@ Homework Statistics of SummerCamp2018
 | [cpp/hellocpp]| class,继承多态练习 |
 | [python/more]| python流程处理，类对象编程 |
 | [cpp/stl]| 实现模板vector |
+| [tool/markdown]| 编写Markdown说明书 |
+
 
 [tool/linux]: ./tool/linux/README.md
 [tool/git]: ./tool/git/README.md
@@ -24,6 +26,7 @@ Homework Statistics of SummerCamp2018
 [cpp/hellocpp]: ./cpp/hellocpp/README.md
 [python/more]: ./python/more/README.md
 [cpp/stl]: ./cpp/stl/README.md
+[tool/markdown]: ./tool/tool/markdown.md
 
 ## 2. Attendance
 
