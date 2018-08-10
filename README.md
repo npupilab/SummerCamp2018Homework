@@ -17,6 +17,7 @@ Homework Statistics of SummerCamp2018
 | [python/more]| python流程处理，类对象编程 |
 | [cpp/stl]| 实现模板vector |
 | [tool/markdown]| 编写Markdown说明书 |
+| [tool/cmake]| 编写CMakeLists.txt |
 
 
 [tool/linux]: ./tool/linux/README.md
@@ -26,7 +27,8 @@ Homework Statistics of SummerCamp2018
 [cpp/hellocpp]: ./cpp/hellocpp/README.md
 [python/more]: ./python/more/README.md
 [cpp/stl]: ./cpp/stl/README.md
-[tool/markdown]: ./tool/tool/markdown.md
+[tool/markdown]: ./tool/tool/README.md
+[tool/cmake]: ./tool/cmake/README.md
 
 ## 2. Attendance
 
