@@ -1,7 +1,4 @@
-#!/usr/bin/python27
-#coding:utf-8
-
-from person_package.data_analysis import DataAnalysis
+from ***.data_analysis import DataAnalysis
 
 
 filename = 'data.txt'
