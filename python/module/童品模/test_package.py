@@ -1,5 +1,10 @@
-#!/usr/bin/python27
-#coding:utf-8
+#!/usr/bin/python2.7
+# -*- coding:utf-8 -*-
+import sys 
+
+reload(sys)
+sys.setdefaultencoding('utf8')
+
 
 from person_package.data_analysis import DataAnalysis
 
