@@ -29,5 +29,5 @@ def fastSort(myList,start,end):
 myList = [49,38,65,97,76,13,27,49]
 print("sort:",myList)
 fastSort(myList,0,len(myList)-1)
-print("Quick Sort: ",myList)
+print("fast Sort: ",myList)
 
