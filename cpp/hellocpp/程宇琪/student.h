@@ -11,7 +11,7 @@ class Person
 public:
     Person(const std::string& name="admin",int age=0)
         :_name(name),_age(age){}
-    virtual ~Person(){}
+    virtual ~Person(){};
 
     virtual std::string type()const{return "Person";}
     virtual std::string introduction()const{
@@ -48,6 +48,11 @@ public:
             const std::string& manager="manager",
             const std::string& school="none");
 
+    virtual std::string type()const{return "Student";}
+    virtual std::string introduction()const{
+        return type()+"[name:"+_name+", age:"
+                +std::to_string(age())+",manager:"+managerName+",school:"+school()+"]";
+    }
 protected:
     std::string  _school;
 };
