@@ -1,22 +1,25 @@
 # -*- coding: utf-8 -*- 
 from __future__ import print_function
 import time
+import sys
 
 # 采用递归的方式实现
 def Fibonacci_Recursion_tool(n):
-'''
-todo
-'''
+    if n<1:
+        return -1
+    if (n==1 or n==2):
+        return 1
+    else:
+        return Fibonacci_Recursion_tool(n-1) + Fibonacci_Recursion_tool(n-2)
+
 def Fibonacci_Recursion(n):
     result_list = []
     for i in range(1, n + 1): result_list.append(Fibonacci_Recursion_tool(i))
     return result_list
 
 # 循环计算每项的值
-def Fibonacci_Loop_tool(n):
-'''
-todo
-'''
+#def Fibonacci_Loop_tool(n):
+
 def Fibonacci_Loop(n):
     result_list = []
     a, b = 0, 1
@@ -28,9 +31,12 @@ def Fibonacci_Loop(n):
 
 # 采用迭代的方式实现
 def Fibonacci_Yield_tool(n):
-'''
-todo
-'''
+    a, i, b = 0, 0, 1
+    while i < n:
+        yield b
+        a, b = b, a + b
+        i += 1
+
 def Fibonacci_Yield(n):
     return list(Fibonacci_Yield_tool(n))
 
