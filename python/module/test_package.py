@@ -1,8 +1,12 @@
-#!/usr/bin/python27
-#coding:utf-8
+#!/usr/bin/python2.7
+# -*- coding:utf-8 -*-
+from ***.data_analysis import DataAnalysis
+import *** 
 
-from person_package.data_analysis import DataAnalysis
+import sys 
 
+reload(sys)
+sys.setdefaultencoding('utf8')
 
 filename = 'data.txt'
 

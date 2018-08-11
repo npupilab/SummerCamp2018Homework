@@ -86,7 +86,7 @@ auto ThreadPool::Add(F&& f, Args&& ... args)
   return res;
 }
 
-ThreadPool threads(8);
+ThreadPool threads(3);
 
 int sum_multithread(const std::vector<int>& nums)
 {
