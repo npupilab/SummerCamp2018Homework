@@ -19,6 +19,7 @@ Homework Statistics of SummerCamp2018
 | [python/module]| python包,class编写，练习画图 |
 | [tool/markdown]| 编写Markdown说明书 |
 | [tool/cmake]| 编写CMakeLists.txt |
+| [cpp/cpp11]| 多线程求和 |
 
 
 [tool/linux]: ./tool/linux/README.md
@@ -31,6 +32,7 @@ Homework Statistics of SummerCamp2018
 [python/module]: ./python/module/README.md
 [tool/markdown]: ./tool/markdown/README.md
 [tool/cmake]: ./tool/cmake/README.md
+[cpp/cpp11]: ./cpp/cpp11/README.md
 
 ## 2. Attendance
 
