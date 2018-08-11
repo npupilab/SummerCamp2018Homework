@@ -13,14 +13,18 @@
 要求：
 * 支持make install，安装库到\$(CMAKE_INSTALL_PREFIX)/lib，安装可执行到\$(CMAKE_INSTALL_PREFIX)/bin
 * 通过FIND_PACKAGE来添加Hello库，且要求写FindHello.cmake文件，并在其中给出
-<NAME>_FOUND
-<NAME>_INCLUDE_DIRS or <NAME>_INCLUDES
-<NAME>_LIBRARIES or <NAME>_LIBRARIES or <NAME>_LIBS
-变量值。
-不可暴力地在CMakeList.txt中直接FIND_LIBRARIES。
+
+    <NAME>_FOUND
+
+    <NAME>_INCLUDE_DIRS or <NAME>_INCLUDES
+
+    <NAME>_LIBRARIES or <NAME>_LIBRARIES or <NAME>_LIBS
+
+    变量值。
+    不可暴力地在CMakeList.txt中直接FIND_LIBRARIES。
 
 <font color='red'>
-*只需要提交CMakeLists.txt与FindHello.cmake到作业文件夹*
-*源文件(src)和库文件(lib与include)目录及内容不要修改或复制*　
+    *只需要提交CMakeLists.txt与FindHello.cmake到作业文件夹*
+    *源文件(src)和库文件(lib与include)目录及内容不要修改或复制*　
 </font>
 
