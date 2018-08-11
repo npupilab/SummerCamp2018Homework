@@ -68,3 +68,4 @@ Homework Statistics of SummerCamp2018
 | tool/markdown | [D](tool/markdown/evaluation/none.md) | [D](tool/markdown/evaluation/none.md) | [S](tool/markdown/赵勇/README.md) | [D](tool/markdown/evaluation/none.md) | [D](tool/markdown/evaluation/none.md) | [D](tool/markdown/evaluation/none.md) | [D](tool/markdown/evaluation/none.md) | [S](tool/markdown/huboni/README.md) | [S](tool/markdown/徐磊/README.md) | [D](tool/markdown/evaluation/none.md) | [D](tool/markdown/evaluation/none.md) |
 | tool/cmake | D | D | D | D | D | D | D | D | D | D | D |
 | cpp/cpp11 | [D](cpp/cpp11/evaluation/none.md) | [D](cpp/cpp11/evaluation/none.md) | D | [D](cpp/cpp11/evaluation/none.md) | [D](cpp/cpp11/evaluation/none.md) | [D](cpp/cpp11/evaluation/none.md) | [D](cpp/cpp11/evaluation/none.md) | [D](cpp/cpp11/evaluation/none.md) | [D](cpp/cpp11/evaluation/none.md) | [D](cpp/cpp11/evaluation/none.md) | [D](cpp/cpp11/evaluation/none.md) |
+| cpp/style | D | D | D | D | D | D | D | D | D | D | D |
