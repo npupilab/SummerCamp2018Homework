@@ -4,7 +4,6 @@
 
 int findmax(int nu, int num, double* Arr)
 {
-
     int indel = 0.5*num;
     if( Arr[indel] > Arr[indel+1] && Arr[indel] > Arr[indel-1] )
         return nu+indel;
