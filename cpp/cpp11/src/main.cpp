@@ -17,9 +17,23 @@ int main(int argc,char** argv)
         i=GSLAM::Random::RandomInt(0,10);
 
     GSLAM::TicToc tictoc;
-    tictoc.Tic();
-    int sum1=sum_multithread(vec);
-    double time1=tictoc.Toc();
+    int sum1=0;
+    double time1=0;
+    try{
+        tictoc.Tic();
+        sum1=sum_multithread(vec);
+        time1=tictoc.Toc();
+    }
+    catch(std::system_error e){
+        if(argc<4){
+        return 0;
+        }
+
+        std::ofstream ofs(argv[3]);
+        if(!ofs.is_open()) return 0;
+        ofs<<"[B](cpp/cpp11/evaluation/syserror.md";
+        return 0;
+    }
 
     tictoc.Tic();
     int sum2=sum_singlethread(vec);
