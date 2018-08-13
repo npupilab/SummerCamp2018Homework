@@ -22,7 +22,11 @@ Homework Statistics of SummerCamp2018
 | [cpp/cpp11]| 多线程求和 |
 | [cpp/style]| 使用cpplint统一GSLAM编程风格 |
 | [slam/geo2d3d]| 点线面变换多视图基础知识回顾 |
-
+| [slam/match]| 特征点匹配练习 |
+| [slam/camera]| 相机模型及标定练习 |
+| [slam/liegroup]| 刚体运动及其变换 |
+| [slam/opt_linear]| 线性优化及模型鲁棒估计 |
+| [slam/initialize]| 单目初始化 |
 
 [tool/linux]: ./tool/linux/README.md
 [tool/git]: ./tool/git/README.md
@@ -37,6 +41,11 @@ Homework Statistics of SummerCamp2018
 [cpp/cpp11]: ./cpp/cpp11/README.md
 [cpp/style]: ./cpp/style/README.md
 [slam/geo2d3d]: ./slam/geo2d3d/README.md
+[slam/match]: ./slam/match/README.md
+[slam/camera]: ./slam/camera/README.md
+[slam/liegroup]: ./slam/liegroup/README.md
+[slam/opt_linear]: ./slam/opt_linear/README.md
+[slam/initialize]: ./slam/initialize/README.md
 
 ## 2. Attendance
 
@@ -72,3 +81,8 @@ Homework Statistics of SummerCamp2018
 | cpp/cpp11 | [D](cpp/cpp11/evaluation/none.md) | [D](cpp/cpp11/evaluation/none.md) | [B](cpp/cpp11/evaluation/syserror.md) | [D](cpp/cpp11/evaluation/none.md) | [D](cpp/cpp11/evaluation/none.md) | [D](cpp/cpp11/evaluation/none.md) | [D](cpp/cpp11/evaluation/none.md) | [D](cpp/cpp11/evaluation/none.md) | [B](cpp/cpp11/evaluation/syserror.md) | [D](cpp/cpp11/evaluation/none.md) | [D](cpp/cpp11/evaluation/none.md) |
 | cpp/style | D | D | [S](cpp/style/赵勇) | D | D | D | D | D | [C,1](cpp/style/evaluation/less.md) | D | D |
 | slam/geo2d3d | [D](slam/geo2d3d/evaluation/none.md) | [D](slam/geo2d3d/evaluation/none.md) | [S](slam/geo2d3d/赵勇/Geometry.cpp) | [D](slam/geo2d3d/evaluation/none.md) | [D](slam/geo2d3d/evaluation/none.md) | [D](slam/geo2d3d/evaluation/none.md) | [D](slam/geo2d3d/evaluation/none.md) | [D](slam/geo2d3d/evaluation/none.md) | [D](slam/geo2d3d/evaluation/none.md) | [D](slam/geo2d3d/evaluation/none.md) | [D](slam/geo2d3d/evaluation/none.md) |
+| slam/match | D | D | D | D | D | D | D | D | D | D | D |
+| slam/camera | D | D | D | D | D | D | D | D | D | D | D |
+| slam/liegroup | D | D | D | D | D | D | D | D | D | D | D |
+| slam/opt_linear | D | D | D | D | D | D | D | D | D | D | D |
+| slam/initialize | D | D | D | D | D | D | D | D | D | D | D |
