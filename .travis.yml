@@ -13,7 +13,7 @@ matrix:
           packages:
             - cmake
             - build-essential
-            - libeigen3-devpython-tk
+            - libeigen3-dev
             - python-tk
             - python-matplotlib
 
