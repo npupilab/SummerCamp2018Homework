@@ -17,12 +17,12 @@ scoreFile=$3
 
 mkdir -p $BuildDir/$name
 
-if [ ! -f "$topicFolder/$name/sum_multithread.cpp" ];then
+if [ ! -f "$topicFolder/$name/Geometry.cpp" ];then
     echo "[D]($topic/evaluation/none.md)"> "$scoreFile"
     exit 0
 fi
 
-g++ -o $BuildDir/$name/a.out $topicFolder/src/main.cpp $topicFolder/$name/sum_multithread.cpp -std=c++11 -O3 -lpthread -Wl,--no-as-needed -I$topicFolder/src  
+g++ -o $BuildDir/$name/a.out $topicFolder/src/main.cpp $topicFolder/$name/Geometry.cpp -std=c++11 -I$topicFolder/src  
 
 if [ ! -f "$BuildDir/$name/a.out" ];then
     echo "[C]($topic/evaluation/compile_failed.md)"> "$scoreFile"

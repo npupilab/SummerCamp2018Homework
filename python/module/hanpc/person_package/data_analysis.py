@@ -35,7 +35,6 @@ class DataAnalysis(object):
     def plotXY(self):
          ##todo
         savefig('./plot.png')
-        plt.show()
 
 
 

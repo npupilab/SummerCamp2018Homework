@@ -97,6 +97,11 @@ evaluate() ## do evaluation
       Names="$Names ${BASH_REMATCH[1]}"
     fi
   done < $INPUTFILE
+
+
+  if [ -n "$2" ];then
+    Topics=$2
+  fi
   
   TOPLINE="| Topic |"
   SECONDLINE="| :---: |"

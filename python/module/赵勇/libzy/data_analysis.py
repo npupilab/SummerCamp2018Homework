@@ -1,4 +1,4 @@
-#!/usr/bin/python27
+#!/usr/bin/python
 # -*- coding:utf8 -*-
 import matplotlib.pyplot as plt
 from matplotlib.pyplot import savefig
@@ -9,23 +9,13 @@ class DataAnalysis(object):
 
         with open(filename ,'r') as f:
             lines = f.readlines()
-
-        self.sequence = lines[1].strip().split(' ')
-        self.xy = {"x":[],"y":[]}
-
-        x = lines[3].split(":")[1].strip().split(',')
-        y = lines[4].split(":")[1].strip().split(',')
-
-        x = map(float, x)
-        y = map(float, y)
-
-        self.sequence=[int(i) for i in self.sequence]
-
-        self.xy["x"] = x
-        self.xy["y"] = y
-
+        self.sequence = map(int,lines[1].strip().split(' '))
+        self.x= map(float,lines[3].split(":")[1].strip().split(','))
+        self.y= map(float,lines[4].split(":")[1].strip().split(','))
 
     def findMaxSubSequence(self):
+        if len(self.sequence) <=1:
+            return self.sequence
 
         list= self.sequence
 
@@ -49,13 +39,10 @@ class DataAnalysis(object):
 
 
     def plotXY(self):
-
-        x=self.xy["x"]
-        y=self.xy["y"]
-        
         figure=plt.figure()
-        ax=figure.add_subplot(111)
-        ax.plot(x,y,'r-',label='XY2D')
+        a=figure.add_subplot(111)
+        a.plot(self.x,self.y,'r-',label='XY2D')
+        #plt.figlegend(loc='upper left')
         plt.xlabel('x')
         plt.ylabel('y')
         plt.axis('equal')
