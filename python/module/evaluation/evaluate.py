@@ -48,7 +48,6 @@ if not os.access('plot.png',os.R_OK):
     os.system('echo "[C]({}/evaluation/none_plot.md)" > {}'.format(sys.argv[1],sys.argv[3]))
     exit(0)
 
-
 if result == "PASS\n[1, 2, 8, 9, 10, 11, 13]":
    os.system('echo "[S]({}/{}/test_package.py)" > {}'.format(sys.argv[1],sys.argv[2],sys.argv[3]))
 else:

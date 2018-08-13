@@ -13,7 +13,9 @@ matrix:
           packages:
             - cmake
             - build-essential
-            - libeigen3-dev
+            - libeigen3-devpython-tk
+            - python-tk
+            - python-matplotlib
 
 cache:
   directories:
