@@ -31,7 +31,7 @@ int main(int argc,char** argv)
 
         std::ofstream ofs(argv[3]);
         if(!ofs.is_open()) return 0;
-        ofs<<"[B](cpp/cpp11/evaluation/syserror.md";
+        ofs<<"[B](cpp/cpp11/evaluation/syserror.md)";
         return 0;
     }
 
