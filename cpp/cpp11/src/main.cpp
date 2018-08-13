@@ -34,7 +34,7 @@ int main(int argc,char** argv)
     std::ofstream ofs(argv[3]);
     if(!ofs.is_open()) return 0;
     if(sum1!=sum2){ofs<<"[C](cpp/cpp11/evaluation/wrongsum.md";return 0;}
-    if(time2<sum1){ofs<<"[B](cpp/cpp11/evaluation/slow.md";return 0;}
+    //if(time2<sum1){ofs<<"[B](cpp/cpp11/evaluation/slow.md";return 0;}
 
     ofs<<"["<<int(time1/1000)<<"](cpp/cpp11/"<<argv[2]<<"/sum_multithread.cpp)";
     return 0;
