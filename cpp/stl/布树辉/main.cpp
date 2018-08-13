@@ -1,7 +1,8 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-#include <vector.h>
+
+#include "vector.h"
 
 #ifdef NDEBUG
 #undef NDEBUG

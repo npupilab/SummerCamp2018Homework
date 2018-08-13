@@ -9,7 +9,7 @@ template <typename T>
 class vector
 {
 public:
-    vector() : _begin(NULL), _end(NULL), _reserved(NULL) {}
+    vector() : _cur(NULL), _begin(NULL), _end(NULL), _reserved(NULL) {}
     virtual ~vector() { if( _begin ) delete [] _begin; }
 
     size_t size() { return _end - _begin; }
@@ -21,7 +21,12 @@ public:
         else return 0;
     }
 
-    push_back(T& v) {
+    void clear() {
+        _end = _begin;
+        _cur = _begin;
+    }
+
+    void push_back(const T& v) {
         if( _begin == NULL ) {
             _begin = new T[1];
             _end = _begin + 1;
@@ -38,23 +43,50 @@ public:
 
         if( _cur >= _reserved ) {
             size_t n = _reserved - _begin;
-            T* new_arr = new T[n*2], *old_arr = _begin;
+            reserve(n);
 
-            for(int i=0; i<n; i++) new_arr[i] = _begin[i];
-            _cur = new_arr + (_cur - _begin);
             *_cur = v;
             _cur ++;
-
-            _begin = new_arr;
             _end = _cur;
-            _reserved = _begin + 2*n;
-
-            delete [] old_arr;
 
             return;
         } else {
             *_cur = v;
             _cur ++;
+            _end = _cur;
+
+            return;
+        }
+    }
+
+    void resize(size_t ns, const T& dv) {
+        if( ns > _reserved - _begin ) reserve(ns);
+
+        size_t os = _end - _begin;
+        if( ns > os ) {
+            for(int i=os; i<ns; i++) _begin[i] = dv;
+        }
+
+        _end = _begin + ns;
+    }
+
+    void reserve(size_t ns) {
+        size_t os = _reserved - _begin;
+        T *new_arr, *old_arr;
+
+        if( ns > os ) {
+            new_arr = new T[ns];
+            old_arr = _begin;
+
+            for(int i=0; i<_end-_begin; i++) new_arr[i] = _begin[i];
+
+            _cur = new_arr + (_cur - _begin);
+            _end = new_arr + (_end - _begin);
+            _reserved = new_arr + ns;
+            _begin = new_arr;
+
+            delete [] old_arr;
+        } else {
             return;
         }
     }
