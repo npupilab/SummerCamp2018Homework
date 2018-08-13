@@ -56,12 +56,10 @@ class DataAnalysis(object):
         figure=plt.figure()
         ax=figure.add_subplot(111)
         ax.plot(x,y,'r-',label='XY2D')
-        plt.figlegend(loc='upper left')
         plt.xlabel('x')
         plt.ylabel('y')
         plt.axis('equal')
         savefig('./plot.png')
-        plt.show()
 
 
 

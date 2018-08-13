@@ -47,7 +47,6 @@ class DataAnalysis(object):
         plt.ylabel('y')
         plt.axis('equal')
         savefig('./plot.png')
-        plt.show()
 
 
 
