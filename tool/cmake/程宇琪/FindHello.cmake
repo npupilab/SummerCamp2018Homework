@@ -1,0 +1,22 @@
+FIND_PATH(HELLO_INCLUDE hello/hello.h
+	${PROJECT_SOURCE_DIR}/../include
+	)
+
+FIND_LIBRARY(HELLO_LIBRARIES hello
+	${PROJECT_SOURCE_DIR}/../lib
+	)
+
+if( HELLO_INCLUDE AND HELLO_LIBRARIES)
+    MESSAGE( STATUS "Looking for Hello - found")
+    MESSAGE( STATUS "Hello include path: ${HELLO_INCLUDE}" )
+    MESSAGE( STATUS "Hello library path: ${HELLO_LIBRARIES}" )
+    SET ( HELLO_FOUND 1 )
+else(  HELLO_INCLUDE AND HELLO_LIBRARIES)
+    message( STATUS "Looking for Hello  - not found" )
+    SET ( HELLO_FOUND 0 )
+endif(HELLO_INCLUDE AND HELLO_LIBRARIES)
+
+IF(HELLO_FOUND)
+    set(Hello_INCLUDES ${HELLO_INCLUDE})
+    set(Hello_LIBRARIES ${HELLO_LIBRARIES})
+ENDIF(HELLO_FOUND)
