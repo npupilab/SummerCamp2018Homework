@@ -21,6 +21,7 @@ Homework Statistics of SummerCamp2018
 | [tool/cmake]| 编写CMakeLists.txt |
 | [cpp/cpp11]| 多线程求和 |
 | [cpp/style]| 使用cpplint统一GSLAM编程风格 |
+| [slam/geo2d3d]| 点线面变换多视图基础知识回顾 |
 
 
 [tool/linux]: ./tool/linux/README.md
@@ -35,6 +36,7 @@ Homework Statistics of SummerCamp2018
 [tool/cmake]: ./tool/cmake/README.md
 [cpp/cpp11]: ./cpp/cpp11/README.md
 [cpp/style]: ./cpp/style/README.md
+[slam/geo2d3d]: ./slam/geo2d3d/README.md
 
 ## 2. Attendance
 

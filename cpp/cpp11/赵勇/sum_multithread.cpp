@@ -89,7 +89,7 @@ auto ThreadPool::Add(F&& f, Args&& ... args)
 
 int sum_multithread(const std::vector<int>& nums)
 {
-    int threadNum=3;
+    int threadNum=4;
     ThreadPool threads(threadNum);
     std::vector<std::future<int> > futures;
     int packageSize=nums.size()/threadNum;
