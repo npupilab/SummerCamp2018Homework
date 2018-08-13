@@ -31,4 +31,3 @@ class DataAnalysis(object):
         ax = figure.add_subplot(111)
         ax.plot(self.x, self.y)
         savefig('./plot.png')
-        plt.show()
