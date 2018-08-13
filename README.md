@@ -16,6 +16,12 @@ Homework Statistics of SummerCamp2018
 | [cpp/hellocpp]| class,继承多态练习 |
 | [python/more]| python流程处理，类对象编程 |
 | [cpp/stl]| 实现模板vector |
+| [python/module]| python包,class编写，练习画图 |
+| [tool/markdown]| 编写Markdown说明书 |
+| [tool/cmake]| 编写CMakeLists.txt |
+| [cpp/cpp11]| 多线程求和 |
+| [cpp/style]| 使用cpplint统一GSLAM编程风格 |
+
 
 [tool/linux]: ./tool/linux/README.md
 [tool/git]: ./tool/git/README.md
@@ -24,6 +30,11 @@ Homework Statistics of SummerCamp2018
 [cpp/hellocpp]: ./cpp/hellocpp/README.md
 [python/more]: ./python/more/README.md
 [cpp/stl]: ./cpp/stl/README.md
+[python/module]: ./python/module/README.md
+[tool/markdown]: ./tool/markdown/README.md
+[tool/cmake]: ./tool/cmake/README.md
+[cpp/cpp11]: ./cpp/cpp11/README.md
+[cpp/style]: ./cpp/style/README.md
 
 ## 2. Attendance
 
@@ -46,10 +57,15 @@ Homework Statistics of SummerCamp2018
 ## 3. Statistics
 | Topic | 布树辉 | hanpc | 赵勇 | 李清 | heyu | 王伟 | 童品模 | huboni | 徐磊 | 刘国晨 | 程宇琪 |
 | :---: | :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:|
-| tool/linux | D | [S](tool/linux/hanpc/README.md) | [S](tool/linux/赵勇/README.md) | [S](tool/linux/李清/README.md) | [S](tool/linux/heyu/README.md) | D | D | [S](tool/linux/huboni/README.md) | [S](tool/linux/徐磊/README.md) | [S](tool/linux/刘国晨/README.md) | [S](tool/linux/程宇琪/README.md) |
-| tool/git | [D](tool/git/evaluation/no_upload.md) | [D](tool/git/evaluation/no_upload.md) | [S](tool/git/赵勇/README.md) | [D](tool/git/evaluation/no_upload.md) | [S](tool/git/heyu/README.md) | [D](tool/git/evaluation/no_upload.md) | [D](tool/git/evaluation/no_upload.md) | [D](tool/git/evaluation/no_upload.md) | [D](tool/git/evaluation/no_upload.md) | [C](tool/git/evaluation/content.md) | [S](tool/git/程宇琪/README.md) |
-| cpp/helloc | [D](cpp/helloc/evaluation/no_main.md) | [D](cpp/helloc/evaluation/no_main.md) | [S](cpp/helloc/赵勇/main.c) | [D](cpp/helloc/evaluation/no_main.md) | [D](cpp/helloc/evaluation/no_main.md) | [D](cpp/helloc/evaluation/no_main.md) | [D](cpp/helloc/evaluation/no_main.md) | [D](cpp/helloc/evaluation/no_main.md) | [S](cpp/helloc/徐磊/main.c) | [B](cpp/helloc/evaluation/wrong_output.md) | [D](cpp/helloc/evaluation/no_main.md) |
-| python/hellopython | [D](python/hellopython/evaluation/none.md) | [D](python/hellopython/evaluation/none.md) | [S](python/hellopython/赵勇/sort.py) | [D](python/hellopython/evaluation/none.md) | [D](python/hellopython/evaluation/none.md) | [D](python/hellopython/evaluation/none.md) | [D](python/hellopython/evaluation/none.md) | [D](python/hellopython/evaluation/none.md) | [S](python/hellopython/徐磊/sort.py) | [S](python/hellopython/刘国晨/sort.py) | [D](python/hellopython/evaluation/none.md) |
-| cpp/hellocpp | [D](cpp/hellocpp/evaluation/no_student.md) | [D](cpp/hellocpp/evaluation/no_student.md) | [S](cpp/hellocpp/赵勇/student.h) | [D](cpp/hellocpp/evaluation/no_student.md) | [D](cpp/hellocpp/evaluation/no_student.md) | [D](cpp/hellocpp/evaluation/no_student.md) | [D](cpp/hellocpp/evaluation/no_student.md) | [D](cpp/hellocpp/evaluation/no_student.md) | [D](cpp/hellocpp/evaluation/no_student.md) | [D](cpp/hellocpp/evaluation/no_student.md) | [D](cpp/hellocpp/evaluation/no_student.md) |
-| python/more | [D](python/more/evaluation/none.md) | [D](python/more/evaluation/none.md) | [S](python/more/赵勇/homework.py) | [D](python/more/evaluation/none.md) | [D](python/more/evaluation/none.md) | [D](python/more/evaluation/none.md) | [D](python/more/evaluation/none.md) | [D](python/more/evaluation/none.md) | [D](python/more/evaluation/none.md) | [D](python/more/evaluation/none.md) | [D](python/more/evaluation/none.md) |
-| cpp/stl | [D](cpp/stl/evaluation/none.md) | [D](cpp/stl/evaluation/none.md) | [S](cpp/stl/赵勇/vector.h) | [D](cpp/stl/evaluation/none.md) | [D](cpp/stl/evaluation/none.md) | [D](cpp/stl/evaluation/none.md) | [D](cpp/stl/evaluation/none.md) | [D](cpp/stl/evaluation/none.md) | [D](cpp/stl/evaluation/none.md) | [D](cpp/stl/evaluation/none.md) | [D](cpp/stl/evaluation/none.md) |
+| tool/linux | [S](tool/linux/布树辉/README.md) | [S](tool/linux/hanpc/README.md) | [S](tool/linux/赵勇/README.md) | [S](tool/linux/李清/README.md) | [S](tool/linux/heyu/README.md) | D | [S](tool/linux/童品模/README.md) | [S](tool/linux/huboni/README.md) | [S](tool/linux/徐磊/README.md) | [S](tool/linux/刘国晨/README.md) | [S](tool/linux/程宇琪/README.md) |
+| tool/git | [C](tool/git/evaluation/content.md) | [S](tool/git/hanpc/README.md) | [S](tool/git/赵勇/README.md) | [D](tool/git/evaluation/no_upload.md) | [S](tool/git/heyu/README.md) | [S](tool/git/王伟/README.md) | [S](tool/git/童品模/README.md) | [S](tool/git/huboni/README.md) | [S](tool/git/徐磊/README.md) | [S](tool/git/刘国晨/README.md) | [S](tool/git/程宇琪/README.md) |
+| cpp/helloc | [B](cpp/helloc/evaluation/wrong_output.md) | [S](cpp/helloc/hanpc/main.c) | [S](cpp/helloc/赵勇/main.c) | [D](cpp/helloc/evaluation/no_main.md) | [D](cpp/helloc/evaluation/no_main.md) | [B](cpp/helloc/evaluation/wrong_output.md) | [D](cpp/helloc/evaluation/no_main.md) | [D](cpp/helloc/evaluation/no_main.md) | [S](cpp/helloc/徐磊/main.c) | [S](cpp/helloc/刘国晨/main.c) | [B](cpp/helloc/evaluation/wrong_output.md) |
+| python/hellopython | [D](python/hellopython/evaluation/none.md) | [S](python/hellopython/hanpc/sort.py) | [S](python/hellopython/赵勇/sort.py) | [S](python/hellopython/李清/sort.py) | [D](python/hellopython/evaluation/none.md) | [D](python/hellopython/evaluation/none.md) | [D](python/hellopython/evaluation/none.md) | D | [S](python/hellopython/徐磊/sort.py) | [S](python/hellopython/刘国晨/sort.py) | [S](python/hellopython/程宇琪/sort.py) |
+| cpp/hellocpp | [D](cpp/hellocpp/evaluation/no_student.md) | [S](cpp/hellocpp/hanpc/student.h) | [S](cpp/hellocpp/赵勇/student.h) | [S](cpp/hellocpp/李清/student.h) | [D](cpp/hellocpp/evaluation/no_student.md) | [S](cpp/hellocpp/王伟/student.h) | [D](cpp/hellocpp/evaluation/no_student.md) | [D](cpp/hellocpp/evaluation/no_student.md) | [S](cpp/hellocpp/徐磊/student.h) | [S](cpp/hellocpp/刘国晨/student.h) | [C](cpp/hellocpp/evaluation/compile_failed.md) |
+| python/more | [D](python/more/evaluation/none.md) | D | [S](python/more/赵勇/homework.py) | [S](python/more/李清/homework.py) | [D](python/more/evaluation/none.md) | [D](python/more/evaluation/none.md) | [D](python/more/evaluation/none.md) | [D](python/more/evaluation/none.md) | [S](python/more/徐磊/homework.py) | [S](python/more/刘国晨/homework.py) | [S](python/more/程宇琪/homework.py) |
+| cpp/stl | [D](cpp/stl/evaluation/none.md) | [D](cpp/stl/evaluation/none.md) | [S](cpp/stl/赵勇/vector.h) | [S](cpp/stl/李清/vector.h) | [D](cpp/stl/evaluation/none.md) | [D](cpp/stl/evaluation/none.md) | [D](cpp/stl/evaluation/none.md) | [D](cpp/stl/evaluation/none.md) | [S](cpp/stl/徐磊/vector.h) | D | [D](cpp/stl/evaluation/none.md) |
+| python/module | [D](python/module/evaluation/none_init.md) | [D](python/module/evaluation/none_plot.md) | [D](python/module/evaluation/none_init.md) | [D](python/module/evaluation/none_init.md) | [D](python/module/evaluation/none_init.md) | [D](python/module/evaluation/none_init.md) | [D](python/module/evaluation/wrong_output.md) | [D](python/module/evaluation/none_init.md) | [D](python/module/evaluation/none_init.md) | [D](python/module/evaluation/none_init.md) | [D](python/module/evaluation/none_init.md) |
+| tool/markdown | [D](tool/markdown/evaluation/none.md) | [D](tool/markdown/evaluation/none.md) | [S](tool/markdown/赵勇/README.md) | [D](tool/markdown/evaluation/none.md) | [D](tool/markdown/evaluation/none.md) | [S](tool/markdown/王伟/README.md) | [S](tool/markdown/童品模/README.md) | [S](tool/markdown/huboni/README.md) | [S](tool/markdown/徐磊/README.md) | [D](tool/markdown/evaluation/none.md) | [S](tool/markdown/程宇琪/README.md) |
+| tool/cmake | D | D | D | D | D | D | D | D | D | D | D |
+| cpp/cpp11 | [D](cpp/cpp11/evaluation/none.md) | [D](cpp/cpp11/evaluation/none.md) | D | [D](cpp/cpp11/evaluation/none.md) | [D](cpp/cpp11/evaluation/none.md) | [D](cpp/cpp11/evaluation/none.md) | [D](cpp/cpp11/evaluation/none.md) | [D](cpp/cpp11/evaluation/none.md) | D | [D](cpp/cpp11/evaluation/none.md) | [D](cpp/cpp11/evaluation/none.md) |
+| cpp/style | D | D | D | D | D | D | D | D | D | D | D |

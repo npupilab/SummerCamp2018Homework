@@ -1,0 +1,27 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
+
+PROJECT (test)
+
+SET(SOURCES_FILES
+    ../src/AppDemo/main.cpp
+    )
+
+ADD_LIBRARY(SharedLibDemo SHARED ../src/SharedLibDemo/SharedLibDemo.cpp)
+ADD_LIBRARY(StaticLibDemo STATIC ../src/StaticLibDemo/StaticLibDemo.cpp)
+
+ADD_EXECUTABLE(AppDemo ${SOURCES_FILES})
+TARGET_LINK_LIBRARIES(AppDemo SharedLibDemo StaticLibDemo)
+
+SET(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR} )
+
+FIND_PACKAGE(Hello)
+
+SET(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR})
+
+INCLUDE_DIRECTORIES(${HELLO_INCLUDE_DIR})
+
+ADD_EXECUTABLE(HelloDemo ../src/AppDemo/test_for_findpackage.cpp)
+TARGET_LINK_LIBRARIES(HelloDemo ${Hello_LIBRARIES})
+
+INSTALL(TARGETS SharedLibDemo StaticLibDemo AppDemo HelloDemo LIBRARY DESTINATION lib ARCHIVE DESTINATION lib RUNTIME DESTINATION bin)
+
