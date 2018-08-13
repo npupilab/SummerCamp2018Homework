@@ -1,11 +1,11 @@
 cmake_minimum_required(VERSION 3.5)
 project(demo)
 include_directories(../src/SharedLibDemo ../src/StaticLibDemo)
-ADD_LIBRARY(hello_shared SHARED ../src/SharedLibDemo/SharedLibDemo.cpp)		#添加动态库
-ADD_LIBRARY(hello_static STATIC ../src/StaticLibDemo/StaticLibDemo.cpp) 	#添加静态库
+ADD_LIBRARY(libSharedLibDemo SHARED ../src/SharedLibDemo/SharedLibDemo.cpp)	#添加动态库
+ADD_LIBRARY(libStaticLibDemo STATIC ../src/StaticLibDemo/StaticLibDemo.cpp) 	#添加静态库
 ADD_EXECUTABLE(hello_demo ../src/AppDemo/main.cpp)
-target_LINK_LIBRARIES(hello_demo hello_static hello_shared)
-install(TARGETS hello_demo hello_static hello_shared
+target_LINK_LIBRARIES(hello_demo libStaticLibDemo libSharedLibDemo)
+install(TARGETS hello_demo libStaticLibDemo libSharedLibDemo
        RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin
         LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
         ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
