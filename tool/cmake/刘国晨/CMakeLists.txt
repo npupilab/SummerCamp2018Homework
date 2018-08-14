@@ -7,15 +7,12 @@ set(SHARED_SRC SharedLibDemo/SharedLibDemo.cpp)
 
 include_directories( ./StaticLibDemo ./SharedLibDemo)
 
-
 add_library(shared_lib SHARED ${SHARED_SRC})
 add_library(static_lib ${STATIC_SRC})
 
 add_executable(main ${EXE_SRC})
 
 target_link_libraries(main shared_lib static_lib)
-
-
 
 install(
 TARGETS main shared_lib static_lib
