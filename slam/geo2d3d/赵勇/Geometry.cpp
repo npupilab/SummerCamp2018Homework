@@ -1,11 +1,5 @@
 #include <Geometry.h>
 
-//class GeometryImpl : public summercamp::Geometry
-//{
-//public:
-
-//};
-
 using namespace GSLAM;
 
 class GeometryImpl : public summercamp::Geometry
@@ -64,6 +58,13 @@ public:
         double z=H[8]*pt.x+H[9]*pt.y+H[10]*pt.z+H[11];
         double w=H[12]*pt.x+H[13]*pt.y+H[14]*pt.z+H[15];
         return Point3d(x/w,y/w,z/w);
+    }
+// Compute the epipolarline as known both Pinhole Camera parameters and camera poses
+    virtual GSLAM::Point3d epipolarLine(GSLAM::Camera  cam1,GSLAM::SE3 pose1,
+                                        GSLAM::Camera  cam2,GSLAM::SE3 pose2,
+                                        GSLAM::Point3d point1)const
+    {
+        return Point3d();
     }
 };
 
