@@ -27,6 +27,7 @@ Homework Statistics of SummerCamp2018
 | [slam/liegroup]| 刚体运动及其变换 |
 | [slam/opt_linear]| 线性优化及模型鲁棒估计 |
 | [slam/initialize]| 单目初始化 |
+| [ai/rg_lg]| 线性回归以及逻辑斯特回归 |
 
 [tool/linux]: ./tool/linux/README.md
 [tool/git]: ./tool/git/README.md
@@ -46,6 +47,7 @@ Homework Statistics of SummerCamp2018
 [slam/liegroup]: ./slam/liegroup/README.md
 [slam/opt_linear]: ./slam/opt_linear/README.md
 [slam/initialize]: ./slam/initialize/README.md
+[ai/rg_lg]: ./ai/rg_lg/README.md
 
 ## 2. Attendance
 
