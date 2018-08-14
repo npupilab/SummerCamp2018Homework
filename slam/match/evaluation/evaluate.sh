@@ -24,7 +24,7 @@ fi
 
 cd $BuildDir
 INSTALL_DIR=$BuildDir/installFolder
-cmake -DCMAKE_INSTALL_PREFIX=$INSTALL_DIR $topicFolder/Matcher -DUSER_NAME=$name
+cmake -DCMAKE_INSTALL_PREFIX=$INSTALL_DIR -DCMAKE_BUILD_TYPE=Release $topicFolder/Matcher -DUSER_NAME=$name
 make
 cd $Call_Path
 
