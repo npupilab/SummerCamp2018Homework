@@ -11,17 +11,13 @@
 
 
 int Return(int i){
-    std::string topic="slam/match";
-    std::string name ="demo";
-    std::string scoreFile="score.txt";
-    int    argc=svar.GetInt("argc");
-    char** argv=(char**)svar.GetPointer("argv");
-    if(argc>1) topic=argv[1];
-    if(argc>2) name =argv[2];
-    if(argc>3) scoreFile=argv[3];
+    std::string topic=svar.GetString("Topic","slam/match");
+    std::string name =svar.GetString("Name","demo");
+    std::string scoreFile=svar.GetString("ScoreFile","score.txt");
 
+    auto matches=std::to_string(svar.GetInt("MatchesNum"));
     std::vector<std::string> outputInfos={
-        "[S]("+topic+"/"+name+")",
+        "[S,"+matches+"]("+topic+"/"+name+")",
         "[C]("+topic+"/evaluation/no_featuredetector.md)",
         "[C]("+topic+"/evaluation/no_matcher.md)",
         "[C]("+topic+"/evaluation/image.md)",
@@ -31,7 +27,7 @@ int Return(int i){
         "[B]("+topic+"/evaluation/few.md)"
     };
 
-    if(argc>3){
+    if(name!="demo"){
         std::ofstream ofs(scoreFile);
         ofs<<outputInfos[i];
     }
@@ -40,6 +36,13 @@ int Return(int i){
 
 int main(int argc,char** argv){
     svar.ParseMain(argc,argv);
+    std::string topicFolder =svar.GetString("topicFolder","");
+    std::string name =svar.GetString("Name","demo");
+    if(!topicFolder.empty())
+    {
+        svar.ParseFile(topicFolder+"/"+name+"/Default.cfg");
+    }
+
     std::string  featType=svar.GetString("FeatureDetector","Default");
     std::string  matcherType=svar.GetString("Matcher","Default");
     FeatureDetectorPtr featureDetector=FeatureDetector::create(featType);
@@ -79,9 +82,10 @@ int main(int argc,char** argv){
     double time=tic.Tac();
 
     if(matches.size()<50) return Return(7);
+    svar.GetInt("MatchesNum")=matches.size();
 
     std::string img2save=svar.GetString("Image2Save","");
-    if(argc<=3||!img2save.empty())
+    if(img2save.empty()||svar.GetInt("ShowImage"))
     {
         cv::Mat imgshow=image1;
 
@@ -89,12 +93,17 @@ int main(int argc,char** argv){
         for(std::pair<int,int> m:matches){
             if(!frame1->getKeyPoint(m.first,kp1)) break;
             if(!frame2->getKeyPoint(m.second,kp2)) break;
-            cv::line(imgshow,cv::Point(kp1.pt.x,kp1.pt.y),cv::Point(kp2.pt.x,kp2.pt.y),cv::Scalar(255,0,0),imgshow.cols*0.005);
+            cv::line(imgshow,cv::Point(kp1.pt.x,kp1.pt.y),cv::Point(kp2.pt.x,kp2.pt.y),cv::Scalar(255,0,0),imgshow.cols*0.002);
         }
-        cv::putText(imgshow,"ProcessTime:"+std::to_string(time),cv::Point(50,50),0,1.,cv::Scalar(0,0,255),2);
-        if(argc<=3)
+        cv::putText(imgshow,"ProcessTime:"+std::to_string(time)+
+                    ",Matches:"+std::to_string(matches.size())
+                    ,cv::Point(50,50),0,1.,cv::Scalar(0,0,255),2);
+        if(svar.GetInt("ShowImage"))
+        {
             cv::imshow("match",imgshow);
-        else
+            cv::waitKey(0);
+        }
+        if(img2save.size())
             cv::imwrite(img2save,imgshow);
     }
 
