@@ -1,7 +1,9 @@
 #ifndef SUMMERCAMP_GEOMETRY_H
 #define SUMMERCAMP_GEOMETRY_H
+
 #include <memory>
-#include "Point.h"
+#include <GSLAM/core/Point.h>
+#include <GSLAM/core/GSLAM.h>
 
 namespace summercamp {
 
@@ -33,9 +35,15 @@ public:
 
     // 3D homography transform, H is 4x4
     virtual GSLAM::Point3d transform(double* H,const GSLAM::Point3d)const=0;
+
+    // Compute the epipolarline as known both Pinhole Camera parameters and camera poses
+    virtual GSLAM::Point3d epipolarLine(GSLAM::Camera  cam1, GSLAM::SE3 pose1,
+                                        GSLAM::Camera  cam2, GSLAM::SE3 pose2,
+                                        GSLAM::Point3d point1)const=0;
 };
 
 typedef std::shared_ptr<Geometry> GeometryPtr;
+
 }
 
 #endif
