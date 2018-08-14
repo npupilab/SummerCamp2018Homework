@@ -27,6 +27,10 @@ class DataAnalysis(object):
 
 
     def findMaxSubSequence(self):
+        '''
+        todo latter, read books to learn LIS
+        '''
+        arr = self.array
         n = len(self.array)
         m = [0]*n
         for x in range(n-2,-1,-1):
