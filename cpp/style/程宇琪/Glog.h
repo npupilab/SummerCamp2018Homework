@@ -90,8 +90,8 @@
 // To use the debug only versions, prepend a D to the normal check macros, e.g.
 // DCHECK_EQ(a, b).
 
-#ifndef GSLAM_CORE_GLOG_H_
-#define GSLAM_CORE_GLOG_H_
+#ifndef CPP_STYLE___________GLOG_H_
+#define CPP_STYLE___________GLOG_H_
 
 #ifdef ANDROID
 #include <android/log.h>
@@ -599,4 +599,4 @@ T& CheckNotNull(const char* file, int line, \
   CheckNotNull(__FILE__, __LINE__, "'" #val "' Must be non NULL", (val))
 #endif  // NDEBUG
 
-#endif  // GSLAM_CORE_GLOG_H_
+#endif  // CPP_STYLE___________GLOG_H_
