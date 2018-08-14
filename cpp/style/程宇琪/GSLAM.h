@@ -30,8 +30,8 @@
 //
 // This is the GSLAM main API header
 
-#ifndef GSLAM_CORE_GSLAM_H_
-#define GSLAM_CORE_GSLAM_H_
+#ifndef CPP_STYLE___________GSLAM_H_
+#define CPP_STYLE___________GSLAM_H_
 
 #include <map>
 #include <string>
@@ -593,4 +593,4 @@ inline SLAMPtr SLAM::create(const std::string& slamPlugin) {
 
 #include "Optimizer.h"
 
-#endif  // GSLAM_CORE_GSLAM_H_
+#endif  // CPP_STYLE___________GSLAM_H_
