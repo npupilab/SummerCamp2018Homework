@@ -9,7 +9,7 @@ include_directories(src)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 if(NOT USER_NAME)
-    set(USER_NAME demo)
+    set(USER_NAME 赵勇)
 endif()
 
 pi_add_target(Matcher BIN src ../${USER_NAME} REQUIRED GSLAM OpenCV OpenGL GLEW GLUT System)
