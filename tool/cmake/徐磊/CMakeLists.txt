@@ -26,7 +26,6 @@ target_link_libraries(HelloDemo ${Hello_LIBRARIES})
 
 
 
-
 install(
 TARGETS main shared_lib static_lib
 RUNTIME DESTINATION bin
