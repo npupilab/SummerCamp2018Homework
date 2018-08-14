@@ -13,11 +13,11 @@ find_package(Hello REQUIRED)
 include_directories( ./StaticLibDemo ./SharedLibDemo)
 include_directories(${Hello_INCLUDE_DIR})
 
-add_library(shared_lib SHARED ${SHARED_SRC})
-add_library(static_lib ${STATIC_SRC})
+add_library(SharedLibDemo SHARED ${SHARED_SRC})
+add_library(StaticLibDemo ${STATIC_SRC})
 
-add_executable(main ${EXE_SRC})
-target_link_libraries(main shared_lib static_lib)
+add_executable(AppDemo ${EXE_SRC})
+target_link_libraries(AppDemo SharedLibDemo StaticLibDemo)
 
 
 
