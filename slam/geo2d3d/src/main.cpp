@@ -1,7 +1,7 @@
 #include <vector>
 #include <fstream>
 
-#include "Random.h"
+#include <GSLAM/core/Random.h>
 #include "Geometry.h"
 
 using namespace std;

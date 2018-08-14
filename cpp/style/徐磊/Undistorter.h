@@ -29,7 +29,10 @@
 // Author:xulei   email:xlnwpu@gmail.com
 //
 // This is the GSLAM main API header
-#pragma once
+
+#ifndef GSLAM_UNDISTORTER_H // NOLINT
+#define GSLAM_UNDISTORTER_H
+
 #include "Camera.h"
 #include "GImage.h"
 
@@ -349,3 +352,6 @@ inline bool Undistorter::prepareReMap() { return impl->prepareReMap(); }
 inline bool Undistorter::valid() { return impl->valid; }
 
 }  // namespace GSLAM
+
+#endif  // GSLAM_UNDISTORTER_H // NOLINT
+
