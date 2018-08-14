@@ -37,7 +37,7 @@ public:
         double sint=sin(theta);
         double cost=cos(theta);
         double x=cost*point.x-sint*point.y+translation.x;
-        double y=sint*point.x+sint*point.y+translation.y;
+        double y=sint*point.x+cost*point.y+translation.y;
         return Point2d(x,y);
     }
 
@@ -59,12 +59,17 @@ public:
         double w=H[12]*pt.x+H[13]*pt.y+H[14]*pt.z+H[15];
         return Point3d(x/w,y/w,z/w);
     }
-// Compute the epipolarline as known both Pinhole Camera parameters and camera poses
+    // Compute the epipolarline as known both Pinhole Camera parameters and camera poses
     virtual GSLAM::Point3d epipolarLine(GSLAM::Camera  cam1,GSLAM::SE3 pose1,
                                         GSLAM::Camera  cam2,GSLAM::SE3 pose2,
-                                        GSLAM::Point3d point1)const
+                                        GSLAM::Point2d point1)const
     {
-        return Point3d();
+//        GSLAM::SE3 trans21=pose2.inverse()*pose1;
+//        auto l=trans21.get_translation().cross(trans21.get_rotation()*cam1.UnProject(point1));
+//        return l;
+        auto pt1=cam2.Project(pose2.inverse()*pose1*(cam1.UnProject(point1)*10));
+        auto pt2=cam2.Project(pose2.inverse()*pose1*(cam1.UnProject(point1)*20));
+        return line(Point3d(pt1.x,pt1.y,1),Point3d(pt2.x,pt2.y,1));
     }
 };
 
