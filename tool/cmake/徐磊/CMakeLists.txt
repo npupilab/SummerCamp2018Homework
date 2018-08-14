@@ -27,7 +27,7 @@ target_link_libraries(HelloDemo ${Hello_LIBRARIES})
 
 
 install(
-    TARGETS AppDemo  SharedLibDemo StaticLibDemo
+    TARGETS AppDemo HelloDemo  SharedLibDemo StaticLibDemo
 RUNTIME DESTINATION bin
 LIBRARY DESTINATION lib
 ARCHIVE DESTINATION lib
