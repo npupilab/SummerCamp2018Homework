@@ -1,8 +1,8 @@
 #include <vector>
 #include <fstream>
 
-#include "Random.h"
 #include "Geometry.h"
+#include <GSLAM/core/Random.h>
 
 using namespace std;
 using namespace GSLAM;
@@ -70,6 +70,9 @@ bool lineTest(GeometryPtr geo){
 
 bool distanceTest(GeometryPtr geo)
 {
+    if(fabs(geo->distance(Point3d(1,0,1),Point3d(1,0,0))-1)>1e-8) return false;
+    if(fabs(geo->distance(Point3d(0,1,1),Point3d(0,1,0))-1)>1e-8) return false;
+
     GSLAM::Point3d pt1(GSLAM::Random::RandomValue<double>(0,1),
                        GSLAM::Random::RandomValue<double>(0,1),1);
     GSLAM::Point3d pt2(GSLAM::Random::RandomValue<double>(0,1),
@@ -100,16 +103,101 @@ bool distanceTest(GeometryPtr geo)
 
 bool similarity2DTest(GeometryPtr geo)
 {
+    for(int i=0;i<100;i++)
+    {
+        double scale=Random::RandomValue(1.,1.);
+        double theta=Random::RandomValue(0.,10.);
+        Point2d t(Random::RandomValue(0.,10.),
+                  Random::RandomValue(0.,10.));
+        Point2d pt(Random::RandomValue(0.,10.),
+                   Random::RandomValue(0.,10.));
+        Point2d result=geo->transform(theta,scale,t,pt);
+        Point2d untran=geo->transform(-theta,1./scale,Point2d(),result-t);
+        if(pt!=untran)
+        {
+            LOG(ERROR)<<"Pt:"<<pt<<"!="<<untran;
+            return false;
+        }
+    }
     return true;
 }
 
 bool transform2DTest(GeometryPtr geo)
 {
+    for(int i=0;i<100;i++)
+    {
+        Point2d t(Random::RandomValue(0.,10.),Random::RandomValue(0.,10.));
+        Point2d p(Random::RandomValue(0.,10.),Random::RandomValue(0.,10.));
+        double H[9]={1.,0.,t.x,
+                  0.,2.,t.y,
+                  0.,0.,1.};
+        double H2[9]={1.,0.,0,
+                   0.,0.5,0,
+                   0.,0.,1.};
+        auto result=geo->transform(H,p);
+        if(p!=geo->transform(H2,result-t)) return false;
+    }
     return true;
 }
 
 bool transform3DTest(GeometryPtr geo)
 {
+    for(int i=0;i<100;i++)
+    {
+        Point3d t(Random::RandomValue(0.,10.),
+                  Random::RandomValue(0.,10.),
+                  Random::RandomValue(0.,10.));
+        Point3d p(Random::RandomValue(0.,10.),
+                  Random::RandomValue(0.,10.),
+                  Random::RandomValue(0.,10.));
+
+        double H[16]={1.,0.,0.,t.x,
+                     0.,2.,0.,t.y,
+                     0.,0.,4.,t.z,
+                     0.,0.,0.,1.};
+        double H2[16]={1.,0.,0.,0.,
+                       0.,0.5,0.,0.,
+                       0.,0.,0.25,0.,
+                       0.,0.,0.,1.};
+        auto result=geo->transform(H,p);
+        if(p!=geo->transform(H2,result-t)) return false;
+    }
+    return true;
+}
+
+bool epipolarLineTest(GeometryPtr geo){
+    GSLAM::Camera camera({640,480,400,400,320,240});
+
+    for(int i=0;i<100;i++)
+    {
+        Point3d r1(Random::RandomValue(0.,1.),
+                   Random::RandomValue(0.,1.),
+                   Random::RandomValue(0.,1.));
+        Point3d r2(Random::RandomValue(0.,1.),
+                   Random::RandomValue(0.,1.),
+                   Random::RandomValue(0.,1.));
+        Point3d t1(Random::RandomValue(0.,1.),
+                   Random::RandomValue(0.,1.),
+                   Random::RandomValue(0.,1.));
+        Point3d t2(Random::RandomValue(0.,1.),
+                   Random::RandomValue(0.,1.),
+                   Random::RandomValue(0.,1.));
+
+        GSLAM::SE3    pose1(SO3::exp(r1),t1);
+        GSLAM::SE3    pose2(SO3::exp(r2),t2);
+
+        Point3d p1(Random::RandomGaussianValue(0.,1.),
+                   Random::RandomGaussianValue(0.,1.),10.);
+        Point3d line=geo->epipolarLine(camera,pose1,camera,pose2,camera.Project(p1));
+        if(line.norm()<1e-8)
+            return false;
+        auto    p2=camera.Project(pose2.inverse()*pose1*p1);
+
+        if(!geo->pointOnLine(Point3d(p2.x,p2.y,1.),line))
+            return false;
+
+    }
+
     return true;
 }
 
@@ -131,7 +219,8 @@ int Return(int argc,char** argv,int i){
         "[B]("+topic+"/evaluation/distance.md)",
         "[B]("+topic+"/evaluation/similarity2d.md)",
         "[A]("+topic+"/evaluation/transform2d.md)",
-        "[A]("+topic+"/evaluation/transform3d.md)"
+        "[A]("+topic+"/evaluation/transform3d.md)",
+        "[A]("+topic+"/evaluation/epipolar.md)"
     };
 
     if(argc>3){
@@ -167,6 +256,10 @@ int main(int argc,char** argv){
 
     if(!transform3DTest(geo))
         return Return(argc,argv,8);
+
+    if(!epipolarLineTest(geo)){
+        return Return(argc,argv,9);
+    }
 
     return Return(argc,argv,0);
 }

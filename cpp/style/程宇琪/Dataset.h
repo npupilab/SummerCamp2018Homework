@@ -30,8 +30,8 @@
 //
 // This is the GSLAM main API header
 
-#ifndef GSLAM_CORE_DATASET_H_
-#define GSLAM_CORE_DATASET_H_
+#ifndef CPP_STYLE___________DATASET_H_
+#define CPP_STYLE___________DATASET_H_
 
 #include <string>
 #include <vector>
@@ -147,4 +147,4 @@ inline DatasetPtr DatasetFactory::create(std::string dataset) {
 }
 }  // namespace GSLAM
 
-#endif  // GSLAM_CORE_DATASET_H_
+#endif  // CPP_STYLE___________DATASET_H_
