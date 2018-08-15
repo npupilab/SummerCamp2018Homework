@@ -29,9 +29,15 @@ if [ ! -f "$BuildDir/$name/a.out" ];then
     exit 0
 fi
 
-for ((a=0;a<1000;a++));do
+for ((a=0;a<10;a++));do
   var[0]="0"
-  for ((i=1;i<100;i++));do var[$i]="$(( (RANDOM % 1000) + 1 ))";done
+  for ((i=1;i<100;i++));do 
+    value="$(( (RANDOM % 1000) + 1 ))";
+    while [ "${var[$((i-1))]}" -eq "$value" ];do
+      value="$(( (RANDOM % 1000) + 1 ))";
+    done
+    var[$i]="$value"
+  done
   var[100]="0"
 
   #echo "$BuildDir/$name/a.out ${var[@]}"
@@ -41,23 +47,39 @@ for ((a=0;a<1000;a++));do
   if [[ $i =~ $reg ]];then
     i="${BASH_REMATCH[1]}";
   else
+    echo "$topic/$name outputed $i when argv: ${var[@]}"
     echo "[B]($topic/evaluation/wrong_output.md)"> "$scoreFile"
     exit 0
   fi
 
   if [ -z "$i" ];then
-    echo "No output from $BuildDir/$name/a.out ${var[@]}"
+    echo "$topic/$name outputed $i when argv: ${var[@]}"
     echo "[B]($topic/evaluation/app_no_output.md)"> "$scoreFile"
     exit 0
   fi
+
+  if [ "$i" -lt "0" ];then
+    echo "$topic/$name outputed $i when argv: ${var[@]}"
+    echo "[B]($topic/evaluation/wrong_output.md)"> "$scoreFile"
+    exit 0     
+  fi
+
+  if [ "$i" -ge "${#var[@]}" ];then
+    echo "$topic/$name outputed $i when argv: ${var[@]}"
+    echo "[B]($topic/evaluation/wrong_output.md)"> "$scoreFile"
+    exit 0     
+  fi
+
   #echo "${var[$i]}" -le "${var[$((i-1))]}"
   if [ "${var[$i]}" -lt "${var[$((i-1))]}" ];then
+    echo "$topic/$name outputed $i when argv: ${var[@]}"
     echo "[B]($topic/evaluation/wrong_output.md)"> "$scoreFile"
     exit 0
   fi
 
   #echo "${var[$i]}" -le "${var[$((i+1))]}"
   if [ "${var[$i]}" -lt "${var[$((i+1))]}" ];then
+    echo "$topic/$name outputed $i when argv: ${var[@]}"
     echo "[B]($topic/evaluation/wrong_output.md)"> "$scoreFile"
     exit 0
   fi

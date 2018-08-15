@@ -5,7 +5,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR}/../../cmake)
 include(PICMake)
 
 if(NOT USER_NAME)
-  set(USER_NAME src)
+  set(USER_NAME 赵勇)
 endif()
 
 INCLUDE_DIRECTORIES(.)

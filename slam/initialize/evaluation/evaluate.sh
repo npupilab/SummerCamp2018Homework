@@ -12,29 +12,31 @@ fi
 topicFolder=$Here_Path/..
 topic=$1
 name=$2
-BuildDir=$Call_Path/$topic
+BuildDir=$Call_Path/$topic/$name
 scoreFile=$3
 
-mkdir -p $BuildDir/$name
+mkdir -p $BuildDir
 
-if [ ! -f "$topicFolder/$name/vector.h" ];then
+if [ ! -d "$topicFolder/$name" ];then
     echo "[D]($topic/evaluation/none.md)"> "$scoreFile"
     exit 0
 fi
 
-g++ -o $BuildDir/$name/a.out $topicFolder/src/main.cpp -I$topicFolder/$name  -std=c++11
+cd $BuildDir
+INSTALL_DIR=$BuildDir/installFolder
+cmake -DCMAKE_INSTALL_PREFIX=$INSTALL_DIR -DCMAKE_BUILD_TYPE=Release $topicFolder/src -DUSER_NAME=$name
+make
+cd $Call_Path
 
-if [ ! -f "$BuildDir/$name/a.out" ];then
+if [ ! -f "$BuildDir/Initializer" ];then
     echo "[C]($topic/evaluation/compile_failed.md)"> "$scoreFile"
     exit 0
 fi
 
-output="$($BuildDir/$name/a.out $topic $name $scoreFile)"
+$BuildDir/Initializer $topic $name $scoreFile
 
 
 if [ ! -f "$scoreFile" ];then
-    echo $output
-    echo "[C]($topic/evaluation/run_failed.md)"> "$scoreFile"
+    echo "[B]($topic/evaluation/run_failed.md)"> "$scoreFile"
     exit 0
 fi
-
