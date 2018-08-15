@@ -61,6 +61,7 @@ FIND_PATH( GSLAM_INCLUDE_DIR GSLAM/core/GSLAM.h
 	# installation selected by user
   ${CMAKE_CURRENT_LIST_DIR}/..
 )
+set(GSLAM_INCLUDE_DIR ${CMAKE_CURRENT_LIST_DIR}/..)
 
 if(GSLAM_INCLUDE_DIR)
 	gslam_check_version()

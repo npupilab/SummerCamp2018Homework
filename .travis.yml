@@ -65,4 +65,4 @@ script:
   - mkdir -p build
   - cd build
   - pwd
-  - bash ../scripts/Evaluate.sh -e ..
+  - bash ../scripts/Evaluate.sh -commit -e ..
