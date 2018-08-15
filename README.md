@@ -73,7 +73,7 @@ Homework Statistics of SummerCamp2018
 cd SummerCamp2018Homework
 mkdir build
 cd build
-bash ../scripts/Evaluate.sh -a -e .. tool/linux 赵勇
+bash ../scripts/Evaluate.sh -e .. tool/linux 赵勇
 ```
 
 ## 3. Statistics
