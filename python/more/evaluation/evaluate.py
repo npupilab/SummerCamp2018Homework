@@ -14,13 +14,17 @@ if not os.access('{}/../{}/homework.py'.format(herepath,sys.argv[2]),os.R_OK):
 
 try:
     fd = os.popen('python {}/../{}/homework.py'.format(herepath,sys.argv[2]))
+    result = fd.read()
+    fd.close()
+    if result == "[1, 1, 2, 3, 5, 8, 13, 21, 34, 55][1, 1, 2, 3, 5, 8, 13, 21, 34, 55][1, 1, 2, 3, 5, 8, 13, 21, 34, 55]":
+       os.system('echo "[S]({}/{}/homework.py)" > {}'.format(sys.argv[1],sys.argv[2],sys.argv[3]))
 except SyntaxError,e:
     print(e.message)
-    os.system('echo "[D]({}/evaluation/failed_run.md)" > {}'.format(sys.argv[1],sys.argv[3]))
+    os.system('echo "[C]({}/evaluation/failed_run.md)" > {}'.format(sys.argv[1],sys.argv[3]))
+    exit(0)
+finally:
+    os.system('echo "[C]({}/evaluation/failed_run.md)" > {}'.format(sys.argv[1],sys.argv[3]))
     exit(0)
     
-result = fd.read()
-fd.close()
+    
 
-if result == "[1, 1, 2, 3, 5, 8, 13, 21, 34, 55][1, 1, 2, 3, 5, 8, 13, 21, 34, 55][1, 1, 2, 3, 5, 8, 13, 21, 34, 55]":
-   os.system('echo "[S]({}/{}/homework.py)" > {}'.format(sys.argv[1],sys.argv[2],sys.argv[3]))
