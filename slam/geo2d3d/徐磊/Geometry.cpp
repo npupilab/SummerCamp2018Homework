@@ -116,11 +116,6 @@ GSLAM::Point3d GeometryImpl::epipolarLine(GSLAM::Camera cam1, GSLAM::SE3 pose1,
         //return line;
         GSLAM::SE3 trans21=pose2.inverse()*pose1;
         auto l=trans21.get_translation().cross(trans21.get_rotation()*cam1.UnProject(point1));
-        std::cout<<"l: "<<l<<std::endl;
-     auto pt1=cam2.Project(pose2.inverse()*pose1*(cam1.UnProject(point1)*10));
-        auto pt2=cam2.Project(pose2.inverse()*pose1*(cam1.UnProject(point1)*20));
-        auto ll = line(GSLAM::Point3d(pt1.x,pt1.y,1),GSLAM::Point3d(pt2.x,pt2.y,1));
-        std::cout<<"ll: "<<ll<<std::endl;
-        return ll;
-
+        return l;
+        //FIXME
 }
