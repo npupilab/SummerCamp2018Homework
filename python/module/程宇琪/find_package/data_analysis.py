@@ -11,19 +11,44 @@ class DataAnalysis(object):
         with open(filename ,'r') as f:
             lines = f.readlines()
 
-       ##todo 
+            self.sequence = lines[1].strip().split(' ')
+            self.x = lines[3].split(":")[1].strip().split(',')
+            self.y = lines[4].split(":")[1].strip().split(',')
+            self.x = map(float, self.x)
+            self.y = map(float, self.y)
+            self.sequence = map(int, self.sequence)
+
+
+
+
 
 
 
     def findMaxSubSequence(self):
+        list = self.sequence
+        num = len(list)
+        m=[1]*num
+        maxall = 1
 
-        ##todo 
+        for x in range(num-2,-1,-1):
+            m_x = [0] * num
+            for y in range(num-1, x,-1):
+                if list[x]<list[y]:
+                    m_x[y] = m[y]
+            m[x] = max(m_x) + 1
+
+        maxall = max(m)
+        subseq = []
+        for i in range(num):
+            if m[i] == maxall:
+                subseq.append(list[i])
+                maxall -=1
 
         return subseq
 
 
     def plotXY(self):
-         ##todo
+        plt.plot(self.x,self.y)
         savefig('./plot.png')
 
 
