@@ -18,3 +18,8 @@ make
 # Run
 ./Matcher conf=../Default.cfg -Name 赵勇 -ShowImage 1
 ```
+
+
+## 2. 依赖及代码量要求
+
+实现代码仅可依赖OpenCV2.4.9及CMakeLists.txt中已经列出的依赖，不可修改源码中的CMakeLists.txt文件，若要引入第三方特征提取实现，请将作业文件夹大小控制在1MB以内。
