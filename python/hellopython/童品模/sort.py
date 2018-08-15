@@ -34,7 +34,9 @@ def quickSort(L,left,right):
 
 def sort(var_list):
   # return bubbleSort(var_list)
-  return quickSort(var_list,0,len(var_list)-1)
+  var_list = quickSort(var_list,0,len(var_list)-1)
+  return var_list
+   
 
 if __name__ == "__main__":
     result=sort([0,3,4,2,6])
