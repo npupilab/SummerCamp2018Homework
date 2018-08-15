@@ -67,6 +67,15 @@ Homework Statistics of SummerCamp2018
 
 *注意：每一项都需要填写，姓名部分名字中间不要带空格*
 
+### 测试作业是否通过的方法
+
+```
+cd SummerCamp2018Homework
+mkdir build
+cd build
+bash ../scripts/Evaluate.sh -a -e .. tool/linux 赵勇
+```
+
 ## 3. Statistics
 | Topic | 布树辉 | hanpc | 赵勇 | 李清 | heyu | 王伟 | 童品模 | huboni | 徐磊 | 刘国晨 | 程宇琪 |
 | :---: | :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:|

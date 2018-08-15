@@ -102,6 +102,10 @@ evaluate() ## do evaluation
   if [ -n "$2" ];then
     Topics=$2
   fi
+
+  if [ -n "$3" ];then
+    Names=$3
+  fi
   
   TOPLINE="| Topic |"
   SECONDLINE="| :---: |"
