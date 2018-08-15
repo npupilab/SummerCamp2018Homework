@@ -169,7 +169,7 @@ if [ -n "$1" ];then
 		-e)     shift 1;evaluate $*;exit 0;; #Evaluate
 		-commit) shift 1;CommitUpdate=YES;; #Evaluate
 		-*)     echo "error: no such option $1. -h for help";exit 1;; 
-		*)      ;exit 1;;                                  #Call function here
+		*)      shift 1;exit 1;;                                  #Call function here
 ##END_HELP##
 	esac
 	done

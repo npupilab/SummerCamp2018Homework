@@ -12,7 +12,13 @@ if not os.access('{}/../{}/homework.py'.format(herepath,sys.argv[2]),os.R_OK):
     os.system('echo "[D]({}/evaluation/none.md)" > {}'.format(sys.argv[1],sys.argv[3]))
     exit(0)
 
-fd = os.popen('python {}/../{}/homework.py'.format(herepath,sys.argv[2]))
+try:
+    fd = os.popen('python {}/../{}/homework.py'.format(herepath,sys.argv[2]))
+except SyntaxError,e:
+    print(e.message)
+    os.system('echo "[D]({}/evaluation/failed_run.md)" > {}'.format(sys.argv[1],sys.argv[3]))
+    exit(0)
+    
 result = fd.read()
 fd.close()
 
