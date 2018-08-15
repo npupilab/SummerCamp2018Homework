@@ -274,6 +274,7 @@ int Return(int argc,char** argv,int ret){
         ofs<<score;
     }
     else std::cout<<score;
+    return 0;
 }
 
 int main(int argc,char** argv){
