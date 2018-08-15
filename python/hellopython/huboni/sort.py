@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*- 
 def sort_tool(var_list, start, end):
     if start < end:
         i, j = start, end
