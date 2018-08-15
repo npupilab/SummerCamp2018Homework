@@ -109,8 +109,6 @@ for topic in ${topiclist[@]};do
     done
     echo $out >>$OUTPUTFILE
 done
-
-
 }
 
 ######################  main below  ##############################
