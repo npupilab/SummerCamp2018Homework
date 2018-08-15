@@ -53,6 +53,6 @@ if cl._cpplint_state.error_count > 0:
     os.system('echo "[C,{}]({}/evaluation/error.md)" > {}'.format(cl._cpplint_state.error_count,sys.argv[1],sys.argv[3]))
     exit(0)
 
-os.system('echo "[S]({}/{})" > {}'.format(sys.argv[1],sys.argv[2],sys.argv[3]))
+os.system('echo "[S]({}/{}/GSLAM/core)" > {}'.format(sys.argv[1],sys.argv[2],sys.argv[3]))
     
 
