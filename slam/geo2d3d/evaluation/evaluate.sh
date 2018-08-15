@@ -22,7 +22,7 @@ if [ ! -f "$topicFolder/$name/Geometry.cpp" ];then
     exit 0
 fi
 
-g++ -o $BuildDir/$name/a.out $topicFolder/src/main.cpp $topicFolder/$name/Geometry.cpp -std=c++11 -I$topicFolder/src  
+g++ -o $BuildDir/$name/a.out $topicFolder/src/main.cpp $topicFolder/$name/Geometry.cpp -std=c++11 -I$topicFolder/src -I$topicFolder/.. 
 
 if [ ! -f "$BuildDir/$name/a.out" ];then
     echo "[C]($topic/evaluation/compile_failed.md)"> "$scoreFile"

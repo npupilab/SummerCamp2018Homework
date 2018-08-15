@@ -16,6 +16,9 @@ matrix:
             - libeigen3-dev
             - python-tk
             - python-matplotlib
+            - libglew-dev
+            - libopencv-dev
+            - freeglut3-dev
 
 cache:
   directories:
