@@ -46,17 +46,26 @@ class Student : public Person,public SchoolInterface
 public:
     Student(const std::string& name="admin",int age=0,
             const std::string& manager="manager",
-            const std::string& school="none");
+            const std::string& school="none")
+        :Person(name,age),SchoolInterface(manager),_school(school){}
+    std::string& school(){return _school;}
+    const std::string& school()const{return _school;}
 
     virtual std::string type()const{return "Student";}
     virtual std::string introduction()const{
         return type()+"[name:"+_name+", age:"
                 +std::to_string(age())+",manager:"+managerName+",school:"+school()+"]";
     }
+    virtual const std::string& getSchoolName()const {return _school;}
+    operator std::string()const{return introduction();}
 protected:
     std::string  _school;
 };
-
+inline std::ostream& operator<<(std::ostream& os,const Student& student)
+{
+    os<<student.introduction();
+    return os;
+}
 
 }//end of namespace
 #endif // STUDENT_H
