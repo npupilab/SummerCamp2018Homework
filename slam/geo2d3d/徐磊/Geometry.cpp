@@ -100,7 +100,7 @@ GSLAM::Point3d GeometryImpl::transform(double *H,
   double result4;
   result[0] = point[0] * h11 + point[1] * h12 + point[2] * h13 + h14;
   result[1] = point[0] * h21 + point[1] * h22 + point[2] * h23 + h24;
-  result[2] = point[0] * h31 + point[1] * h32 + point[3] * h33 + h34;
+  result[2] = point[0] * h31 + point[1] * h32 + point[2] * h33 + h34;
   result4 = point[0] * h41 + point[1] * h42 + point[2] * h43 + h44;
   return result / result4;
 }
@@ -108,5 +108,19 @@ GSLAM::Point3d GeometryImpl::transform(double *H,
 GSLAM::Point3d GeometryImpl::epipolarLine(GSLAM::Camera cam1, GSLAM::SE3 pose1,
                                           GSLAM::Camera cam2, GSLAM::SE3 pose2,
                                           GSLAM::Point2d point1) const {
-  double a;
+        //cam2 is Identity
+        // [t]_x is skew-symmetric matrix 
+        // (K_1^{-1}p_1)^TR^T[T]_xK_2^{-1}p_2 = 0
+        //GSLAM::SE3 trans21=pose2.inverse()*pose1;
+        //GSLAM::Point3d line=trans21.get_translation().cross(trans21.get_rotation()*cam1.UnProject(point1));
+        //return line;
+        GSLAM::SE3 trans21=pose2.inverse()*pose1;
+        auto l=trans21.get_translation().cross(trans21.get_rotation()*cam1.UnProject(point1));
+        std::cout<<"l: "<<l<<std::endl;
+     auto pt1=cam2.Project(pose2.inverse()*pose1*(cam1.UnProject(point1)*10));
+        auto pt2=cam2.Project(pose2.inverse()*pose1*(cam1.UnProject(point1)*20));
+        auto ll = line(GSLAM::Point3d(pt1.x,pt1.y,1),GSLAM::Point3d(pt2.x,pt2.y,1));
+        std::cout<<"ll: "<<ll<<std::endl;
+        return ll;
+
 }
