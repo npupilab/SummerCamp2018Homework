@@ -162,7 +162,8 @@ public:
     }
 };
 
+USE_ESTIMATOR_PLUGIN(EstimatorEigen);
+
 }
 
-USE_ESTIMATOR_PLUGIN(GSLAM::EstimatorEigen);
 #endif
