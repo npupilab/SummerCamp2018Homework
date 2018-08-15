@@ -18,13 +18,10 @@ try:
     fd.close()
     if result == "[1, 1, 2, 3, 5, 8, 13, 21, 34, 55][1, 1, 2, 3, 5, 8, 13, 21, 34, 55][1, 1, 2, 3, 5, 8, 13, 21, 34, 55]":
        os.system('echo "[S]({}/{}/homework.py)" > {}'.format(sys.argv[1],sys.argv[2],sys.argv[3]))
-except SyntaxError,e:
-    print(e.message)
+    else:
+       os.system('echo "[B]({}/evaluation/wrong.md)" > {}'.format(sys.argv[1],sys.argv[3]))
+except SyntaxError:
     os.system('echo "[C]({}/evaluation/failed_run.md)" > {}'.format(sys.argv[1],sys.argv[3]))
     exit(0)
-finally:
-    os.system('echo "[C]({}/evaluation/failed_run.md)" > {}'.format(sys.argv[1],sys.argv[3]))
-    exit(0)
-    
     
 
