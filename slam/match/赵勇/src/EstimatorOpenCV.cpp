@@ -356,8 +356,8 @@ public:
     }
 
 };
+USE_ESTIMATOR_PLUGIN(EstimatorOpenCV);
 }
 
-USE_ESTIMATOR_PLUGIN(GSLAM::EstimatorOpenCV);
 
 #endif

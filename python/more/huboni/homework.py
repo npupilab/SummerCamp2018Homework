@@ -1,18 +1,18 @@
 #!/usr/bin/env python
 # -*_ coding:utf-8 -*-
-#from __future__ import pritn_function
-#import time
-# import sys
+from __future__ import pritn_function
+import time
+import sys
 # n=int(sys.argv[1])
 # 循环
-my_list = [1, 1]
-def Fibonacci_Loop(my_list, n):
-    for i in range(2, n):
-        add = my_list[i - 1] + my_list[i - 2]
-        my_list.append(add)
-
-Fibonacci_Loop(my_list, 10)
-print(my_list)
+def Fibonacci_Loop(n):
+    result_list = []
+    a, b = 0, 1
+    while n > 0:
+        result_list.append(b)
+        a, b = b, a + b
+        n -= 1
+    return result_list
 
 # 递归
 def Fibonacci_Recursion_tool(n):
@@ -27,16 +27,25 @@ def Fibonacci_Recursion(n):
     for i in range(1, n + 1):
         result_list.append(Fibonacci_Recursion_tool(i))
     return result_list
-print(Fibonacci_Recursion(10))
+# print(Fibonacci_Recursion(10))
 
 # 迭代
-def Fibonacci_Yield(max):
-    n, a, b = 0, 0, 1
-    while n < max:
-        print(b)
+def Fibonacci_Yield_tool(n):
+    a, i, b = 0, 0, 1
+    while i < n:
+        yield b
         a, b = b, a + b
-        n = n + 1
-    return "done"
-print(Fibonacci_Yield(10))
+        i += 1
+
+def Fibonacci_Yield(n):
+    return list(Fibonacci_Yield_tool(n))
 
 # 性能比较
+def Test_Fibonacci(n):
+    F_R = Fibonacci_Recursion(n)
+    F_L = Fibonacci_Loop(n)
+    F_Y = Fibonacci_Yield(n)
+    return F_R, F_L, F_Y
+
+a, b, c = Test_Fibonacci(10)
+sys.stdout.write(str(a)+str(b)+str(c))

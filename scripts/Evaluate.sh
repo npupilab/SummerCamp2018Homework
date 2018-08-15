@@ -102,6 +102,10 @@ evaluate() ## do evaluation
   if [ -n "$2" ];then
     Topics=$2
   fi
+
+  if [ -n "$3" ];then
+    Names=$3
+  fi
   
   TOPLINE="| Topic |"
   SECONDLINE="| :---: |"
@@ -139,17 +143,19 @@ evaluate() ## do evaluation
   done
 
   # Compare two files
-  if [ -n "$AbortUpdate" ];then return;fi
-
-  difference="$(diff -q $INPUTFILE $OUTPUTFILE)"
-  echo "Difference of $INPUTFILE $OUTPUTFILE: $difference"
-  if [ -n "$difference" ]; then
-    cp $OUTPUTFILE $INPUTFILE
-    cat $INPUTFILE
-    git add $Here_Path/../README.md
-    git commit -m "auto updated statistics"
-    git push origin master
+  if [ -n "$CommitUpdate" ];then
+    difference="$(diff -q $INPUTFILE $OUTPUTFILE)"
+    echo "Difference of $INPUTFILE $OUTPUTFILE: $difference"
+    if [ -n "$difference" ]; then
+      cp $OUTPUTFILE $INPUTFILE
+      cat $INPUTFILE
+      git add $Here_Path/../README.md
+      git commit -m "auto updated statistics"
+      git push origin master
+    fi
   fi
+
+
 }
 
 ######################  main below  ##############################
@@ -161,9 +167,9 @@ if [ -n "$1" ];then
 		-i)     shift 1;echo_introduction;exit 1;;           #Show introduction 
 		-edit)  shift 1;gedit $Here_Path/$File_Name;exit 1;; #Edit this function 
 		-e)     shift 1;evaluate $*;exit 0;; #Evaluate
-		-a)     shift 1;AbortUpdate=YES;; #Evaluate
+		-commit) shift 1;CommitUpdate=YES;; #Evaluate
 		-*)     echo "error: no such option $1. -h for help";exit 1;; 
-		*)      $*;exit 1;;                                  #Call function here
+		*)      shift 1;exit 1;;                                  #Call function here
 ##END_HELP##
 	esac
 	done

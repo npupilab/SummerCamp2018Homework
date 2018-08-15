@@ -16,6 +16,9 @@ matrix:
             - libeigen3-dev
             - python-tk
             - python-matplotlib
+            - libglew-dev
+            - libopencv-dev
+            - freeglut3-dev
 
 cache:
   directories:
@@ -62,4 +65,4 @@ script:
   - mkdir -p build
   - cd build
   - pwd
-  - bash ../scripts/Evaluate.sh -e ..
+  - bash ../scripts/Evaluate.sh -commit -e ..
