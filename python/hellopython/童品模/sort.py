@@ -32,11 +32,12 @@ def quickSort(L,left,right):
     quickSort(L,j+1,right)
     return L
 
-
+def sort(var_list):
+  # return bubbleSort(var_list)
+  return quickSort(var_list,0,len(var_list)-1)
 
 if __name__ == "__main__":
-    list=[0,3,4,2,6]
-    result=bubbleSort(list)
+    result=sort([0,3,4,2,6])
     if(result==[0,2,3,4,6]):
         print("PASS");
     else:
