@@ -5,7 +5,6 @@ import time
 import sys
 # n=int(sys.argv[1])
 # 循环
-my_list = [1, 1]
 def Fibonacci_Loop(n):
     result_list = []
     a, b = 0, 1
