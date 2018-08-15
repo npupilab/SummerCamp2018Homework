@@ -21,30 +21,27 @@ class DataAnalysis(object):
 
 
 
-
-
-
     def findMaxSubSequence(self):
         list = self.sequence
         num = len(list)
-        m=[1]*num
+        m=[0]*num
         maxall = 1
-
-        for x in range(num-2,-1,-1):
+        for x in range(num-2, -1,-1):
             m_x = [0] * num
             for y in range(num-1, x,-1):
-                if list[x]<list[y]:
+                if list[x] < list[y]:
                     m_x[y] = m[y]
-            m[x] = max(m_x) + 1
-
+            m[x] = (max(m_x) + 1)
         maxall = max(m)
         subseq = []
         for i in range(num):
             if m[i] == maxall:
                 subseq.append(list[i])
-                maxall -=1
+                maxall -= 1
 
         return subseq
+
+
 
 
     def plotXY(self):
@@ -55,9 +52,22 @@ class DataAnalysis(object):
 
 
 
-
-
-
-
-
-
+'''    def findMaxSubSequence(self):
+        list = self.sequence
+        num = len(list)
+        m=[0]*num
+        maxall = 1
+        for x in range(1, num):
+            m_x = [0] * num
+            for y in range(0, x):
+                if list[x] > list[y]:
+                    m_x[y] = m[y]
+            m[x] = (max(m_x) + 1)
+        maxall = max(m)
+        subseq = []
+        for i in range(num-1,-1,-1):
+            if m[i] == maxall:
+                subseq.append(list[i])
+                maxall -= 1
+        subseq.reverse()
+        return subseq'''
