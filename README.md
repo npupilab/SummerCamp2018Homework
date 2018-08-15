@@ -96,5 +96,5 @@ bash ../scripts/Evaluate.sh -e .. tool/linux 赵勇
 | slam/camera | D | D | D | D | D | D | D | D | D | D | D |
 | slam/liegroup | D | D | D | D | D | D | D | D | D | D | D |
 | slam/opt_linear | [D](slam/opt_linear/evaluation/none.md) | [D](slam/opt_linear/evaluation/none.md) | [S,5](slam/opt_linear/赵勇) | [D](slam/opt_linear/evaluation/none.md) | [D](slam/opt_linear/evaluation/none.md) | [D](slam/opt_linear/evaluation/none.md) | [D](slam/opt_linear/evaluation/none.md) | [D](slam/opt_linear/evaluation/none.md) | [D](slam/opt_linear/evaluation/none.md) | [D](slam/opt_linear/evaluation/none.md) | [D](slam/opt_linear/evaluation/none.md) |
-| slam/initialize | D | D | D | D | D | D | D | D | D | D | D |
+| slam/initialize | [D](slam/initialize/evaluation/none.md) | [D](slam/initialize/evaluation/none.md) | [D](slam/initialize/evaluation/none.md) | [D](slam/initialize/evaluation/none.md) | [D](slam/initialize/evaluation/none.md) | [D](slam/initialize/evaluation/none.md) | [D](slam/initialize/evaluation/none.md) | [D](slam/initialize/evaluation/none.md) | [D](slam/initialize/evaluation/none.md) | [D](slam/initialize/evaluation/none.md) | [D](slam/initialize/evaluation/none.md) |
 | ai/rg_lg | D | D | D | D | D | D | D | D | D | D | D |
