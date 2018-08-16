@@ -35,7 +35,7 @@ summercamp::GeometryPtr summercamp::Geometry::create() {
   return summercamp::GeometryPtr(new GeometryImpl());
 }
 
-summercamp::GeometryPtr GeometryImpl::create(){
+summercamp::GeometryPtr GeometryImpl::create() {
   return summercamp::GeometryPtr(new GeometryImpl());
 }
 
@@ -108,14 +108,15 @@ GSLAM::Point3d GeometryImpl::transform(double *H,
 GSLAM::Point3d GeometryImpl::epipolarLine(GSLAM::Camera cam1, GSLAM::SE3 pose1,
                                           GSLAM::Camera cam2, GSLAM::SE3 pose2,
                                           GSLAM::Point2d point1) const {
-        //cam2 is Identity
-        // [t]_x is skew-symmetric matrix 
-        // (K_1^{-1}p_1)^TR^T[T]_xK_2^{-1}p_2 = 0
-        //GSLAM::SE3 trans21=pose2.inverse()*pose1;
-        //GSLAM::Point3d line=trans21.get_translation().cross(trans21.get_rotation()*cam1.UnProject(point1));
-        //return line;
-        GSLAM::SE3 trans21=pose2.inverse()*pose1;
-        auto l=trans21.get_translation().cross(trans21.get_rotation()*cam1.UnProject(point1));
-        return l;
-        //FIXME
+  GSLAM::SE3 trans21 = pose2.inverse() * pose1;
+  auto l = trans21.get_translation().cross(trans21.get_rotation() *
+                                           cam1.UnProject(point1));
+  std::vector<double> param = cam2.getParameters();
+  double f_x = param[2], f_y = param[3], c_x = param[4], c_y = param[5];
+  double l_x = l[0], l_y = l[1], l_z = l[2];
+  double line_x = l_x / f_x;
+  double line_y = l_y / f_y;
+  double line_z = l_z - (c_x / f_x * l_x + c_y / f_y * l_y);
+  return GSLAM::Point3d(line_x, line_y, line_z);
 }
+
