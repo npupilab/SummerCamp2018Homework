@@ -54,7 +54,7 @@ public:
     virtual std::string type()const{return "Student";}
     virtual std::string introduction()const{
         return type()+"[name:"+_name+", age:"
-                +std::to_string(age())+",manager:"+managerName+",school:"+school()+"]";
+                +std::to_string(age())+", manager:"+managerName+", school:"+school()+"]";
     }
     virtual const std::string& getSchoolName()const {return _school;}
     operator std::string()const{return introduction();}
