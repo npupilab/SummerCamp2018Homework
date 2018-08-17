@@ -48,6 +48,8 @@ Homework Statistics of SummerCamp2018
 [slam/opt_linear]: ./slam/opt_linear/README.md
 [slam/initialize]: ./slam/initialize/README.md
 [ai/rg_lg]: ./ai/rg_lg/README.md
+[ai/nn]: ./ai/nn/README.md
+[ai/cnn]: ./ai/cnn/README.md
 
 ## 2. Attendance
 
