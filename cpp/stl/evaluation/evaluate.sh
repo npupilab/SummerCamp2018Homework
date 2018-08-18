@@ -31,8 +31,10 @@ fi
 
 output="$($BuildDir/$name/a.out $topic $name $scoreFile)"
 
-if [ -n "$output" ];then
+
+if [ ! -f "$scoreFile" ];then
     echo $output
     echo "[C]($topic/evaluation/run_failed.md)"> "$scoreFile"
     exit 0
 fi
+
