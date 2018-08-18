@@ -2,10 +2,8 @@
 #coding:utf-8
 
 '''
-A logistic regression learning algorithm example using TensorFlow library.
-This example is using the MNIST database of handwritten digits
-(http://yann.lecun.com/exdb/mnist/)
-Author:
+
+Author:tongpinmo
 '''
 
 from __future__ import print_function
@@ -27,31 +25,37 @@ batch_size = 100   # 一次输入的样本
 display_step=1
 
 # set the tf Graph Input & set the model weights
-# 92.8%
+# Accuracy: 0.9831
+
 x=tf.placeholder(dtype=tf.float32,shape=[None,784],name='input_x')
 y=tf.placeholder(dtype=tf.float32,shape=[None,10],name='input_y')
 
 #set layers
-W1=tf.Variable(tf.random_normal([784,200]))
-b1=tf.Variable(tf.random_normal([200]))
+W1=tf.get_variable("W1",shape=[784,512],initializer=tf.contrib.layers.xavier_initializer())
+b1=tf.Variable(tf.random_normal([512]))
 L1=tf.nn.relu(tf.matmul(x,W1)+b1)
 
-W2=tf.Variable(tf.random_normal([200,50]))
-b2=tf.Variable(tf.random_normal([50]))
+W2=tf.get_variable("W2",shape=[512,512],initializer=tf.contrib.layers.xavier_initializer())
+b2=tf.Variable(tf.random_normal([512]))
 L2=tf.nn.relu(tf.matmul(L1,W2)+b2)
 
-W3=tf.Variable(tf.random_normal([50,10]))
-b3=tf.Variable(tf.random_normal([10]))
-L3=tf.matmul(L2,W3)+b3 #
-pred=tf.nn.softmax(L3)
+W3=tf.get_variable("W3",shape=[512,512],initializer=tf.contrib.layers.xavier_initializer())
+b3=tf.Variable(tf.random_normal([512]))
+L3=tf.nn.relu(tf.matmul(L2,W3)+b3) #
+
+W4=tf.get_variable("W4",shape=[512,512],initializer=tf.contrib.layers.xavier_initializer())
+b4=tf.Variable(tf.random_normal([512]))
+L4=tf.nn.relu(tf.matmul(L3,W4)+b4)
+
+W5=tf.get_variable("W5",shape=[512,10],initializer=tf.contrib.layers.xavier_initializer())
+b5=tf.Variable(tf.random_normal([10]))
+pred=tf.matmul(L4,W5)+b5
+
 
 # Construct the model
-# TO DO
-
-print(pred.shape)
 # Minimize error using cross entropy & set the gradient descent
 # tf.nn.softmax_cross_entropy_with_logits(logits=L3,labels=y)求出来的是一个vector,n_sample*10,求平均变成一个数；
-cost=tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=L3,labels=y))
+cost=tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=pred,labels=y))
 # cost=tf.reduce_mean(-tf.reduce_sum(y*tf.log(pred),reduction_indices=1)) #交叉熵，reducion_indices=1横向求和
 optimizer=tf.train.AdamOptimizer(learning_rate).minimize(cost)
 
@@ -82,7 +86,7 @@ with tf.Session() as sess:
         if (epoch+1) % display_step == 0:
             print("Epoch:", '%04d' % (epoch+1), "cost=", "{:.9f}".format(avg_cost))
 
-    print("Optimization Finished!")
+    print("Learning Finished!")
 
     # Test model
     correct_prediction = tf.equal(tf.argmax(pred, 1), tf.argmax(y, 1))
