@@ -12,6 +12,6 @@ if(NOT USER_NAME)
     set(USER_NAME 赵勇)
 endif()
 
-pi_add_target(Initializer BIN main.cpp ../${USER_NAME} REQUIRED GSLAM Eigen3 System)
+pi_add_target(Initializer BIN main.cpp ../${USER_NAME} REQUIRED GSLAM Eigen3 OpenCV System)
 pi_report_target()
 pi_install(TARGETS Initializer)
