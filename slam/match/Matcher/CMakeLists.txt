@@ -12,6 +12,6 @@ if(NOT USER_NAME)
     set(USER_NAME 赵勇)
 endif()
 
-pi_add_target(Matcher BIN src ../${USER_NAME} REQUIRED GSLAM OpenCV OpenGL GLEW GLUT System)
+pi_add_target(Matcher BIN src ../${USER_NAME} REQUIRED GSLAM OpenCV GLEW GLUT OpenGL System DEPENDENCY -lX11)
 pi_report_target()
 pi_install(TARGETS Matcher)
