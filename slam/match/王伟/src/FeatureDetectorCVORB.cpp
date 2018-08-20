@@ -1,4 +1,3 @@
-#ifdef HAS_OPENCV
 #include <vector>
 #include <list>
 #include <opencv2/core/core.hpp>
@@ -23,27 +22,6 @@ public:
                   *(std::vector<cv::KeyPoint>*)&keypoints,desc,
                   useProvidedKeypoints);
         descriptors=desc;
-//        cv::Mat img_1 = image;
-//        std::vector<cv::KeyPoint> keypoints_1;
-//        cv::Mat descriptors_1;
-
-//        cv::Ptr<cv::FeatureDetector> dect = cv::FeatureDetector::create("SIFT");
-//        dect->detect ( img_1, keypoints_1 );
-//        std::cout << 1 << std::endl;
-//        cv::Ptr<cv::DescriptorExtractor> descriptor = cv::DescriptorExtractor::create("SIFT");
-//        std::cout << 2 << std::endl;
-//        descriptor->compute ( img_1, keypoints_1, descriptors_1 );
-
-//        for(int i=0; i<keypoints_1.size(); ++i) {
-//            keypoints.push_back(GSLAM::KeyPoint(keypoints_1[i].pt.x,
-//                                                keypoints_1[i].pt.y,
-//                                                keypoints_1[i].size,
-//                                                keypoints_1[i].angle,
-//                                                keypoints_1[i].response,
-//                                                keypoints_1[i].octave,
-//                                                keypoints_1[i].class_id));
-//        }
-//        descriptors = descriptors_1;
 
     }
 };
@@ -52,5 +30,3 @@ public:
 
 REGISTER_FEATUREDETECTOR(FeatureDetectorCVORB,CVORB);
 
-
-#endif
