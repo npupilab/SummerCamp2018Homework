@@ -17,9 +17,10 @@ src/uav
 *.pro.user*
 cmake-build-debug
 .idea
+.DS_Store
 CMakeLists.txt.user
 ThirdParty/g2o/build
 ThirdParty/g2o/lib
 ThirdParty/PIL-1.1.0
 ThirdParty/PIL2
-.DS_Store
+venv

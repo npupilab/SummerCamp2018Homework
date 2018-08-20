@@ -1,5 +1,13 @@
-from huboni_package.data_analysis import DataAnalysis
-import sys
+#!/usr/bin/python2.7
+# -*- coding:utf-8 -*-
+import sys 
+
+reload(sys)
+sys.setdefaultencoding('utf8')
+
+
+from person_package.data_analysis import DataAnalysis
+
 
 filename = 'data.txt'
 
