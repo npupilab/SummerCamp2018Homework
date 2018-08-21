@@ -94,9 +94,36 @@ InitializerSVD::InitializerSVD(float sigma , int iterations)
     mMaxIterations = iterations;
 }
 
-bool InitializerSVD::initialize(const std::vector<std::pair<GSLAM::Point2f, GSLAM::Point2f> > &matches,
+bool InitializerSVD::initialize(const std::vector<std::pair<GSLAM::Point2f, GSLAM::Point2f> > &matchesTmp,
                                 const GSLAM::Camera &camera, GSLAM::SE3 &t12, std::vector<std::pair<int, GSLAM::Point3d> > &mpts)
 {
+    std::vector<std::pair<GSLAM::Point2f, GSLAM::Point2f> > matches;
+    if(camera.isValid())
+    {
+        auto paras=camera.getParameters();
+        if(camera.CameraType()=="PinHole")
+        {
+            cv::Mat k=cv::Mat::eye(3,3,CV_32F);
+            k.at<float>(0,0)=paras[2];
+            k.at<float>(1,1)=paras[3];
+            k.at<float>(0,2)=paras[4];
+            k.at<float>(1,2)=paras[5];
+            k.copyTo(mK);
+
+            float sigma=5.;
+            mSigma = sigma;
+            mSigma2 = sigma*sigma;
+            matches=matchesTmp;
+        }
+        else{
+            for(auto m:matchesTmp){
+                auto pt1=camera.UnProject(m.first);
+                auto pt2=camera.UnProject(m.second);
+                matches.push_back(make_pair(Point2f(pt1.x,pt1.y),Point2f(pt2.x,pt2.y)));
+            }
+        }
+    }
+    else matches=matchesTmp;
 
     mvPn1.clear();
     mvPn2.clear();
@@ -163,7 +190,7 @@ bool InitializerSVD::initialize(const std::vector<std::pair<GSLAM::Point2f, GSLA
 
     // Compute ratio of scores
     float RH = SH/(SH+SF);
-    DLOG(INFO)<<"SH:"<<SH<<",SF:"<<SF;
+//    DLOG(INFO)<<"SH:"<<SH<<",SF:"<<SF;
 
     // Try to reconstruct from homography or fundamental depending on the ratio (0.40-0.45)
     if(RH>0.40)
@@ -563,6 +590,7 @@ bool InitializerSVD::ReconstructF(vector<bool> &vbMatchesInliers, cv::Mat &F21, 
             N++;
 
     // Compute Essential Matrix from Fundamental Matrix
+    F21.convertTo(F21,K.type());
     cv::Mat E21 = K.t()*F21*K;
 
     cv::Mat R1, R2, t;
