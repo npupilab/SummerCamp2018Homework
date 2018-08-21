@@ -29,6 +29,7 @@ Homework Statistics of SummerCamp2018
 | [slam/initialize]| 单目初始化 |
 | [ai/rg_lg]| 线性回归以及逻辑斯特回归 |
 | [slam/opt_nolinear]| 使用LM算法实现PnP |
+| [slam/tracking]| 实现一个简单SLAM插件 |
 
 [tool/linux]: ./tool/linux/README.md
 [tool/git]: ./tool/git/README.md
@@ -52,6 +53,7 @@ Homework Statistics of SummerCamp2018
 [ai/nn]: ./ai/nn/README.md
 [ai/cnn]: ./ai/cnn/README.md
 [slam/opt_nolinear]: ./slam/opt_nolinear/README.md
+[slam/tracking]: ./slam/tracking/README.md
 
 ## 2. Attendance
 
