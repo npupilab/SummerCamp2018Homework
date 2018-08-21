@@ -103,7 +103,7 @@ _huboni_
 #### 下划线
 <u>下划线</u>
 ###  插入图片
-![](/home/hu/Pictures/thumb.jpg)
+![](/home/Pictures/01.jpg)
 ### 一些高级功能
 + 添加选项
 - [ ] c++
