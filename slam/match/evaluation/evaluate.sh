@@ -34,3 +34,9 @@ if [ ! -f "$BuildDir/Matcher" ];then
 fi
 
 $BuildDir/Matcher conf=$topicFolder/Matcher/Default.cfg -Name=$name ScoreFile=$scoreFile
+
+
+if [ ! -f "$scoreFile" ];then
+    echo "[C]($topic/evaluation/run_failed.md)"> "$scoreFile"
+    exit 0
+fi
