@@ -41,10 +41,12 @@ int main(int argc,char** argv){
     if(!topicFolder.empty())
     {
         svar.ParseFile(topicFolder+"/"+name+"/Default.cfg");
+        std::cout << name << std::endl;
     }
 
     std::string  featType=svar.GetString("FeatureDetector","Default");
     std::string  matcherType=svar.GetString("Matcher","Default");
+    std::cout << matcherType << std::endl;
     FeatureDetectorPtr featureDetector=FeatureDetector::create(featType);
     MatcherPtr         matcher=Matcher::create(matcherType);
 
@@ -81,10 +83,12 @@ int main(int argc,char** argv){
     if(!matcher->match4initialize(frame1,frame2,matches)) return Return(6);
     double time=tic.Tac();
 
+    std::cout << matches.size() <<std::endl;
+
     if(matches.size()<50) return Return(7);
     svar.GetInt("MatchesNum")=matches.size();
 
-    std::string img2save=svar.GetString("Image2Save","");
+    std::string img2save=svar.GetString("Image2Save","./a.png");
     if(img2save.empty()||svar.GetInt("ShowImage"))
     {
         cv::Mat imgshow=image1;
@@ -98,13 +102,15 @@ int main(int argc,char** argv){
         cv::putText(imgshow,"ProcessTime:"+std::to_string(time)+
                     ",Matches:"+std::to_string(matches.size())
                     ,cv::Point(50,50),0,1.,cv::Scalar(0,0,255),2);
-        if(svar.GetInt("ShowImage"))
-        {
-            cv::imshow("match",imgshow);
-            cv::waitKey(0);
+//        if(svar.GetInt("ShowImage"))
+//        {
+//            cv::imshow("match",imgshow);
+//            cv::waitKey(0);
+//        }
+        std::cout << img2save.size() << std::endl;
+        if(img2save.size()) {
+            cv::imwrite(img2save, imgshow);
         }
-        if(img2save.size())
-            cv::imwrite(img2save,imgshow);
     }
 
     return Return(0);

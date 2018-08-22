@@ -6,7 +6,8 @@ class Matcher
 public:
     virtual ~Matcher(){}
     virtual bool match4initialize(const GSLAM::FramePtr& lastKF,const GSLAM::FramePtr& curFrame,
-                                  std::vector<std::pair<int,int> >& matches)const {return false;}
+                                  std::vector<std::pair<int,int> >& matches)const {
+        return false;}
 
     virtual bool match4triangulation(const GSLAM::FramePtr& ref,const GSLAM::FramePtr& cur,
                                      std::vector<std::pair<int,int> >& matches)const {return false;}
