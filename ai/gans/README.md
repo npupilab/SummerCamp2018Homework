@@ -1,0 +1,3 @@
+# Exercise of gans
+在gan.py文件中补充生成网络generator和discriminator的网络定义，以及针对于两个网络的loss function的定义。
+然后根据训练得到的generator网络，输入随机噪音自动生成mnist手写数据，要求该生成的数据人肉眼可以正常识别。
