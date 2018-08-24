@@ -57,7 +57,7 @@ Homework Statistics of SummerCamp2018
 |8月21日 |[slam/opt_nolinear]          |[ai/GANs] 童品模 ||
 |8月22日 |[slam/tracking]              |[ai/Reinforcement learning] 李清      ||
 |8月23日 |[slam/mapping] 张咪          | [ai/object detection] 冷鹏宇 ||
-|8月24日 |[slam/loopdetect],[slam/posegraph]   |[ai/cuda,op,tips etc] 韩鹏程 ||
+|8月24日 |[slam/loopdetect],[slam/posegraph]   |[ai/cuda] 韩鹏程 ||
 |8月25日 |      刘国晨                 |    童品模                 ||
 
 [tool/linux]: ./tool/linux/README.md
