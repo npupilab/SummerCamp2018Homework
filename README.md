@@ -54,6 +54,8 @@ Homework Statistics of SummerCamp2018
 [ai/cnn]: ./ai/cnn/README.md
 [slam/opt_nolinear]: ./slam/opt_nolinear/README.md
 [slam/tracking]: ./slam/tracking/README.md
+[ai/unsupervised_learning]: ./ai/unsupervised_learning/README.md
+[ai/gans]: ./ai/gans/README.md
 
 ## 2. Attendance
 
