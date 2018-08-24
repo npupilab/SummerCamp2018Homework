@@ -30,6 +30,10 @@ Homework Statistics of SummerCamp2018
 | [ai/rg_lg]| 线性回归以及逻辑斯特回归 |
 | [slam/opt_nolinear]| 使用LM算法实现PnP |
 | [slam/tracking]| 实现一个简单SLAM插件 |
+| [ai/nn]| 多层网络 |
+| [ai/cnn]| 卷及神经网络 |
+| [ai/unsupervised_learning]| 无监督学习 |
+| [ai/gans]| 生成对抗网络 |
 
 [tool/linux]: ./tool/linux/README.md
 [tool/git]: ./tool/git/README.md
