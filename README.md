@@ -5,7 +5,35 @@
 Homework Statistics of SummerCamp2018
 
 
-## 1. Homework List
+## 1. Arragements
+
+### 1.1. 时间安排
+
+|日期|上午(09：00 - 12：00)|下午( 14：30 - 17：30)|晚上(19：00 - 22：00)|
+|---|:---|:---|:---|
+|8月6日  |[tool/linux]       |[tool/git]           ||
+|8月7日  |[python/hellopython]|[cpp/helloc]        ||
+|8月8日  |[python/more]      |[cpp/hellocpp]       ||
+|8月9日  |[python/module]    |[cpp/stl]            ||
+|8月10日  |[tool/latex], [tool/markdown] |[tool/cmake]||
+|8月11日  |[cpp/cpp11]        |[cpp/style]          ||
+|||||
+|8月13日  |[slam/summary]     |[ai/summary]         ||
+|8月14日  |[slam/geo2d3d]     |[ai/reg], [ai/cla]         ||
+|8月15日  |[slam/match]       |[ai/nn],[ai/bp],[ai/cnn]       ||
+|8月16日 |[slam/camera] 刘国晨         |[ai/deep structure]  ||
+|8月17日 |[slam/liegroup] 徐磊         |[ai/optimization]    ||
+|8月18日 |[slam/opt_linear] 程宇琪     |[ai/generalization]  ||
+|||||
+|8月20日 |[slam/initialize] 程诚       |[ai/unsupervised learning] 胡博妮     ||
+|8月21日 |[slam/opt_nolinear]          |[ai/GANs] 童品模 ||
+|8月22日 |[slam/tracking]              |[ai/Reinforcement learning] 李清      ||
+|8月23日 |[slam/mapping] 张咪          | [ai/object detection] 冷鹏宇 ||
+|8月24日 |[slam/loopdetect],[slam/posegraph]   |[ai/cuda] 韩鹏程 ||
+|8月25日 |      刘国晨                 |    童品模                 ||
+
+
+### 1.2. Homework List
 
 | Topic | Description |
 | :---: | :---------: |
@@ -36,30 +64,6 @@ Homework Statistics of SummerCamp2018
 | [ai/gans]| 生成对抗网络 |
 
 
-### 时间安排
-
-|日期|上午(09：00 - 12：00)|下午( 14：30 - 17：30)|晚上(19：00 - 22：00)|
-|---|:---|:---|:---|
-|8月6日  |[tool/linux]       |[tool/git]           ||
-|8月7日  |[python/hellopython]|[cpp/helloc]        ||
-|8月8日  |[python/more]      |[cpp/hellocpp]       ||
-|8月9日  |[python/module]    |[cpp/stl]            ||
-|8月10日  |[tool/latex], [tool/markdown] |[tool/cmake]||
-|8月11日  |[cpp/cpp11]        |[cpp/style]          ||
-|||||
-|8月13日  |[slam/summary]     |[ai/summary]         ||
-|8月14日  |[slam/geo2d3d]     |[ai/reg], [ai/cla]         ||
-|8月15日  |[slam/match]       |[ai/nn],[ai/bp],[ai/cnn]       ||
-|8月16日 |[slam/camera] 刘国晨         |[ai/deep structure]  ||
-|8月17日 |[slam/liegroup] 徐磊         |[ai/optimization]    ||
-|8月18日 |[slam/opt_linear] 程宇琪     |[ai/generalization]  ||
-|||||
-|8月20日 |[slam/initialize] 程诚       |[ai/unsupervised learning] 胡博妮     ||
-|8月21日 |[slam/opt_nolinear]          |[ai/GANs] 童品模 ||
-|8月22日 |[slam/tracking]              |[ai/Reinforcement learning] 李清      ||
-|8月23日 |[slam/mapping] 张咪          | [ai/object detection] 冷鹏宇 ||
-|8月24日 |[slam/loopdetect],[slam/posegraph]   |[ai/cuda] 韩鹏程 ||
-|8月25日 |      刘国晨                 |    童品模                 ||
 
 [tool/linux]: ./tool/linux/README.md
 [tool/git]: ./tool/git/README.md
@@ -87,7 +91,7 @@ Homework Statistics of SummerCamp2018
 [ai/unsupervised_learning]: ./ai/unsupervised_learning/README.md
 [ai/gans]: ./ai/gans/README.md
 
-## 2. Attendance
+### 1.3. Attendance
 
 | Name | Phone Number | Email | GitHub |
 | :---: | :---------: | :---------: | :---------: |
@@ -105,7 +109,9 @@ Homework Statistics of SummerCamp2018
 
 *注意：每一项都需要填写，姓名部分名字中间不要带空格*
 
-### 测试作业是否通过的方法
+## 2. 作业说明
+
+### 2.1. 测试作业是否通过的方法
 
 ```
 cd SummerCamp2018Homework
