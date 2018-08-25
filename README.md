@@ -55,9 +55,9 @@ Homework Statistics of SummerCamp2018
 | [slam/liegroup]| 刚体运动及其变换 |
 | [slam/opt_linear]| 线性优化及模型鲁棒估计 |
 | [slam/initialize]| 单目初始化 |
-| [ai/rg_lg]| 线性回归以及逻辑斯特回归 |
 | [slam/opt_nolinear]| 使用LM算法实现PnP |
 | [slam/tracking]| 实现一个简单SLAM插件 |
+| [ai/rg_lg]| 线性回归以及逻辑斯特回归 |
 | [ai/nn]| 多层网络 |
 | [ai/cnn]| 卷及神经网络 |
 | [ai/unsupervised_learning]| 无监督学习 |
@@ -67,14 +67,14 @@ Homework Statistics of SummerCamp2018
 
 [tool/linux]: ./tool/linux/README.md
 [tool/git]: ./tool/git/README.md
-[cpp/helloc]: ./cpp/helloc/README.md
-[python/hellopython]: ./python/hellopython/README.md
-[cpp/hellocpp]: ./cpp/hellocpp/README.md
-[python/more]: ./python/more/README.md
-[cpp/stl]: ./cpp/stl/README.md
-[python/module]: ./python/module/README.md
 [tool/markdown]: ./tool/markdown/README.md
 [tool/cmake]: ./tool/cmake/README.md
+[python/hellopython]: ./python/hellopython/README.md
+[python/more]: ./python/more/README.md
+[python/module]: ./python/module/README.md
+[cpp/helloc]: ./cpp/helloc/README.md
+[cpp/hellocpp]: ./cpp/hellocpp/README.md
+[cpp/stl]: ./cpp/stl/README.md
 [cpp/cpp11]: ./cpp/cpp11/README.md
 [cpp/style]: ./cpp/style/README.md
 [slam/geo2d3d]: ./slam/geo2d3d/README.md
@@ -83,11 +83,11 @@ Homework Statistics of SummerCamp2018
 [slam/liegroup]: ./slam/liegroup/README.md
 [slam/opt_linear]: ./slam/opt_linear/README.md
 [slam/initialize]: ./slam/initialize/README.md
+[slam/opt_nolinear]: ./slam/opt_nolinear/README.md
+[slam/tracking]: ./slam/tracking/README.md
 [ai/rg_lg]: ./ai/rg_lg/README.md
 [ai/nn]: ./ai/nn/README.md
 [ai/cnn]: ./ai/cnn/README.md
-[slam/opt_nolinear]: ./slam/opt_nolinear/README.md
-[slam/tracking]: ./slam/tracking/README.md
 [ai/unsupervised_learning]: ./ai/unsupervised_learning/README.md
 [ai/gans]: ./ai/gans/README.md
 
