@@ -18,7 +18,10 @@ public:
     // P_w=T_wc*P_c
     static Matrix4d lookAt(Vector3d translation, // this means the position of the camera
                             Vector3d lookAtPoint, // this means the z axis direction
-                            Vector3d up);         // this means the -y axis direction
+                            Vector3d up)          // this means the -y axis direction
+{
+    return Matrix4d();
+}
 
     // Coordinates: IMU, Camera, World
     // T_cw : world to left camera
