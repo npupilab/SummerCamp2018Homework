@@ -1,18 +1,34 @@
+# Exercise of slam/liegroup
+
+请完善src/LieGroup.h，实现类函数并通过测试,提交LieGroup.h到作业文件夹．
+
+
+## 接口说明
+
+需要实现：
+1. 已知相机位置，相机ｚ朝向，－ｙ轴朝向，求相机到世界坐标系变换
+2. 坐标系间转换练习
+3. 旋转矩阵的log,exp
+4. SE3的log,exp
+5. R*p及T*p李代数求导
+
+```
 #ifndef SUMMERCAMP_LIEGROUP_H
 #define SUMMERCAMP_LIEGROUP_H
 
 #include <Eigen/Dense>
+#include <GSLAM/core/GSLAM.h>
 
 namespace summercamp {
 
 class LieGroup{
 public:
     typedef Eigen::Vector3d Vector3d;
-    typedef Eigen::Matrix<double,6,1> Vector6d;
+    typedef Eigen::Matrix<6,1,double> Vector6d;
     typedef Eigen::Matrix3d Matrix3d;
-    typedef Eigen::Matrix<double,3,4> Matrix34d;
-    typedef Eigen::Matrix<double,4,4> Matrix4d;
-    typedef Eigen::Matrix<double,3,6> Matrix36d;
+    typedef Eigen::Matrix<3,4,double> Matrix34d;
+    typedef Eigen::Matrix<4,4,double> Matrix4d;
+    typedef Eigen::Matrix<3,6,double> Matrix36d;
 
     // Please return the camera to world transformation T_wc
     // P_w=T_wc*P_c
@@ -53,3 +69,5 @@ public:
 
 }
 #endif
+
+```
