@@ -2,10 +2,11 @@
 
 class Initializer
 {
+public:
     typedef GSLAM::Point3d Point3d;
     typedef GSLAM::Point2d Point2d;
     typedef GSLAM::Point2f Point2f;
-public:
+
     virtual ~Initializer(){}
     virtual bool initialize(const std::vector<std::pair<GSLAM::Point2f,GSLAM::Point2f> >& matches,
                             const GSLAM::Camera& camera,

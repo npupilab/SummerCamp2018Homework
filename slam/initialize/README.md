@@ -1,6 +1,6 @@
 # Exercise of slam/initialize
 
-请参考ORBSLAM或DIYSLAM等实现，完成Initializer的一个实现并编译测试通过，其中实现只允许依赖GSLAM与Eigen3.
+请参考ORBSLAM或DIYSLAM等实现，完成Initializer的一个实现并编译测试通过，其中实现建议只依赖GSLAM与Eigen3，实在有困难的可以依赖OpenCV.
 
 *注意需要使用REGISTER_INITIALIZER注册实现，其中第一个参数为自己定义的实现类名，第二个参数是注册名请使用default*
 

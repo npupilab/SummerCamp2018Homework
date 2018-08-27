@@ -81,7 +81,7 @@ evaluate() ## do evaluation
   INPUTFILE=$1/README.md
   OUTPUTFILE=$Call_Path/README.md
 
-  TopicReg='\| *\[([^ ]+)\] *\|'
+  TopicReg='\[([a-zA-Z0-9/_]+)\]:[ ]([\.a-zA-Z0-9_/]+)'
   NameReg='\|[ ]*([^ ]+)[ ]*\|[ ]*[0-9]+'
   while read line
     do  
