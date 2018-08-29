@@ -2,7 +2,7 @@
 # -*_ coding:utf-8 -*-
 
 '''
-A logistic regression learning algorithm example using TensorFlow library.
+A neural_neywork learning algorithm example using TensorFlow library.
 This example is using the MNIST database of handwritten digits
 (http://yann.lecun.com/exdb/mnist/)
 Author:
