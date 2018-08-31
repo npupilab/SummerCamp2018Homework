@@ -13,8 +13,8 @@ class DataAnalysis(object):
         self.sequence = lines[1].strip().split(' ')
         self.sequence = [int(i) for i in self.sequence]
 
-        self.x = lines[3].strip().split(',')
-        self.y = lines[4].strip().split(',')
+        self.x = map(float, lines[3].strip().split(','))
+        self.y = map(float, lines[4].strip().split(','))
 
 
 
