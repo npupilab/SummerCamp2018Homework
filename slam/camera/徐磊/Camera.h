@@ -59,7 +59,7 @@ CameraOpenCV::Point3d CameraOpenCV::UnProject(const Point2d &p2d) const
 
    //简单迭代法x_n=f(x_{n-1})
    //取畸变后的二维点坐标作为初始值，求畸变前的二维点坐标
-   //详细推导见
+   //详细推导见https://github.com/JiaoYanMoGu/research_note/blob/master/OpenCV%E7%9B%B8%E6%9C%BA%E7%95%B8%E5%8F%98%E4%B8%8E%E5%8E%BB%E7%95%B8%E5%8F%98.md
    double x_n = x_d;
    double y_n = y_d;
    double x_n_new,y_n_new;
