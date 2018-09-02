@@ -4,9 +4,9 @@
 
 TEMPLATE = app
 TARGET = src
-INCLUDEPATH += .
+INCLUDEPATH += . /usr/include/eigen3
 
-QMAKE_CXXFLAGS+=-std=c++11
+QMAKE_CXXFLAGS+=-std=c++11 -O3
 # Input
 HEADERS += Array.h Point.h Random.h SO3.h Timer.h
 SOURCES += main.cpp

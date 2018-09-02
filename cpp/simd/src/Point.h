@@ -116,6 +116,8 @@ typedef Point2_<int>    Point2i;
 template <class Precision>
 struct Point3_
 {
+    EIGEN_ALIGN16
+
     Point3_():x(0),y(0),z(0){}
 
     Point3_(Precision x_,Precision y_,Precision z_):x(x_),y(y_),z(z_){}
