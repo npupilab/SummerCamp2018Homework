@@ -106,6 +106,7 @@ Homework Statistics of SummerCamp2018
 | 徐磊 | 15934848660 | 1224830613@qq.com | https://github.com/JiaoYanMoGu |
 | 刘国晨 | 15929913702 | 353184965@qq.com | https://github.com/trygas |
 | 程宇琪 | 15929723457 | 420985011@qq.com | https://github.com/crischeng |
+| chenlin | 18829566607 | 444267416@qq.com | https://github.com/npu-chenlin |
 
 *注意：每一项都需要填写，姓名部分名字中间不要带空格*
 
