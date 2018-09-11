@@ -18,7 +18,7 @@ Homework Statistics of SummerCamp2018
 |8月10日 |[tool/latex], [tool/markdown] |[tool/cmake]||
 |8月11日 |[cpp/cpp11] |[cpp/style] ||
 |||||
-|8月13日 |[slam/summary] |[ai/summary] ||
+|8月13日 |[slam/summary] |[ai/summary] ||		
 |8月14日 |[slam/geo2d3d] |[ai/reg], [ai/cla] ||
 |8月15日 |[slam/match] |[ai/nn],[ai/bp],[ai/cnn] ||
 |8月16日 |[slam/camera] 刘国晨 |[ai/deep structure] ||
@@ -106,6 +106,7 @@ Homework Statistics of SummerCamp2018
 | 徐磊 | 15934848660 | 1224830613@qq.com | https://github.com/JiaoYanMoGu |
 | 刘国晨 | 15929913702 | 353184965@qq.com | https://github.com/trygas |
 | 程宇琪 | 15929723457 | 420985011@qq.com | https://github.com/crischeng |
+| 李随城 | 18829572039 | 1099186831@qq.com | https://github.com/fengcheng1997 |
 
 *注意：每一项都需要填写，姓名部分名字中间不要带空格*
 
