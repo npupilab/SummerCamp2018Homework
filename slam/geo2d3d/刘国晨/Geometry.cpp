@@ -41,13 +41,12 @@ public:
                                      const GSLAM::Point2d& translation,
                                      const GSLAM::Point2d& point) const
     {
-        double a11 = cos(theta), a12 = -sin(theta), a13 = translation.x;
-        double a21 = sin(theta), a22 =  cos(theta), a23 = translation.y;
-        double a31 = 1,          a32 = 1,           a33 = 1            ;
+        double a11 = scale * cos(theta), a12 = scale * -sin(theta), a13 = translation.x;
+        double a21 = scale * sin(theta), a22 = scale *  cos(theta), a23 = translation.y;
+        double a31 = 1,                  a32 = 1,                   a33 = 1            ;
 
-        double z = point.x + point.y;
-        double x = (a11 * point.x + a12 * point.y + a13) / z;
-        double y = (a21 * point.x + a22 * point.y + a23) / z;
+        double x = (a11 * point.x + a12 * point.y + a13);
+        double y = (a21 * point.x + a22 * point.y + a23);
         return GSLAM::Point2d(x, y);
     }
 
@@ -68,6 +67,22 @@ public:
         double w = H[12] * pt.x + H[13] * pt.y + H[14] * pt.z + H[15];
 
         return GSLAM::Point3d(x / w, y / w, z / w);
+    }
+
+    GSLAM::Point3d epipolarLine(GSLAM::Camera  cam1, GSLAM::SE3 pose1,
+            GSLAM::Camera  cam2, GSLAM::SE3 pose2,
+            GSLAM::Point2d point1) const
+    {
+        GSLAM::SE3 trans21 = pose2.inverse() * pose1;
+        auto l = trans21.get_translation().cross(trans21.get_rotation() * cam1.UnProject(point1));
+
+        std::vector<double> param = cam2.getParameters();
+        double f_x = param[2], f_y = param[3], c_x = param[4], c_y = param[5];
+        double l_x = l[0], l_y = l[1], l_z = l[2];
+        double line_x = l_x / f_x;
+        double line_y = l_y / f_y;
+        double line_z = l_z - (c_x / f_x * l_x + c_y / f_y * l_y);
+        return GSLAM::Point3d(line_x, line_y, line_z);
     }
 };
 
