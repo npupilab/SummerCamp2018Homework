@@ -1,13 +1,13 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # -*- coding:utf8 -*-
 import matplotlib.pyplot as plt
 from matplotlib.pyplot import savefig
-
+import copy
 
 class DataAnalysis(object):
     def __init__(self, filename):
 
-        with open(filename ,'r',encoding='UTF-8') as f:
+        with open(filename ,'r') as f:
             lines = f.readlines()
         self.seq=[int(i) for i in lines[1].strip().split(' ')]
         self.x=[float(i) for i in lines[3][2:].strip().split(',')]
@@ -15,7 +15,7 @@ class DataAnalysis(object):
 
     def findMaxSubSequence(self):
         subseq=[]
-        X_list=self.seq.copy()
+        X_list=copy.copy(self.seq)
         X_list.sort()
         n=len(X_list)
         Max_lists=[[0]*(n+1) for i in range(n+1)]
