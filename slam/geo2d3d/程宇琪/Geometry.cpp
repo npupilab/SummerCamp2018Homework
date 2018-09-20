@@ -65,9 +65,15 @@ public:
                                         GSLAM::Camera  cam2, GSLAM::SE3 pose2,
                                         GSLAM::Point2d point1) const
     {
-        GSLAM::Point2d pt1=cam2.Project(pose2.inverse()*pose1*cam1.UnProject(point1));
-        GSLAM::Point2d pt2=cam2.Project(pose2.inverse()*pose1*(cam1.UnProject(point1)*10));
-        return line(GSLAM::Point3d(pt1.x,pt1.y,1),GSLAM::Point3d(pt2.x,pt2.y,1));
+        GSLAM::SE3 trans21 = pose2.inverse()* pose1;
+        auto l = trans21.get_translation().cross(trans21.get_rotation() *
+                                                         cam1.UnProject(point1));
+        std::vector<double> camera = cam2.getParameters();
+        double fx = camera[2], fy = camera[3], cx = camera[4], cy = camera[5];
+        double lx = l[0] / fx;
+        double ly = l[1] / fy;
+        double lz = l[2] - (cx / fx * l[0] + cy / fy * l[1]);
+        return GSLAM::Point3d(lx, ly, lz);
     }
 
 };

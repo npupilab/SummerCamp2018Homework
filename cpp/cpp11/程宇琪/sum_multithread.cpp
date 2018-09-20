@@ -14,7 +14,7 @@ void partsum( int no,int thread_nums, const std::vector<int>& nums, int& part_su
         part_sum+=nums[i];
 }
 
-int mergesum(int n,const int* nums)
+int mergesum(int n,const std::vector<int> nums)
 {
     int sum=0;
     for(int i =0; i<n; i++)
@@ -26,7 +26,7 @@ int sum_multithread(const std::vector<int>& nums)
 {
     int thread_num=std::thread::hardware_concurrency();
     int sum=0;//总和
-    int part_sum[thread_num] = {0};
+    std::vector<int> part_sum(thread_num,0) ;
     std::vector<std::thread> workers;
     for(int i = 0; i < thread_num; i++)
     {
