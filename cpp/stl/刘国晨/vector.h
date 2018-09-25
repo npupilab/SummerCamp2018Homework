@@ -1,178 +1,174 @@
 #ifndef _SUMMERCAMP_VECTOR_H
 #define _SUMMERCAMP_VECTOR_H
 #include <vector>
+
 namespace summercamp {
 
 template <typename T>
 class vector
 {
 public:
-    vector<T>():dataPtr_(NULL),size_(0),capacity_(0){}
-    vector<T>(size_t n)
-    {
-        dataPtr_ = new T[n];
-        size_ = n;
-    }
-    vector<T>(size_t n, T init)
-    {
-        dataPtr_ = new T[n](T(init));
-        size_ = size_;
-        capacity_ = n;
-    }
-    vector<T>(const vector<T>& init)
-    {
-        this->dataPtr_ = new T[init.capacity()];
-        this->size_ = init.size();
-        this->capacity_ = init.capacity();
-        for(size_t i = 0; i< size_;i++) dataPtr_[i] = init[i];
-    }
+    vector():m_nSize(0), m_pData(nullptr), m_nMax(0){}// 缺省构造函数
+    vector(int nSize, T dValue):m_nSize(nSize), m_pData(new T[nSize]), m_nMax(nSize){}
+    ~vector(){Free();}
 
-   ~vector<T>()
+    int capacity(){return m_nMax;}
+    int size(){return m_nSize;}
+    bool empty(){return m_nSize?0:1;}
+
+    bool reserve(int capacity)
     {
-        if(dataPtr_!=NULL)
+        if(capacity <= m_nMax)
+           return 1;
+        else if(capacity > m_nMax)
         {
-            delete [] dataPtr_;
-            dataPtr_ =NULL;
-        }
-    }
+            T* newdata = new T[capacity];
 
-
-
-    vector<T> operator =(const vector<T>& other)
-    {
-        if(dataPtr_ != NULL)
-        {
-            delete [] dataPtr_;
-            dataPtr_ =NULL;
-        }
-        if(other.size() == 0)
-        {
-            size_ = 0;
-            capacity_ = 0;
-            dataPtr_ = NULL;
-        }
-        else
-        {
-            size_ = other.size();
-            capacity_ = other.capacity();
-            dataPtr_ = new T[capacity_];
-            for(size_t i =0 ; i< size_; i++) dataPtr_[i] = other[i];
-        }
-        return *this;
-    }
-
-
-
-    T& operator[](size_t index)
-    {
-        return dataPtr_[index];
-    }
-    const T& operator[](size_t index) const
-    {
-        return dataPtr_[index];
-    }
-
-    void resize(size_t n)
-    {
-        if(size_ > n)
-        {
-            size_ = n;
-        }
-        else
-        {
-            capacity_  = 2*n;
-            T *temPtr =  new T[capacity_];
-            for(size_t i=0; i< size_;i++) temPtr[i] = dataPtr_[i];
-            delete[] dataPtr_;
-            dataPtr_ = temPtr;
-            size_ = n;
-        }
-    }
-    void resize(size_t n, T init)
-    {
-        if( n <= size_ )
-        {
-            size_ = n;
-            return ;
-        }
-        else
-        {
-            if(capacity_ < 2*n)
+            for(int i = 0; i < m_nSize; ++i)
             {
-                capacity_  = 2*n;
-                T *temPtr =  new T[capacity_];
-                for(size_t i=0; i< size_;i++) temPtr[i] = dataPtr_[i];
-                for(size_t i=size_; i < n ;i++) temPtr[i] = init;
-                size_ = n;
-                delete[] dataPtr_;
-                dataPtr_ = temPtr;
-            }
-            else
-            {
-              for(size_t i=size_; i < n ;i++) dataPtr_[i] = init;
-              size_ = n;
+                *(newdata+i) = *(m_pData+i);
             }
 
+            delete []m_pData;
+            m_pData = newdata;
+            newdata = nullptr;
+            m_nMax = capacity;
+
+            return 1;
         }
     }
 
-    void reserve(size_t n)
+    bool push_back(T data)
     {
-        if(n > capacity_)
+        if(m_nMax == 0)
         {
-            capacity_ = n;
-            T *tempPtr = new T[capacity_];
-            for(size_t i=0; i< size_;i++) tempPtr[i] = dataPtr_[i];
-            delete[] dataPtr_;
-            dataPtr_ = tempPtr;
+            resize(2);
         }
+
+        else if(m_nSize == m_nMax)
+        {
+            resize(2 * m_nMax);
+        }
+
+        *(m_pData + m_nSize) = data;
+        m_nSize++;
+        return 1;
     }
 
-    void push_back(const T& item)
+    bool resize(int nSize)
     {
-        if(2*size_ > capacity_)
+        T *newdata = new T[nSize];
+
+        if(nSize > m_nSize)
         {
-            capacity_ = 2*size_;
-            size_+=1;
-            T *tempPtr = new T[capacity_];
-            size_t i;
-            for(i=0;i<size_;i++) tempPtr[i] = dataPtr_[i];
-            dataPtr_[i] = item;
+            for(int i = 0; i < m_nSize; i++)
+            {
+                *(newdata+i) = *(m_pData+i);
+            }
+
+            for(int i = m_nSize; i < nSize; i++)
+            {
+                *(newdata+i) = (T)0;
+            }
         }
+
         else
         {
-            dataPtr_[size_] = item;
-            size_+=1;
+            for(int i = 0; i < nSize; i++)
+            {
+                *(newdata+i) = *(m_pData+i);
+            }
+
+            m_nSize = nSize;
+        }
+
+        delete []m_pData;
+        m_pData = newdata;
+        newdata = nullptr;
+        m_nMax = nSize;
+        return 1;
+    }
+
+    bool resize(int nSize, T data)
+    {
+        if(nSize > m_nMax)
+        {
+            T *newdata = new T[nSize];
+
+            for(int i = 0; i < m_nSize; i++)
+            {
+                *(newdata+i) = *(m_pData+i);
+            }
+
+            for(int i = m_nSize; i < nSize; i++)
+            {
+                *(newdata+i) = data;
+            }
+
+            delete []m_pData;
+            m_pData = newdata;
+            newdata = nullptr;
+            m_nMax = nSize;
+        }
+        else if(nSize >= m_nSize)
+        {
+            for(int i = m_nSize; i < nSize; i++)
+            {
+                *(m_pData + i) = data;
+            }
+        }
+        else if(nSize < m_nSize)
+        {
+            for(int i = nSize; i > m_nSize; --i)
+            {
+                delete (m_pData + i);
+            }
+        }
+
+        m_nSize = nSize;
+        return 1;
+    }
+
+    T& operator[] (int nIndex) const // 重载[]操作符，以便像传统数组那样通过a[k]来获取元素值
+    {
+        if(InvalidateIndex(nIndex))
+        {
+            return *(m_pData + nIndex);
         }
     }
-    size_t size() const
+
+    bool clear()
     {
-        return size_;
+        m_nSize = 0;
+        delete []m_pData;
     }
 
-    size_t capacity() const
-    {
-        return capacity_;
-    }
-
-    bool empty() const
-    {
-        return size_==0;
-    }
-
-    void clear()
-    {
-        size_ = 0;
-    }
 
 private:
-    T * dataPtr_;
-    size_t size_;
-    size_t capacity_;
+    T *m_pData;// 存放数组的动态内存指针
+    int m_nSize;// 数组的元素个数
+    int m_nMax;//预留给动态数组的内存大小
 
+private:
+    void Init();	// 初始化
+    void Free()// 释放动态内存
+    {
+        delete []m_pData;
+        m_pData = nullptr;
+    }
 
+    inline int InvalidateIndex(const int nIndex) const	// 判断下标的合法性
+    {
+        if(nIndex >= m_nSize)
+        {
+            return 0;
+        }
+        else
+        {
+            return 1;
+        }
+    }
 };
 
 }
 #endif
-

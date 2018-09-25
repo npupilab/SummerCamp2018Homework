@@ -1,37 +1,29 @@
-project(cmake_learning)
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 2.8)
+project(cmake)
 
+set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR})
+find_package(Hello)
 
-set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR})
-set(EXE_SRC  AppDemo/main.cpp)
-set(STATIC_SRC StaticLibDemo/StaticLibDemo.cpp)
-set(SHARED_SRC SharedLibDemo/SharedLibDemo.cpp)
-set(FIND_SRC AppDemo/test_for_findpackage.cpp)
+include_directories(${Hello_INCLUDES})
+include_directories(./include)
 
-find_package(Hello REQUIRED)
-
-include_directories( ./StaticLibDemo ./SharedLibDemo)
-include_directories(${Hello_INCLUDE_DIR})
-
-add_library(SharedLibDemo SHARED ${SHARED_SRC})
-add_library(StaticLibDemo ${STATIC_SRC})
-
-add_executable(AppDemo ${EXE_SRC})
-target_link_libraries(AppDemo SharedLibDemo StaticLibDemo)
-
-
-
-add_executable(HelloDemo ${FIND_SRC})
-target_link_libraries(HelloDemo ${Hello_LIBRARIES})
-
-
-
-install(
-    TARGETS AppDemo HelloDemo  SharedLibDemo StaticLibDemo
-RUNTIME DESTINATION bin
-LIBRARY DESTINATION lib
-ARCHIVE DESTINATION lib
+add_library(${PROJECT_NAME} SHARED
+        src/SharedLibDemo/SharedLibDemo.cpp
 )
 
+add_library(StaticLibDemo STATIC
+        src/StaticLibDemo/StaticLibDemo.cpp
+)
 
+target_link_libraries(${PROJECT_NAME}
+        StaticLibDemo
+        ${Hello_LIBS}
+)
 
+add_executable(example src/AppDemo/main.cpp)
+target_link_libraries(example ${PROJECT_NAME})
+
+add_executable(example_find_package src/AppDemo/test_for_findpackage.cpp)
+target_link_libraries(example_find_package ${PROJECT_NAME})
+
+INSTALL(TARGETS ${PROJECT_NAME} LIBRARY DESTINATION lib ARCHIVE DESTINATION lib RUNTIME DESTINATION bin)
