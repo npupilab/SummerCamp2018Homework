@@ -1,17 +1,25 @@
-find_path(Hello_INCLUDE_DIR hello/hello.h ${PROJECT_SOURCE_DIR}/../include)
-find_library(Hello_LIBRARIES hello  ${PROJECT_SOURCE_DIR}/../lib)
-if(Hello_INCLUDE_DIR AND  Hello_LIBRARIES)
-    message(STATUS "Looking for Hello lib  - found ${Hello_LIBRARIES}")
-	message(STATUS "Hello lib include path: ${Hello_INCLUDE_DIR}")
-	set(Hello_FOUND 1)
-else(Hello_INCLUDE_DIR AND  Hello_LIBRARIES)
-    message(STATUS "Can not Find Hello lib")
-    set(Hello_FOUND 0)
-endif(Hello_INCLUDE_DIR AND  Hello_LIBRARIES)
+FIND_PATH(HELLO_INCLUDE_DIR hello/hello.h
+        ${PROJECT_SOURCE_DIR}/../include
+        /usr/local/include/
+        /usr/include/
+)
 
-message("test")
+FIND_LIBRARY(HELLO_LIBS hello
+        ${PROJECT_SOURCE_DIR}/../lib
+        /usr/local/lib
+        /usr/lib
+        /opt/lib
+)
 
+if(HELLO_INCLUDE_DIR AND HELLO_LIBS)
+    MESSAGE( STATUS "Looking for Hello - found")
+    SET(HELLO_FOUND 1)
+else(HELLO_INCLUDE_DIR AND HELLO_LIB)
+    message( STATUS "Looking for Hello  - not found" )
+    SET(HELLO_FOUND 0)
+endif(HELLO_INCLUDE_DIR AND HELLO_LIB)
 
-
-	
-	
+if (HELLO_FOUND)
+    SET(Hello_INCLUDES ${HELLO_INCLUDE_DIR})
+    SET(Hello_LIBS ${HELLO_LIBS})
+endif (HELLO_FOUND)

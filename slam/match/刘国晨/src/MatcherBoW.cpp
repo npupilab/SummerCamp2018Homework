@@ -1,4 +1,6 @@
 #include <Matcher.h>
+#include <opencv2/features2d/features2d.hpp>
+#include <opencv2/opencv.hpp>
 #include "GSLAM/core/Timer.h"
 #include "GSLAM/core/Vocabulary.h"
 #include "GSLAM/core/Estimator.h"
@@ -36,182 +38,79 @@ public:
         return false;
     }
 
+    double DescriptorDistance(cv::Mat &a, cv::Mat &b) const ;
+
     SPtr<GSLAM::Estimator> estimator;
 };
+
+double MatcherBoW::DescriptorDistance(cv::Mat &a, cv::Mat &b) const
+{
+    double score = 0;
+
+    for(int i = 0; i < a.cols; ++i)
+    {
+        score += pow((a.at<uint8_t >(i) - b.at<uint8_t >(i)), 2);
+    }
+
+    return sqrt(score);
+}
 
 bool MatcherBoW::match4initialize(const GSLAM::FramePtr &lastKF, const GSLAM::FramePtr &curFrame, std::vector<
     std::pair<int, int> > &matches) const
 {
-    std::vector<std::pair<int, int> > result_matches;
-    GSLAM::FeatureVector feature_vector1, feature_vector2;
+    std::vector<int> first_pass_match;
+    std::vector<int> first_pass_best_match;
+    std::vector<int> first_pass_second_match;
 
-    if (!lastKF->getFeatureVector(feature_vector1))
-        return false;
-    if (!curFrame->getFeatureVector(feature_vector2))
-        return false;
+    cv::Mat description1 = lastKF->getDescriptor();
+    cv::Mat description2 = curFrame->getDescriptor();
 
-    GSLAM::FeatureVector::iterator iterator1 = feature_vector1.begin();
-    GSLAM::FeatureVector::iterator iterator2 = feature_vector2.begin();
-    GSLAM::FeatureVector::iterator end1 = feature_vector1.end();
-    GSLAM::FeatureVector::iterator end2 = feature_vector2.end();
+    int description1size = description1.rows;
+    int description2size = description2.rows;
 
-    float max_distance = -1;
-    bool cross_check = svar.GetInt("MatcherBoW.CrossCheck", 1);
+    first_pass_match.resize(description1size, -1);
+    first_pass_best_match.resize(description1size, 255);
+    first_pass_second_match.resize(description1size, 255);
 
-    while (iterator1 != end1 && iterator2 != end2)
+    for(int i = 0; i < description1size; ++i)
     {
-        if (iterator1->first == iterator2->first)
-        {
-            vector<unsigned int> ids1 = iterator1->second;
-            vector<unsigned int> ids2 = iterator2->second;
+        double bestdist = INT32_MAX;
 
-            for(unsigned int i1 : ids1)
+        for(int j = 0; j < description2size; ++j)
+        {
+            cv::Mat a = description1.row(i);
+            cv::Mat b = description2.row(j);
+
+            double dist = DescriptorDistance(a, b);
+
+            if(bestdist > dist)
             {
-                float best_distance = std::numeric_limits<float>::max();
-                unsigned int best_id = 0;
-                GSLAM::GImage des = lastKF->getDescriptor(i1);
+                bestdist = dist;
 
-                if (max_distance < 0)
-                {
-                    if (des.type() == GSLAM::GImageType<float>::Type && des.cols == 128)
-                        max_distance = 0.2;
-                    else if (des.type() == GSLAM::GImageType<uchar>::Type && des.cols == 32)
-                        max_distance = 50;
-
-                    assert(max_distance > 0);
-                }
-
-                for(unsigned int i2 : ids2)
-                {
-                    auto distance = GSLAM::Vocabulary::distance(des, curFrame->getDescriptor(i2));
-
-                    if (distance < best_distance)
-                    {
-                        best_distance = distance;
-                        best_id = i2;
-                    }
-                }
-
-                bool is_min = true;
-                if (cross_check)
-                {
-                    des = curFrame->getDescriptor(best_id);
-
-                    for(unsigned int j : ids1)
-                    {
-                        if (j == i1)
-                            continue;
-
-                        auto distance = GSLAM::Vocabulary::distance(lastKF->getDescriptor(j), des);
-
-                        if (distance < best_distance)
-                        {
-                            is_min = false;
-                            break;
-                        }
-                    }
-                }
-
-                if (is_min && best_distance < max_distance)
-                {
-                    matches.push_back(std::make_pair(i1, best_id));
-                }
+                first_pass_second_match[i] = first_pass_best_match[i];
+                first_pass_best_match[i] = j;
             }
-
-            iterator1++;
-            iterator2++;
-        }
-        else if(iterator1->first < iterator2->first)
-        {
-            iterator1 = feature_vector1.lower_bound(iterator2->first);
-        }
-        else
-        {
-            iterator2 = feature_vector2.lower_bound(iterator1->first);
         }
     }
 
-    if (svar.GetInt("MatcherBow.FilterAngle"))
+    for(int i = 0; i < description1size; ++i)
     {
-        std::vector<int> bins[30];
+        double first_pass_alpha = 0.9;
 
-        for (int i = 0; i < 30; ++i)
+        cv::Mat a = description1.row(i);
+        cv::Mat b = description2.row(first_pass_best_match[i]);
+        cv::Mat c = description2.row(first_pass_second_match[i]);
+
+        double dist = DescriptorDistance(a, b);
+        double dist2 = DescriptorDistance(a, c);
+
+        double ratio = (double)(dist) / (double)(dist2);
+
+        if(ratio < first_pass_alpha)
         {
-            bins->reserve(matches.size());
+            first_pass_match[i] = first_pass_best_match[i];
+            matches.push_back(std::make_pair(i, first_pass_match[i]));
         }
-
-        for (int i = 0; i < matches.size(); ++i)
-        {
-            GSLAM::KeyPoint kp1, kp2;
-
-            if (!lastKF->getKeyPoint(matches[i].first, kp1))
-                continue;
-            if (!lastKF->getKeyPoint(matches[i].second, kp2))
-                continue;
-
-            float angle = kp1.angle - kp2.angle;
-
-            if (angle < 0) angle += 360;
-            bins[int(angle / 30)].push_back(i);
-        }
-
-        int max1 = 0;
-        int max2 = 0;
-        int max3 = 0;
-        int ind1 = -1;
-        int ind2 = -1;
-        int ind3 = -1;
-
-        for (int i = 0; i < 30; ++i)
-        {
-            const int s = bins[i].size();
-
-            if (s > max1)
-            {
-                max3 = max2;
-                max2 = max1;
-                max1 = s;
-                ind3 = ind2;
-                ind2 = ind1;
-                ind1 = i;
-            }
-            else if(s > max2)
-            {
-                max3 = max2;
-                max2 = s;
-                ind3 = ind2;
-                ind2 = i;
-            }
-            else if (s > max3)
-            {
-                max3 = s;
-                ind3 = i;
-            }
-        }
-
-        if (max2 < 0.1f * (float)max1)
-        {
-            ind2 = -1;
-            ind3 = -1;
-        }
-        else if (max3 < 0.1f * (float)max1)
-        {
-            ind3 = -1;
-        }
-
-        for (int i = 0; i < 30; ++i)
-        {
-            if (i == ind1 || i == ind2 || i == ind3)
-            {
-                for (int j : bins[i])
-                {
-                    result_matches.push_back(matches[j]);
-                }
-            }
-        }
-
-        DLOG(INFO) << "FilterAngle" << matches.size() << "->" << result_matches.size();
-        matches = result_matches;
     }
 
     int num_threshold = std::max(50, int(curFrame->keyPointNum() * 0.03));
