@@ -1,4 +1,6 @@
-cmake_minimum_required(VERSION 3.12)
+cmake_minimum_required(VERSION 2.8)
+
+project(cmake_learning)
 
 include_directories(${PROJECT_SOURCE_DIR}/../src/SharedLibDemo)
 set(SRC_SHARED ${PROJECT_SOURCE_DIR}/../src/SharedLibDemo/SharedLibDemo.cpp)
