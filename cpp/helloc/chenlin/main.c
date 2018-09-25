@@ -5,7 +5,7 @@ int findPeak(int left, int right,float *argv)
 	int mid = (left + right) / 2;
 	if (argv[mid] > argv[mid+1] && argv[mid] > argv[mid-1]) return mid;
 	else if (argv[mid] > argv[mid+1]) return findPeak(left,mid-1,argv);
-	else return findPeak(mid-1, right,argv);
+	else return findPeak(mid+1, right,argv);
 }
 
 int main(int argc, char const *argv[])
