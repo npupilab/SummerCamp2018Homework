@@ -1,5 +1,6 @@
 #include <sophus/so3.hpp>
 #include <sophus/se3.hpp>
+#include <sophus/sim3.hpp>
 #include "SO3SIMD.h"
 #include <fstream>
 #include "Random.h"
@@ -33,8 +34,90 @@ int Return(int argc,char** argv,int i){
     return 0;
 }
 
+
+template <typename Scalar>
+bool SE3ExpTest(){
+    int num=1e6;
+    std::vector<Eigen::Matrix<Scalar, 6, 1> > se3s(num);
+    std::vector<Sophus::SE3Group<Scalar> > SE3s(num);
+    std::vector<pi::SE3<Scalar> >  GSE3s(num);
+
+    for(int i=0;i<num;i++)
+    {
+        se3s[i] << GSLAM::Random::RandomValue<Scalar>(),
+                GSLAM::Random::RandomValue<Scalar>(),
+                GSLAM::Random::RandomValue<Scalar>(),
+                GSLAM::Random::RandomValue<Scalar>(),
+                GSLAM::Random::RandomValue<Scalar>(),
+                GSLAM::Random::RandomValue<Scalar>();
+    }
+    {
+        GSLAM::ScopedTimer tm("se3_exp_sophus");
+        for(int i=0;i<num;i++)
+        {
+            SE3s[i]=Sophus::SE3Group<Scalar>::exp(se3s[i]);
+        }
+    }
+
+    {
+        GSLAM::ScopedTimer tm("se3_exp_gslam");
+        for(int i=0;i<num;i++)
+        {
+            GSE3s[i]=exp(*(pi::Array_<double,6>*)&se3s[i]);
+        }
+    }
+
+
+    {
+        GSLAM::ScopedTimer tm("se3_exp_fast");
+        for(int i=0;i<num;i++)
+        {
+            GSE3s[i]=expFast(*(pi::Array_<double,6>*)&se3s[i]);
+        }
+    }
+
+    {
+        GSLAM::ScopedTimer tm("se3_log_sophus");
+        for(int i=0;i<num;i++)
+        {
+            se3s[i]=Sophus::SE3Group<Scalar>::log(SE3s[i]);
+        }
+    }
+
+
+    {
+        GSLAM::ScopedTimer tm("se3_log_gslam");
+        for(int i=0;i<num;i++)
+        {
+            *(pi::Array_<double,6>*)&se3s[i]=log(GSE3s[i]);
+        }
+    }
+
+    {
+        GSLAM::ScopedTimer tm("se3_log_fast");
+        for(int i=0;i<num;i++)
+        {
+            *(pi::Array_<double,6>*)&se3s[i]=log(GSE3s[i]);
+        }
+    }
+
+    {
+        auto vec6=se3s.front();
+        Sophus::SE3d sophus=Sophus::SE3d::exp(vec6);
+        pi::SE3d gslam =exp(*(pi::Array_<double,6>*)&vec6);
+        pi::SE3d fast =expFast(*(pi::Array_<double,6>*)&vec6);
+        std::cerr<<"sophus:"<<(pi::SE3d)sophus
+                <<"\ngslam:"<<gslam
+               <<"\nfast:"<<fast<<std::endl;
+
+        std::cerr<<"log:"<<sophus.log()
+                <<",gslam:"<<log(gslam);
+    }
+}
+
 int main(int argc,char** argv)
 {
+    SE3ExpTest<double>();
     int num=1e6;
     std::vector<pi::SO3d> ld,rd;
     std::vector<pi::SO3f> lf,rf;
@@ -320,8 +403,6 @@ int main(int argc,char** argv)
             }
         }
     }
-
-
 
     return Return(argc,argv,0);
 }

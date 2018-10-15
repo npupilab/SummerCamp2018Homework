@@ -6,7 +6,7 @@ TEMPLATE = app
 TARGET = src
 INCLUDEPATH += . /usr/include/eigen3
 
-QMAKE_CXXFLAGS+=-std=c++11 -O3
+QMAKE_CXXFLAGS+=-std=c++11 -O3 -DNDEBUG
 # Input
 HEADERS += Array.h Point.h Random.h SO3.h Timer.h
 SOURCES += main.cpp

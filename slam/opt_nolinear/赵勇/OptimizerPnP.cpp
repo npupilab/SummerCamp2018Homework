@@ -1,4 +1,5 @@
 #include <GSLAM/core/Optimizer.h>
+#include <GSLAM/core/Timer.h>
 #include <eigen3/Eigen/Cholesky>
 
 #define RESIDUAL_SIZE 2
@@ -24,6 +25,7 @@ public:
     virtual bool optimizePnP(const std::vector<std::pair<GSLAM::Point3d, GSLAM::CameraAnchor> > &matches,
                              GSLAM::SE3 &pose, GSLAM::KeyFrameEstimzationDOF dof, double *information)
     {
+        GSLAM::ScopedTimer tm("OptimizerPnP::optimizePnP");
         std::vector<Point3d> objectPoints;
         std::vector<Point2d> imagePoints;
         objectPoints.reserve(matches.size());
@@ -41,6 +43,7 @@ public:
 
     inline double HuberWeight(double dErrorSquared, double dSigmaSquared)
     {
+        GSLAM::ScopedTimer tm("OptimizerPnP::HuberWeight");
       if(dErrorSquared < dSigmaSquared)
         return 1;
       else
@@ -53,6 +56,7 @@ public:
                     const GSLAM::Camera&        camera,
                     const double&               dSigmaSquared)
     {
+        GSLAM::ScopedTimer tm("OptimizerPnP::cacuSumError");
         double result=0;
         for(size_t i=0;i<objectPoints.size();i++)
         {
@@ -70,6 +74,7 @@ public:
                     const std::vector<Point2d>& imagePoints,
                     const GSLAM::Camera&        camera)
     {
+        GSLAM::ScopedTimer tm("OptimizerPnP::solvePnP");
         assert(camera.isValid());
         assert(objectPoints.size()==imagePoints.size());
 
@@ -87,6 +92,7 @@ public:
             JacobianError jacerr=JacobianError::Zero();
             for(size_t i=0;i<objectPoints.size();i++)
             {
+                GSLAM::ScopedTimer tm("OptimizerPnP::hessian");
                 // estimate error and weight
                 Point3d pcam = w2c*objectPoints[i];
                 Point2d err  = imagePoints[i]-camera.Project(pcam);// WARNNING: The error should be y-f(x) and not f(x)-y
@@ -108,7 +114,9 @@ public:
             }
 
             // caculate update, solve Hessian*inc=jacerr
+            timer.enter("LDLT");
             Vector6d inc=Hessian.ldlt().solve(jacerr);// use Cholesky ldlt, also can use llt or QR decompose
+            timer.leave("LDLT");
 
             SE3 w2c_new=SE3::exp(*(pi::Array_<double,6>*)&inc)*w2c;
             double errorNew=cacuSumError(w2c_new,objectPoints,imagePoints,camera,dSigmaSquared);
@@ -124,10 +132,10 @@ public:
                 curError=errorNew;
                 lambda/=lambdaFactor;
 
-    //            printf("iter:%d,curError:%lf,facError:%lf\n",it,curError,facError);
-    //            std::cout<<"inc:"<<inc.transpose()<<std::endl;
+                printf("iter:%d, curError:%lf, facError:%lf, ",it,curError,facError);
+                std::cout<<"inc:"<<inc.transpose()<<std::endl;
 
-                if(facError>0.9999) break;// abord when small update
+                if(facError>0.99) break;// abord when small update
                 if(curError<1e-7)   break;// abord when small residual
             }
 

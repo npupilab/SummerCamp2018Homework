@@ -52,7 +52,7 @@ class DataAnalysis(object):
 
 		plt.plot(self.x, self.y)
 		savefig('./plot.png')
-		plt.show()
+		#plt.show()
 
 
 calc_subseq = DataAnalysis('data.txt')

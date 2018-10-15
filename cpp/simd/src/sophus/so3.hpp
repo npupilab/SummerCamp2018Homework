@@ -280,19 +280,19 @@ class SO3GroupBase {
   SOPHUS_FUNC SO3GroupBase<Derived>& operator*=(const SO3Group<Scalar>& other) {
     unit_quaternion_nonconst() *= other.unit_quaternion();
 
-//    Scalar squared_norm = unit_quaternion().squaredNorm();
+    Scalar squared_norm = unit_quaternion().squaredNorm();
 
-//    // We can assume that the squared-norm is close to 1 since we deal with a
-//    // unit quaternion. Due to numerical precission issues, there might
-//    // be a small drift after pose concatenation. Hence, we need to renormalize
-//    // the quaternion here.
-//    // Since squared-norm is close to 1, we do not need to calculate the costly
-//    // square-root, but can use an approximation around 1 (see
-//    // http://stackoverflow.com/a/12934750 for details).
-//    if (squared_norm != Scalar(1.0)) {
-//      unit_quaternion_nonconst().coeffs() *=
-//          Scalar(2.0) / (Scalar(1.0) + squared_norm);
-//    }
+    // We can assume that the squared-norm is close to 1 since we deal with a
+    // unit quaternion. Due to numerical precission issues, there might
+    // be a small drift after pose concatenation. Hence, we need to renormalize
+    // the quaternion here.
+    // Since squared-norm is close to 1, we do not need to calculate the costly
+    // square-root, but can use an approximation around 1 (see
+    // http://stackoverflow.com/a/12934750 for details).
+    if (squared_norm != Scalar(1.0)) {
+      unit_quaternion_nonconst().coeffs() *=
+          Scalar(2.0) / (Scalar(1.0) + squared_norm);
+    }
     return *this;
   }
 

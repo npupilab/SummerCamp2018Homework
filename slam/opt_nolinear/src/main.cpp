@@ -38,7 +38,7 @@ int TestOptimizePnPSimulate()
         LOG(ERROR)<<"No valid optimizer plugin!";
         return 1;
     }
-    opt->_config.verbose=svar.GetInt("Optimizer.Verbose",0);
+    opt->_config.verbose=svar.GetInt("Optimizer.Verbose",1);
     GSLAM::TicToc ticToc;
     if(!opt->optimizePnP(estMatches,estPose)) return 2;
 
