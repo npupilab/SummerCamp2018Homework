@@ -12,6 +12,8 @@ if(NOT USER_NAME)
     set(USER_NAME chenlin)
 endif()
 
-pi_add_target(Matcher BIN src ../${USER_NAME} REQUIRED GSLAM OpenCV GLEW GLUT OpenGL System DEPENDENCY -lX11)
+set(OPENCV_MODULES2FIND "${OPENCV_MODULES2FIND} opencv_nonfree")
+
+pi_add_target(Matcher BIN src ../${USER_NAME}  REQUIRED GSLAM OpenCV GLEW GLUT OpenGL System DEPENDENCY -lX11)
 pi_report_target()
 pi_install(TARGETS Matcher)
