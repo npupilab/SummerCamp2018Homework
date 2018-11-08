@@ -1,8 +1,8 @@
 #ifdef HAS_OPENCV
 
-#include <opencv2/highgui.hpp>
+#include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
-#include <opencv2/nonfree/nonfree.hpp>
+#include "nonfree/nonfree.hpp"
 #include <opencv2/legacy/legacy.hpp>
 
 #include "FeatureDetector.h"
